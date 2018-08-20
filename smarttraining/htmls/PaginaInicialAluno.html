@@ -2,16 +2,16 @@
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
-    <style media="screen">
-      .flex{
-        display: flex;
-      }
-    </style>
+    <link rel="stylesheet" type="text/css" href="PaginaInicialAluno-Table.css">
+    <link rel="stylesheet" type="text/css" href="PaginaInicialAluno-Header.css">
+    <link rel="stylesheet" type="text/css" href="PaginaInicialAluno-Button.css">
+    <link rel="stylesheet" type="text/css" href="PaginaInicialAluno-Body.css">
+    <link rel="stylesheet" type="text/css" href="PaginaInicialAluno-Footer.css">
     <title></title>
   </head>
   <body>
     <header>
-      <nav>
+      <nav class="header-right">
         <a href="">Perfil</a>
         <a href="">Fichas</a>
         <a href="">Exercícios</a>
@@ -31,9 +31,9 @@
     </div>
 
     <div class="">
-      <button>Nro Treino</button>
-      <button>Iniciar treino</button>
-      <table>
+      <button class="button">Nro Treino</button>
+      <button class="button-right">Iniciar treino</button>
+      <table class="table">
         <tr>
           <th>Feito</th>
           <th>Nro aparelho</th>
@@ -50,11 +50,20 @@
           <td>08</td>
           <td>25</td>
         </tr>
+        <tr>
+          <td><input type="checkbox"></td>
+          <td>1</td>
+          <td>Supino reto</td>
+          <td>04</td>
+          <td>08</td>
+          <td>25</td>
+        </tr>
       </table>
-      <button>Terminar treino</button>
-      <footer>
-        <p>SmartTraining &copy 2018</p>
-      </footer>
+      <button class="button-right">Terminar treino</button>
     </div>
+    <footer>
+        <p>SmartTraining &copy 2018</p>
+        <p>Desenvolvedores:</p>
+      </footer>
   </body>
 </html>

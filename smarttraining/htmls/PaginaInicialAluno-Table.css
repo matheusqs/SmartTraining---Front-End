@@ -1,0 +1,20 @@
+.flex{
+  display: flex;
+}
+
+table{
+	border-radius: 8px;
+  	border-collapse: collapse;
+  	width: 100%;
+  	background-color: white;
+  	backface-visibility: 90%;
+}
+
+th, td {
+    padding: 8px;
+    text-align: center;
+    border-bottom: 1px solid #ddd;
+}
+
+tr:hover {background-color: #3366FF; color: white;transition-duration: 0.4s;}
+
