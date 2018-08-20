@@ -16,5 +16,8 @@ th, td {
     border-bottom: 1px solid #ddd;
 }
 
-tr:hover {background-color: #3366FF; color: white;transition-duration: 0.4s;}
-
+tr:hover {
+  background-color: #3366FF;
+  color: white;
+  transition-duration: 0.4s;
+}
