@@ -1,8 +1,4 @@
-input[type = 'button'], button {
-	border-radius: 8px;
-}
-
-input[type = 'button'], button {
+.btn {
     background-color: black; /* Green */
     border: 2px solid black;
     color: white;
@@ -15,13 +11,14 @@ input[type = 'button'], button {
     -webkit-transition-duration: 0.4s; /* Safari */
     transition-duration: 0.4s;
     cursor: pointer;
+		border-radius: 8px;
 }
 
-input[type = 'button']:hover, button:hover {
+.btn:hover {
     background-color: white;
     color: black;
 }
 
-.button-right{
+.btn-right{
 	float: right;
 }

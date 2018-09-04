@@ -8,14 +8,14 @@
   padding-right: 1%;
 }
 
-.borda{
-  border: 1px solid white;
-}
-
 .metade-direita{
   margin-left: 0.6%;
 }
 
 .metade-esquerda{
   margin-right: 0.6%;
+}
+
+.container{
+	margin: 8px;
 }
