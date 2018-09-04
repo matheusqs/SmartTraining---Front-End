@@ -1,8 +1,8 @@
-button {
+input[type = 'button'], button {
 	border-radius: 8px;
 }
 
-button {
+input[type = 'button'], button {
     background-color: black; /* Green */
     border: 2px solid black;
     color: white;
@@ -17,7 +17,7 @@ button {
     cursor: pointer;
 }
 
-button:hover {
+input[type = 'button']:hover, button:hover {
     background-color: white;
     color: black;
 }

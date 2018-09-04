@@ -1,13 +1,10 @@
-.flex{
-  display: flex;
-}
-
 table{
 	border-radius: 8px;
   	border-collapse: collapse;
   	width: 100%;
   	background-color: white;
   	backface-visibility: 90%;
+		color: black;
 }
 
 th, td {
