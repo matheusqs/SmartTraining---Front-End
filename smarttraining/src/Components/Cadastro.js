@@ -21,10 +21,10 @@ export class Cadastro extends React.Component {
       checked: false
     });
 
-    this.onChange = this.onChange.bind(this);
+    this.isInstrutor = this.isInstrutor.bind(this);
   }
 
-  onChange(e){
+  isInstrutor(e){
     if(this.state.checked === false){
       this.setState({checked: true});
     }else{
@@ -32,48 +32,47 @@ export class Cadastro extends React.Component {
     }
   }
 
+  submit(){
+
+  }
+
+  voltar(){
+
+  }
+
   render(){
     return(
       <div>
         <form>
-          <span className='p-float-label'>
-            <InputText id='user' value={this.state.username} onChange={(e) => this.setState({username: e.target.value})}/>
-            <label htmlFor='user'>Username</label>
-          </span>
+          <label htmlFor='user'>Username</label>
+          <InputText id='user' value={this.state.username} onChange={(e) => this.setState({username: e.target.value})}/>
           <br/>
 
-          <span className='p-float-label'>
-            <Password id='pass' value={this.state.password} onChange={(e) => this.setState({password: e.target.value})}/>
-            <label htmlFor='pass'>Password</label>
-          </span>
+          <label htmlFor='pass'>Password</label>
+          <Password id='pass' value={this.state.password} onChange={(e) => this.setState({password: e.target.value})}/>
           <br/>
 
-          <span className='p-float-label'>
-            <Password id='confPass' value={this.state.confPassword} onChange={(e) => this.setState({confPassword: e.target.value})} feedback={false}/>
-            <label htmlFor='confPass'>Confirm your password</label>
-          </span>
+          <label htmlFor='confPass'>Confirm your password</label>
+          <Password id='confPass' value={this.state.confPassword} onChange={(e) => this.setState({confPassword: e.target.value})} feedback={false}/>
           <br/>
 
-          <span className='p-float-label'>
-            <InputText id='cpf' value={this.state.cpf} onChange={(e) => this.setState({cpf: e.target.value})} keyfilter='pint'/>
-            <label htmlFor='cpf'>CPF</label>
-          </span>
+          <label htmlFor='cpf'>CPF</label>
+          <InputText id='cpf' value={this.state.cpf} onChange={(e) => this.setState({cpf: e.target.value})} keyfilter='pint'/>
           <br/>
 
-          <span className='p-float-label'>
-            <InputText id='email' value={this.state.email} onChange={(e) => this.setState({email: e.target.value})}/>
-            <label htmlFor='email'>E-mail</label>
-          </span>
+          <label htmlFor='email'>E-mail</label>
+          <InputText id='email' value={this.state.email} onChange={(e) => this.setState({email: e.target.value})}/>
           <br/>
 
-          <span className='p-float-label'>
-            <Calendar className='p-calendar' id='birthDate' value={this.state.date} onChange={(e) => this.setState({date: e.target.value})}/>
-            <label htmlFor='birthDate'>Date of birth</label>
-          </span>
+          <label htmlFor='birthDate'>Date of birth</label>
+          <Calendar className='p-calendar' id='birthDate' value={this.state.date} onChange={(e) => this.setState({date: e.target.value})}/>
           <br/>
 
-          <Checkbox inputId='instrutor' onChange={this.onChange} checked={this.state.checked}/>
           <label htmlFor='instrutor' className='p-checkbox-label'>Instrutor</label>
+          <Checkbox inputId='instrutor' onChange={this.isInstrutor} checked={this.state.checked}/>
+
+          <Button label='Cadastrar' onClick={this.submit} className='p-button-success p-button-raised' />
+          <Button label='Voltar' onClick={this.voltar} className='p-button-danger p-button-voltar' />
         </form>
       </div>
     );
