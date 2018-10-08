@@ -1,6 +1,7 @@
 import React from 'react';
 import 'primereact/resources/primereact.min.css';
 import 'primeicons/primeicons.css';
+import {Link} from 'react-router-dom';
 import {Menubar} from 'primereact/menubar';
 import {Button} from 'primereact/button'
 
@@ -10,9 +11,10 @@ export class Header extends React.Component{
   }
 
   render(){
-    const items;
+    let items;
+    let retorno;
 
-    if (this.props.usertype == 'aluno') {
+    if (this.props.tipo === 'aluno') {
       items = [
         {
           label: 'Perfil',
@@ -28,7 +30,8 @@ export class Header extends React.Component{
           label: 'Avaliações',
         }
       ];
-    }else if (this.props.usertype == 'instrutor') {
+      retorno = [<header> <Menubar model={items}> <Button label='Sair' icon='pi pi-power-off'/> </Menubar> </header>];
+    }else if (this.props.tipo === 'instrutor') {
       items = [
         {
           label: 'Perfil',
@@ -103,7 +106,8 @@ export class Header extends React.Component{
           ]
         }
       ];
-    }else if (this.props.usertype == 'coordenador') {
+      retorno = [<header> <Menubar model={items}> <Button label='Sair' icon='pi pi-power-off'/> </Menubar> </header>];
+    }else if (this.props.tipo === 'coordenador') {
       items = [
         {
           label: 'Perfil',
@@ -159,16 +163,14 @@ export class Header extends React.Component{
           ]
         }
       ];
+
+      retorno = [<header> <Menubar model={items}> <Button label='Sair' icon='pi pi-power-off'/> </Menubar> </header>];
+    }else if(this.props.tipo === 'index'){
+      retorno = [<header> <Menubar> <Link to='/cadastro'> <Button label='Cadastrar'/> </Link> </Menubar> </header>];
     }else{
-      items = [];
+      retorno = [<header> <Menubar> </Menubar> </header>];
     }
 
-    return(
-      <header>
-        <Menubar model={items}>
-          <Button label='Logout' icon='pi pi-power-off' className='p-button-raised p-button-danger'/>
-        </Menubar>
-      </header>
-    );
+    return (retorno);
   }
 }

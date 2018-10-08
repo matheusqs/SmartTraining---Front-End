@@ -1,11 +1,13 @@
 import React from 'react';
 import 'primereact/resources/primereact.min.css';
 import 'primeicons/primeicons.css';
+import {Link} from 'react-router-dom';
 import {InputText} from 'primereact/inputtext';
 import {Password} from 'primereact/password';
 import {Calendar} from 'primereact/calendar';
 import {Checkbox} from 'primereact/checkbox';
 import {Button} from 'primereact/button';
+import {Header} from './Components/Header';
 
 export class Cadastro extends React.Component {
   constructor(props) {
@@ -18,7 +20,9 @@ export class Cadastro extends React.Component {
       cpf: null,
       email: null,
       date: null,
-      checked: false
+      checked: false,
+      cref: null,
+      desativado: true
     });
 
     this.isInstrutor = this.isInstrutor.bind(this);
@@ -26,9 +30,11 @@ export class Cadastro extends React.Component {
 
   isInstrutor(e){
     if(this.state.checked === false){
-      this.setState({checked: true});
+      this.setState({checked: true,
+        desativado: false});
     }else{
-      this.setState({checked: false});
+      this.setState({checked: false,
+        desativado: true});
     }
   }
 
@@ -43,16 +49,17 @@ export class Cadastro extends React.Component {
   render(){
     return(
       <div>
+        <Header/>
         <form>
-          <label htmlFor='user'>Username</label>
+          <label htmlFor='user'>Nome</label>
           <InputText id='user' value={this.state.username} onChange={(e) => this.setState({username: e.target.value})}/>
           <br/>
 
-          <label htmlFor='pass'>Password</label>
+          <label htmlFor='pass'>Senha</label>
           <Password id='pass' value={this.state.password} onChange={(e) => this.setState({password: e.target.value})}/>
           <br/>
 
-          <label htmlFor='confPass'>Confirm your password</label>
+          <label htmlFor='confPass'>Confirme sua senha</label>
           <Password id='confPass' value={this.state.confPassword} onChange={(e) => this.setState({confPassword: e.target.value})} feedback={false}/>
           <br/>
 
@@ -64,15 +71,20 @@ export class Cadastro extends React.Component {
           <InputText id='email' value={this.state.email} onChange={(e) => this.setState({email: e.target.value})}/>
           <br/>
 
-          <label htmlFor='birthDate'>Date of birth</label>
+          <label htmlFor='birthDate'>Data de nascimento</label>
           <Calendar className='p-calendar' id='birthDate' value={this.state.date} onChange={(e) => this.setState({date: e.target.value})}/>
           <br/>
 
           <label htmlFor='instrutor' className='p-checkbox-label'>Instrutor</label>
           <Checkbox inputId='instrutor' onChange={this.isInstrutor} checked={this.state.checked}/>
+          <br/>
+
+          <label htmlFor='cref'>Número de CREF</label>
+          <InputText id='cref' value={this.state.cref} onChange={(e) => this.setState({cref: e.target.value})} disabled={this.state.desativado}/>
+          <br/>
 
           <Button label='Cadastrar' onClick={this.submit} className='p-button-success p-button-raised' />
-          <Button label='Voltar' onClick={this.voltar} className='p-button-danger p-button-voltar' />
+          <Link to='/'><Button label='Voltar'/></Link>
         </form>
       </div>
     );
