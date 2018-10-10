@@ -7,7 +7,8 @@ import {Password} from 'primereact/password';
 import {Calendar} from 'primereact/calendar';
 import {Checkbox} from 'primereact/checkbox';
 import {Button} from 'primereact/button';
-import {Header} from './Components/Header';
+import {Header} from '../Components/Header';
+import {Footer} from '../Components/Footer';
 
 export class Cadastro extends React.Component {
   constructor(props) {
@@ -36,10 +37,6 @@ export class Cadastro extends React.Component {
       this.setState({checked: false,
         desativado: true});
     }
-  }
-
-  submit(){
-
   }
 
   voltar(){
@@ -83,9 +80,10 @@ export class Cadastro extends React.Component {
           <InputText id='cref' value={this.state.cref} onChange={(e) => this.setState({cref: e.target.value})} disabled={this.state.desativado}/>
           <br/>
 
-          <Button label='Cadastrar' onClick={this.submit} className='p-button-success p-button-raised' />
+          <input type='submit'/>
           <Link to='/'><Button label='Voltar'/></Link>
         </form>
+        <Footer/>
       </div>
     );
   }
