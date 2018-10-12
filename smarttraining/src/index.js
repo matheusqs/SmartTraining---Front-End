@@ -6,6 +6,7 @@ import {Route} from 'react-router-dom';
 import {Login} from './Telas/Login';
 import {Cadastro} from './Telas/Cadastro';
 import {AlunoIndex} from './Telas/AlunoIndex';
+import {ListaExercicios} from './Telas/ListaExercicios';
 import registerServiceWorker from './registerServiceWorker';
 
 ReactDOM.render(
@@ -14,6 +15,7 @@ ReactDOM.render(
       <Route path='/' exact={true} component={Login}/>
       <Route path='/cadastro' component={Cadastro}/>
       <Route path='/alunoindex' component={AlunoIndex}/>
+      <Route path='/exercicios' component={ListaExercicios}/>
     </Switch>
   </BrowserRouter>,
   document.querySelector('.root')

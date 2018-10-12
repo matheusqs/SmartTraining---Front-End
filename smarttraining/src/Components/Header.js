@@ -8,7 +8,7 @@ import {Button} from 'primereact/button'
 export class Header extends React.Component{
   constructor(props) {
     super(props);
-    this.analisaTipo.bind
+    this.analisaTipo =  this.analisaTipo.bind(this);
   }
 
   analisaTipo = () => {
@@ -19,37 +19,55 @@ export class Header extends React.Component{
         items = [
           {
             label: 'Perfil',
-            icon: 'pi pi-fw pi-user'
+            icon: 'pi pi-fw pi-user',
+            command: (e) =>{
+              window.location.pathname = '/perfil'
+            }
           },
           {
             label: 'Fichas',
+            command: (e) =>{
+              window.location.pathname = '/fichas'
+            }
           },
           {
             label: 'Exercícios',
+            command: (e) =>{
+              window.location.pathname = '/exercicios'
+            }
           },
           {
             label: 'Avaliações',
+            command: (e) =>{
+              window.location.pathname = '/avaliacoes'
+            }
           }
         ];
-        return ([
+        return (
           <header>
             <Menubar model={items}>
               <Button label='Sair' icon='pi pi-power-off'/>
             </Menubar>
           </header>
-        ]);
+        );
 
       case 'instrutor':
         items = [
           {
             label: 'Perfil',
-            icon: 'pi pi-fw pi-user'
+            icon: 'pi pi-fw pi-user',
+            command: (e) =>{
+              window.location.pathname = '/perfil';
+            }
           },
           {
             label: 'Exercícios',
             items: [
               {
                 label: 'Listar',
+                command: (e) =>{
+                  window.location.pathname = '/exercicios'
+                }
               },
               {
                 separator: true
@@ -70,12 +88,18 @@ export class Header extends React.Component{
             items: [
               {
                 label: 'Listar',
+                command: (e) =>{
+                  window.location.pathname = '/alunos';
+                }
               },
               {
                 label: 'Avaliações',
                 items: [
                   {
                     label: 'Listar',
+                    command: (e) =>{
+                      window.location.pathname = '/avaliacoes';
+                    }
                   },
                   {
                     separator: true
@@ -95,7 +119,10 @@ export class Header extends React.Component{
                 label: 'Fichas',
                 items: [
                   {
-                    label: 'Listar'
+                    label: 'Listar',
+                    command: (e) =>{
+                      window.location.pathname = '/fichas';
+                    }
                   },
                   {
                     separator: true
@@ -115,25 +142,31 @@ export class Header extends React.Component{
           }
         ];
 
-        return ([
+        return (
           <header>
             <Menubar model={items}>
               <Button label='Sair' icon='pi pi-power-off'/>
             </Menubar>
           </header>
-        ]);
+        );
 
       case 'coordenador':
         items = [
           {
             label: 'Perfil',
-            icon: 'pi pi-fw pi-user'
+            icon: 'pi pi-fw pi-user',
+            command: (e) =>{
+              window.location.pathname = '/perfil';
+            }
           },
           {
             label: 'Instrutores',
             items: [
               {
                 label: 'Listar',
+                command: (e) =>{
+                  window.location.pathname = '/instrutores';
+                }
               },
               {
                 separator: true
@@ -149,6 +182,9 @@ export class Header extends React.Component{
             item: [
               {
                 label: 'Listar',
+                command: (e) =>{
+                  window.location.pathname = '/alunos';
+                }
               },
               {
                 separator: true
@@ -163,6 +199,9 @@ export class Header extends React.Component{
             items: [
               {
                 label: 'Listar',
+                command: (e) =>{
+                  window.location.pathname = '/exercicios';
+                }
               },
               {
                 separator: true
@@ -179,20 +218,19 @@ export class Header extends React.Component{
             ]
           }
         ];
-        return ([
+        return (
           <header>
             <Menubar model={items}>
               <Button label='Sair' icon='pi pi-power-off'/>
             </Menubar>
           </header>
-        ]);
+        );
 
       default:
-        return ([
+        return (
           <header>
             <p>SmartTraining</p>
           </header>
-        ]
       );
     }
   }
