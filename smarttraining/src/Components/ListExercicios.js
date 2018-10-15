@@ -17,7 +17,7 @@ export class ListExercicios extends React.Component {
               nome:'ex1'
             },
             {
-              nome: 'já deu'
+              nome: 'ex2'
             }
           ]
         }
@@ -27,7 +27,8 @@ export class ListExercicios extends React.Component {
 
   render(){
     let lista = this.state.musculos;
-    lista.map((musculo) => <Exercicios musculo={musculo} children={musculo.exercicios}/>);
+    lista = lista.map((musculo) => <Exercicios musculo={musculo} children={musculo.exercicios}
+                              onExercicioChange={this.props.onExercicioChange} mustCheckbox={this.props.mustCheckbox}/>);
 
     return(
       <ul>

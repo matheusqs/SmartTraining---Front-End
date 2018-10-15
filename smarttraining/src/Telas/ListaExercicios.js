@@ -33,7 +33,7 @@ export class ListaExercicios extends React.Component {
       <div>
         <Header tipo='aluno'/>
         <ListExercicios/>
-        <Link to={paginaAnterior.toString}> <Button label='Voltar'/> </Link>
+        <Link to={paginaAnterior}> <Button label='Voltar'/> </Link>
         <Footer/>
       </div>
     );

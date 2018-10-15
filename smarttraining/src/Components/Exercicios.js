@@ -1,4 +1,5 @@
 import React from 'react';
+import {Checkbox} from 'primereact/checkbox';
 
 export class Exercicios extends React.Component {
   constructor(props) {
@@ -7,15 +8,20 @@ export class Exercicios extends React.Component {
 
   render(){
     let children = this.props.children;
+    let musculo = this.props.musculo;
     let childnodes = null;
 
     if (children) {
-      childnodes = this.cildren.map((childnode) => <Exercicios musculo={childnode} children={childnode.exercicios}/>);
+      debugger;
+      childnodes = children.map((childnode) => <Exercicios musculo={childnode} children={childnode.exercicios}/>);
     }
 
     return(
       <li>
-        <span>{this.props.musculo.nome}</span>
+        {children ? <span>{musculo.nome}</span> : this.props.mustCheckbox ? [<span>
+          <Checkbox value={musculo.nome} onChange={this.props.onExercicioChange}></Checkbox>
+          <span>{musculo.nome}</span>
+        </span>] : null}
         {childnodes ? <ul>{childnodes}</ul> : null}
       </li>
     );
