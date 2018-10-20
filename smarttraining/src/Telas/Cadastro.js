@@ -27,19 +27,51 @@ export class Cadastro extends React.Component {
     });
 
     this.isInstrutor = this.isInstrutor.bind(this);
+    this.defineVolta = this.defineVolta.bind(this);
   }
 
-  isInstrutor(e){
+  componentDidMount(){
+    let configuration = 'localhost:8080';
+    fetch(`${configuration}/servletweb?acao=alterarUsuario`, {
+      headers: {
+        'Accept': 'application/json'
+      }
+    })
+    .then(resposta => resposta.json())
+    .then(
+      (resultado) => {
+        this.setState({
+          username: resultado.nome,
+          senha: resultado.senha,
+          cpf: resultado.cpf,
+          email: resultado.email,
+          date: resultado.data
+        });
+      }
+    );
+  }
+
+  isInstrutor = (e) => {
     if(this.state.checked === false){
-      this.setState({checked: true,
-        desativado: false});
+      this.setState({
+        checked: true,
+        desativado: false
+      });
     }else{
-      this.setState({checked: false,
-        desativado: true});
+      this.setState({
+        checked: false,
+        desativado: true
+      });
     }
   }
 
-  voltar(){
+  submitHandler = (e) => {
+    e.preventDefault();
+
+
+  }
+
+  defineVolta = () => {
 
   }
 
@@ -47,7 +79,7 @@ export class Cadastro extends React.Component {
     return(
       <div>
         <Header/>
-        <form>
+        <form onSubmit={this.submitHandler} >
           <label htmlFor='user'>Nome</label>
           <InputText id='user' value={this.state.username} onChange={(e) => this.setState({username: e.target.value})}/>
           <br/>
@@ -81,7 +113,7 @@ export class Cadastro extends React.Component {
           <br/>
 
           <input type='submit'/>
-          <Link to='/'><Button label='Voltar'/></Link>
+          <Link to={this.defineVolta}><Button label='Voltar'/></Link>
         </form>
         <Footer/>
       </div>

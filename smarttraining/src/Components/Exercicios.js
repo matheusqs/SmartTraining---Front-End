@@ -13,7 +13,7 @@ export class Exercicios extends React.Component {
 
     if (children) {
       debugger;
-      childnodes = children.map((childnode) => <Exercicios musculo={childnode} children={childnode.exercicios}/>);
+      childnodes = children.map(childnode => <Exercicios musculo={childnode} children={childnode.exercicios}/>);
     }
 
     return(
