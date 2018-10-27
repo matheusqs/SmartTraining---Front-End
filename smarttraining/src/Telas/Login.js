@@ -33,7 +33,17 @@ export class Login extends React.Component{
               <Password id='senha' value={this.state.senha} onChange={(e) => this.setState({senha: e.target.value})}/>
               <br/>
               <Button label='Logar'/>
-              <p>Ainda não possui uma conta? <Link to='/cadastro'>Cadastre-se!</Link></p>
+              <p>Ainda não possui uma conta?
+                <Link to={{
+                    pathname: '/manterusuario',
+                    state: {
+                      acao: 'cadastrar'
+                    }
+                  }}
+                >
+                Cadastre-se!
+              </Link>
+              </p>
             </form>
           </div>
         </div>
