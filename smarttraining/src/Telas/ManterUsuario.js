@@ -22,8 +22,9 @@ export class ManterUsuario extends React.Component {
         cpf: null,
         email: null,
         dataNascimento: null,
-        tipo: 'a',
+        tipo: 'a'
       },
+      data: null,
       confSenha: null,
       checked: false,
       desativado: true
@@ -58,12 +59,25 @@ export class ManterUsuario extends React.Component {
 
   submitHandler = (e) => {
     e.preventDefault();
+    let dia = this.state.data.getDate();
+    let mes = this.state.data.getMonth()+1;
+    let ano = this.state.data.getFullYear();
+
+    if(dia < 10)
+      dia = '0' + dia;
+
+    if(mes < 10)
+      mes = '0' + mes;
+
+    let date = dia + '/' + mes + '/' + ano;
+    this.setState({...this.state.user.dataNascimento = date});
+
     let url = 'https://localhost:8080/servletweb?acao=CadastrarAluno';
 
     let data = Object.entries(this.state.user).map((estado) => {
       return encodeURIComponent(estado[0]) + '=' + encodeURIComponent(estado[1])
     }).join('&');
-
+    
     fetch(url, {
       method: 'POST',
       body: JSON.stringify(data),
@@ -122,7 +136,7 @@ export class ManterUsuario extends React.Component {
           <br/>
 
           <label htmlFor='birthDate'>Data de nascimento</label>
-          <Calendar className='p-calendar' id='birthDate' value={this.state.user.dataNascimento} onChange={(e) => this.setState({...this.state.user.dataNascimento = e.target.value})}/>
+          <Calendar className='p-calendar' id='birthDate' value={this.state.data} onChange={(e) => this.setState({data: e.target.value})}/>
           <br/>
 
           {/*<label htmlFor='instrutor' className='p-checkbox-label'>Instrutor</label>
