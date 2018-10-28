@@ -15,7 +15,7 @@ export class ManterUsuario extends React.Component {
     super(props);
 
     this.state = ({
-      user: {
+      person: {
         cpf: null,
         nome: null,
         tipo: 'a',
@@ -27,18 +27,18 @@ export class ManterUsuario extends React.Component {
           day: null
         }
       },
+      checked: null,
       data: null,
-      confSenha: null,
-      checked: false,
-      desativado: true
+      confSenha: null
     });
 
-    // this.isInstrutor = this.isInstrutor.bind(this);
+    this.isInstrutor = this.isInstrutor.bind(this);
   }
 
   componentDidMount(){
     if(this.props.location.state.acao === 'alterar'){
-      fetch(`localhost:8080/servletweb?acao=alterarUsuario`, {
+      let url = `http://localhost:8080/servletweb?acao=TelaAlterarUsuario&cod=${this.props.location.state.user.cpf}`;
+      fetch(url, {
         headers: {
           'Accept': 'application/json'
         }
@@ -47,11 +47,11 @@ export class ManterUsuario extends React.Component {
       .then(
         (resultado) => {
           this.setState({
-            ...this.state.user.nome = resultado.nome,
-            ...this.state.user.cpf = resultado.cpf,
-            ...this.state.user.email = resultado.email,
-            ...this.state.user.senha = resultado.senha,
-            ...this.state.user.cref = resultado.cref,
+            ...this.state.person.nome = resultado.nome,
+            ...this.state.person.cpf = resultado.cpf,
+            ...this.state.person.email = resultado.email,
+            ...this.state.person.senha = resultado.senha,
+            ...this.state.person.cref = resultado.cref,
             data: resultado.dataNascimento
           });
         }
@@ -72,13 +72,23 @@ export class ManterUsuario extends React.Component {
       mes = '0' + mes;
 
     this.setState({
-      ...this.state.user.dataNascimento.day = dia,
-      ...this.state.user.dataNascimento.month = mes,
-      ...this.state.user.dataNascimento.year = ano
+      ...this.state.person.dataNascimento.day = dia,
+      ...this.state.person.dataNascimento.month = mes,
+      ...this.state.person.dataNascimento.year = ano
     });
 
-    let url = 'http://localhost:8080/servletweb?acao=CadastrarAluno';
-    let data = JSON.stringify(this.state.user);
+    let url;
+    if(this.props.location.state.acao === 'cadastrar'){
+      this.state.person.tipo === 'a' ? 
+      url = 'http://localhost:8080/servletweb?acao=CadastrarAluno' : 
+      url = 'http://localhost:8080/servletweb?acao=CadastrarInstrutor'; 
+    }else{
+      this.state.person.tipo === 'a' ? 
+      url = 'http://localhost:8080/servletweb?acao=AlterarAluno' : 
+      url = 'http://localhost:8080/servletweb?acao=AlterarInstrutor'; 
+    }
+
+    let data = JSON.stringify(this.state.person);
 
     fetch(url, {
       method: 'POST',
@@ -94,25 +104,22 @@ export class ManterUsuario extends React.Component {
 
   }
 
-  // isInstrutor = (e) => {
-  //   if(this.state.checked === false){
-  //     this.setState({
-  //       checked: true,
-  //       desativado: false,
-  //       user: {
-  //         tipo: 'i'
-  //       }
-  //     });
-  //   }else{
-  //     this.setState({
-  //       checked: false,
-  //       desativado: true,
-  //       user:{
-  //         tipo: 'a'
-  //       }
-  //     });
-  //   }
-  // }
+  isInstrutor = (e) => {
+    if(this.state.checked === false){
+      this.setState({
+        checked: true,
+        ...this.state.person.tipo = 'i'
+      });
+      console.log(this.state);
+    }else{
+      this.setState({
+        checked: false,
+        ...this.state.person.cref = null,
+        ...this.state.person.tipo = 'a'
+      });
+      console.log(this.state);
+    }
+  }
 
   render(){
     return(
@@ -120,11 +127,11 @@ export class ManterUsuario extends React.Component {
         <Header/>
         <form onSubmit={this.submitHandler} formAction='POST' >
           <label htmlFor='user'>Nome</label>
-          <InputText id='user' value={this.state.user.nome} onChange={(e) => this.setState({...this.state.user.nome = e.target.value})}/>
+          <InputText id='user' value={this.state.person.nome} onChange={(e) => this.setState({...this.state.person.nome = e.target.value})}/>
           <br/>
 
           <label htmlFor='pass'>Senha</label>
-          <Password id='pass' value={this.state.user.senha} onChange={(e) => this.setState({...this.state.user.senha = e.target.value})} feedback={false}/>
+          <Password id='pass' value={this.state.person.senha} onChange={(e) => this.setState({...this.state.person.senha = e.target.value})} feedback={false}/>
           <br/>
 
           <label htmlFor='confPass'>Confirme sua senha</label>
@@ -132,24 +139,32 @@ export class ManterUsuario extends React.Component {
           <br/>
 
           <label htmlFor='cpf'>CPF</label>
-          <InputText id='cpf' value={this.state.user.cpf} onChange={(e) => this.setState({...this.state.user.cpf = e.target.value})} keyfilter='pint'/>
+          <InputText id='cpf' value={this.state.person.cpf} onChange={(e) => this.setState({...this.state.person.cpf = e.target.value})} keyfilter='pint'/>
           <br/>
 
           <label htmlFor='email'>E-mail</label>
-          <InputText id='email' value={this.state.user.email} onChange={(e) => this.setState({...this.state.user.email = e.target.value})}/>
+          <InputText id='email' value={this.state.person.email} onChange={(e) => this.setState({...this.state.person.email = e.target.value})}/>
           <br/>
 
           <label htmlFor='birthDate'>Data de nascimento</label>
           <Calendar className='p-calendar' id='birthDate' value={this.state.data} onChange={(e) => this.setState({data: e.value})}/>
           <br/>
 
-          {/*<label htmlFor='instrutor' className='p-checkbox-label'>Instrutor</label>
-          <Checkbox inputId='instrutor' onChange={this.isInstrutor} checked={this.state.checked}/>
-          <br/>
+          {this.props.location.state.acao === 'cadastrar' ? [
+              <div>
+                <Checkbox inputId='inst' onChange={this.isInstrutor} chekced={this.state.checked}/>
+                <label htmlFor='inst'>Instrutor</label>
+              </div>
+            ] : null
+          }
 
-          <label htmlFor='cref'>Número de CREF</label>
-          <InputText id='cref' value={this.state.user.cref} onChange={(e) => this.setState({user: {cref: e.target.value}})} disabled={this.state.desativado}/>
-          <br/>*/}
+          {this.state.person.tipo === 'i' ? [
+              <div>
+                <label htmlFor='cref'>Número CREF</label>
+                <InputText id='cref' value={this.state.person.cref} onChange={(e) => this.setState({...this.state.person.cref = e.target.value})}/>
+              </div>
+            ] : null
+          }
 
           <Button label='Cadastrar'/>
         </form>
