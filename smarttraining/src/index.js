@@ -7,6 +7,7 @@ import {Login} from './Telas/Login';
 import {ManterUsuario} from './Telas/ManterUsuario';
 import {AlunoIndex} from './Telas/AlunoIndex';
 import {ListaExercicios} from './Telas/ListaExercicios';
+import {ManterAvaliacao} from './Telas/ManterAvaliacao';
 import registerServiceWorker from './registerServiceWorker';
 
 ReactDOM.render(
