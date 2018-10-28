@@ -1,7 +1,6 @@
 import React from 'react';
 import 'primereact/resources/primereact.min.css';
 import 'primeicons/primeicons.css';
-import {Link} from 'react-router-dom';
 import {InputText} from 'primereact/inputtext';
 import {Password} from 'primereact/password';
 import {Calendar} from 'primereact/calendar';
@@ -17,12 +16,16 @@ export class ManterUsuario extends React.Component {
 
     this.state = ({
       user: {
-        nome: null,
-        senha: null,
         cpf: null,
+        nome: null,
+        tipo: 'a',
+        senha: null,
         email: null,
-        dataNascimento: null,
-        tipo: 'a'
+        dataNascimento: {
+          year: null,
+          month: null,
+          day: null
+        }
       },
       data: null,
       confSenha: null,
@@ -44,13 +47,12 @@ export class ManterUsuario extends React.Component {
       .then(
         (resultado) => {
           this.setState({
-            user:{
-              nome: resultado.nome,
-              senha: resultado.senha,
-              cpf: resultado.cpf,
-              email: resultado.email,
-              dataNascimento: resultado.data
-            }
+            ...this.state.user.nome = resultado.nome,
+            ...this.state.user.cpf = resultado.cpf,
+            ...this.state.user.email = resultado.email,
+            ...this.state.user.senha = resultado.senha,
+            ...this.state.user.cref = resultado.cref,
+            data: resultado.dataNascimento
           });
         }
       );
@@ -69,21 +71,23 @@ export class ManterUsuario extends React.Component {
     if(mes < 10)
       mes = '0' + mes;
 
-    let date = dia + '/' + mes + '/' + ano;
-    this.setState({...this.state.user.dataNascimento = date});
+    this.setState({
+      ...this.state.user.dataNascimento.day = dia,
+      ...this.state.user.dataNascimento.month = mes,
+      ...this.state.user.dataNascimento.year = ano
+    });
 
-    let url = 'https://localhost:8080/servletweb?acao=CadastrarAluno';
+    let url = 'http://localhost:8080/servletweb?acao=CadastrarAluno';
+    let data = JSON.stringify(this.state.user);
 
-    let data = Object.entries(this.state.user).map((estado) => {
-      return encodeURIComponent(estado[0]) + '=' + encodeURIComponent(estado[1])
-    }).join('&');
-    
     fetch(url, {
       method: 'POST',
-      body: JSON.stringify(data),
+      body: data,
       headers: {
+        'Accept': 'application/json',
         'Content-type': 'application/json; charset=utf-8'
-      }
+      },
+      mode: 'no-cors'
     })
     .then(response => response.json())
     .catch(error => console.error('Error:', error));
@@ -136,7 +140,7 @@ export class ManterUsuario extends React.Component {
           <br/>
 
           <label htmlFor='birthDate'>Data de nascimento</label>
-          <Calendar className='p-calendar' id='birthDate' value={this.state.data} onChange={(e) => this.setState({data: e.target.value})}/>
+          <Calendar className='p-calendar' id='birthDate' value={this.state.data} onChange={(e) => this.setState({data: e.value})}/>
           <br/>
 
           {/*<label htmlFor='instrutor' className='p-checkbox-label'>Instrutor</label>
