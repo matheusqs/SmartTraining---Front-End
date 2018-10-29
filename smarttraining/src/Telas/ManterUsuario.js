@@ -38,6 +38,7 @@ export class ManterUsuario extends React.Component {
   componentDidMount(){
     if(this.props.location.state.acao === 'alterar'){
       let url = `http://localhost:8080/servletweb?acao=TelaAlterarUsuario&cod=${this.props.location.state.user.cpf}`;
+      
       fetch(url, {
         headers: {
           'Accept': 'application/json'
@@ -64,12 +65,10 @@ export class ManterUsuario extends React.Component {
     let dia = this.state.data.getDate();
     let mes = this.state.data.getMonth()+1;
     let ano = this.state.data.getFullYear();
+    let url;
 
-    if(dia < 10)
-      dia = '0' + dia;
-
-    if(mes < 10)
-      mes = '0' + mes;
+    dia < 10 ? dia = '0' + dia : null;
+    mes < 10 ? mes = '0' + mes : null;
 
     this.setState({
       ...this.state.person.dataNascimento.day = dia,
@@ -77,7 +76,6 @@ export class ManterUsuario extends React.Component {
       ...this.state.person.dataNascimento.year = ano
     });
 
-    let url;
     if(this.props.location.state.acao === 'cadastrar'){
       this.state.person.tipo === 'a' ? 
       url = 'http://localhost:8080/servletweb?acao=CadastrarAluno' : 
@@ -88,11 +86,13 @@ export class ManterUsuario extends React.Component {
       url = 'http://localhost:8080/servletweb?acao=AlterarInstrutor'; 
     }
 
-    let data = JSON.stringify(this.state.person);
+    let data = Object.entries(this.state.person).map((estado) => {
+      return encodeURIComponent(estado[0]) + '=' + encodeURIComponent(estado[1])
+    }).join('&');
 
     fetch(url, {
       method: 'POST',
-      body: data,
+      body: JSON.stringify(data),
       headers: {
         'Accept': 'application/json',
         'Content-type': 'application/json; charset=utf-8'
