@@ -92,7 +92,7 @@ export class ManterUsuario extends React.Component {
 
     fetch(url, {
       method: 'POST',
-      body: JSON.stringify(data),
+      body: data,
       headers: {
         'Accept': 'application/json',
         'Content-type': 'application/json; charset=utf-8'
