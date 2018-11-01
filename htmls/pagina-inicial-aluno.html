@@ -11,62 +11,63 @@
     <title></title>
   </head>
   <body>
-    <header>
-      <nav class="header-right">
-        <a href="">Perfil</a>
-        <a href="">Fichas</a>
-        <a href="">Exercícios</a>
-        <a href="">Avaliações</a>
-        <a href="">Sair</a>
-      </nav>
-    </header>
-    <div class="container">
+    <article>
+      <header>
+        <ul>
+          <li><a href="">Perfil</a></li>
+          <li><a href="">Fichas</a></li>
+          <li><a href="">Exercícios</a></li>
+          <li><a href="">Avaliações</a></li>
+          <li class="sair"><a href="">Sair</a></li>
+        </ul>
+      </header>
+      <div class="container">
 
-      <div class="flex">
-        <div class="metade">
-          <p>Inserir gráfico aqui</p>
+        <div class="flex">
+          <div class="metade">
+            <p>Inserir gráfico aqui</p>
+          </div>
+
+          <div class="metade">
+            <p>Inserir gráfico aqui</p>
+          </div>
         </div>
 
-        <div class="metade">
-          <p>Inserir gráfico aqui</p>
+        <div class="">
+          <button class="btn">Nro Treino</button>
+          <button class="btn btn-right">Iniciar treino</button>
+          <table class="table">
+            <tr>
+              <th>Feito</th>
+              <th>Nro aparelho</th>
+              <th>Nome</th>
+              <th>Nro séries</th>
+              <th>Nro Repetições</th>
+              <th>Peso</th>
+            </tr>
+            <tr>
+              <td><input type="checkbox"></td>
+              <td>1</td>
+              <td>Supino reto</td>
+              <td>04</td>
+              <td>08</td>
+              <td>25</td>
+            </tr>
+            <tr>
+              <td><input type="checkbox"></td>
+              <td>1</td>
+              <td>Supino reto</td>
+              <td>04</td>
+              <td>08</td>
+              <td>25</td>
+            </tr>
+          </table>
+          <button class="btn btn-right">Terminar treino</button>
         </div>
       </div>
-
-      <div class="">
-        <button class="btn">Nro Treino</button>
-        <button class="btn btn-right">Iniciar treino</button>
-        <table class="table">
-          <tr>
-            <th>Feito</th>
-            <th>Nro aparelho</th>
-            <th>Nome</th>
-            <th>Nro séries</th>
-            <th>Nro Repetições</th>
-            <th>Peso</th>
-          </tr>
-          <tr>
-            <td><input type="checkbox"></td>
-            <td>1</td>
-            <td>Supino reto</td>
-            <td>04</td>
-            <td>08</td>
-            <td>25</td>
-          </tr>
-          <tr>
-            <td><input type="checkbox"></td>
-            <td>1</td>
-            <td>Supino reto</td>
-            <td>04</td>
-            <td>08</td>
-            <td>25</td>
-          </tr>
-        </table>
-        <button class="btn btn-right">Terminar treino</button>
-      </div>
-    </div>
-    <footer class="footer footer-p">
-      <p>SmartTraining &copy 2018</p>
-      <p>Desenvolvedores:</p>
-    </footer>
+      <footer class="footer">
+        <p class="footer-p">SmartTraining &copy 2018</p>
+      </footer>
+      </article>
   </body>
 </html>

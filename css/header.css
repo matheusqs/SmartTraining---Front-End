@@ -1,29 +1,33 @@
-header {
- width: 100%;
- color: white;
- background: black;
- height: 50px;
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: black;
 }
 
-header a {
-  color: white;
-  text-align: center;
-  padding: 12px;
-  text-decoration: none;
-  font-size: 18px;
-  line-height: 25px;
-  border-radius: 4px;
+li {
+    float: left;
 }
 
-header a:hover {
-  color: grey;
+li a {
+    border: 2px solid black;
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    -webkit-transition-duration: 0.4s; /* Safari */
+    transition-duration: 0.4s;
+    cursor: pointer;
+    border-radius: 8px;
 }
 
-header a.active {
-  background-color: dodgerblue;
-  color: white;
+li a:hover {
+    background-color: white;
+    color: black;
 }
 
-.header-right {
+.sair{
   float: right;
 }
