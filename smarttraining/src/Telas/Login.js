@@ -16,6 +16,7 @@ export class Login extends React.Component{
       cpf: null,
       senha: null,
       visible: false,
+      confSenha: null,
       person:{}
     });
   }
@@ -39,13 +40,13 @@ export class Login extends React.Component{
       (resultado) => {
         this.setState({
           ...this.state.person.cpf = resultado.cpf,
-          ...this.state.person.tipo = resultado.tipo
-        }),
-        senha = resultado.senha;
+          ...this.state.person.tipo = resultado.tipo,
+          confSenha: resultado.senha
+        })
       }
     );
 
-    if(this.state.senha !== senha){
+    if(this.state.senha !== this.state.confSenha){
       this.setState({
         visible: true,
         senha: '',
