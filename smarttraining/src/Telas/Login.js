@@ -27,7 +27,7 @@ export class Login extends React.Component{
     if(!this.state.cpf || !this.state.senha)
       return;
 
-    let url = `http://localhost:8080/servletweb?acao=PesquisarUsuario&cod=${this.state.cpf}`;
+    let url = `http://localhost:8080/servletweb?acao=MostrarUsuario&codCpf=${this.state.cpf}`;
     let senha;
 
     fetch(url, {
