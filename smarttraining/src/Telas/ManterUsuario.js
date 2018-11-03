@@ -18,7 +18,7 @@ export class ManterUsuario extends React.Component {
       person: {
         cpf: null,
         nome: null,
-        tipo: 'a',
+        tipo: 'A',
         senha: null,
         email: null,
         dataNascimento: {
@@ -77,11 +77,11 @@ export class ManterUsuario extends React.Component {
     });
 
     if(this.props.location.state.acao === 'cadastrar'){
-      this.state.person.tipo === 'a' ? 
+      this.state.person.tipo === 'A' ? 
       url = 'http://localhost:8080/servletweb?acao=CadastrarAluno' : 
       url = 'http://localhost:8080/servletweb?acao=CadastrarInstrutor'; 
     }else{
-      this.state.person.tipo === 'a' ? 
+      this.state.person.tipo === 'A' ? 
       url = 'http://localhost:8080/servletweb?acao=AlterarAluno' : 
       url = 'http://localhost:8080/servletweb?acao=AlterarInstrutor'; 
     }
@@ -108,14 +108,14 @@ export class ManterUsuario extends React.Component {
     if(this.state.checked === false){
       this.setState({
         checked: true,
-        ...this.state.person.tipo = 'i'
+        ...this.state.person.tipo = 'I'
       });
       console.log(this.state);
     }else{
       this.setState({
         checked: false,
         ...this.state.person.cref = null,
-        ...this.state.person.tipo = 'a'
+        ...this.state.person.tipo = 'A'
       });
       console.log(this.state);
     }
@@ -158,7 +158,7 @@ export class ManterUsuario extends React.Component {
             ] : null
           }
 
-          {this.state.person.tipo === 'i' ? [
+          {this.state.person.tipo === 'I' ? [
               <div>
                 <label htmlFor='cref'>Número CREF</label>
                 <InputText id='cref' value={this.state.person.cref} onChange={(e) => this.setState({...this.state.person.cref = e.target.value})}/>

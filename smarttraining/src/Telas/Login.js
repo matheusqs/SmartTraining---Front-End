@@ -1,7 +1,7 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
 import {Redirect} from 'react-router-dom';
-import {InputText} from 'primereact/inputtext';
+import {InputMask} from 'primereact/inputmask';
 import {Password} from 'primereact/password';
 import {Button} from 'primereact/button';
 import {Dialog} from 'primereact/dialog';
@@ -16,7 +16,6 @@ export class Login extends React.Component{
       cpf: null,
       senha: null,
       visible: false,
-      confSenha: null,
       person:{}
     });
   }
@@ -28,7 +27,6 @@ export class Login extends React.Component{
       return;
 
     let url = `http://localhost:8080/servletweb?acao=MostrarUsuario&codCpf=${this.state.cpf}`;
-    let senha;
 
     fetch(url, {
       headers: {
@@ -36,53 +34,41 @@ export class Login extends React.Component{
       }
     })
     .then(resposta => resposta.json())
-    .then(
-      (resultado) => {
-        this.setState({
-          ...this.state.person.cpf = resultado.cpf,
-          ...this.state.person.tipo = resultado.tipo,
-          confSenha: resultado.senha
-        })
+    .then(resultado => {
+      this.setState({...this.state.person = resultado});
+ 
+      if(!this.state.person){
+        return;
       }
-    );
 
-    if(this.state.senha !== this.state.confSenha){
-      this.setState({
-        visible: true,
-        senha: '',
-        ...this.state.person = null
-      });
-      return;
-    }else{
+      if(this.state.senha !== this.state.person.senha){
+        this.setState({senha: ''});
+        return;
+      }
+
       switch(this.state.person.tipo){
-        case 'a':
-          <Redirect
-            to={{
-              pathname:'/alunoindex',
-              state:{user: {cpf: this.state.person.cpf, tipo: this.state.person.tipo}}
-            }}
-          />
-          break;
-
-        case 'i':
-          <Redirect
-            to={{
-              pathname:'/instrutorindex',
-              state:{user: {cpf: this.state.person.cpf, tipo: this.state.person.tipo}}
-            }}
-          />
-          break;
+        case 'A':
+          this.props.history.push({
+            pathname: '/alunoIndex',
+            state: {user: {cpf: this.state.person.cpf, tipo: this.state.person.tipo}}
+          });
+        break;
+  
+        case 'I':
+          this.props.history.push({
+            pathname: '/instrutorIndex',
+            state: {user: {cpf: this.state.person.cpf, tipo: this.state.person.tipo}}
+          });
+        break;
         
-          case 'c':
-          <Redirect
-            to={{
-              pathname:'/coordenadorindex',
-              state:{user: {cpf: this.state.person.cpf, tipo: this.state.person.tipo}}
-            }}
-          />
-          break;
+        case 'C':
+          this.props.history.push({
+            pathname: '/coordenadorIndex',
+            state: {user: {cpf: this.state.person.cpf, tipo: this.state.person.tipo}}
+          });
+        break;
       }
-    }
+    });
   }
 
   render(){
@@ -96,7 +82,7 @@ export class Login extends React.Component{
           <div>
             <form onSubmit={this.logar}>
               <label htmlFor='cpf'>CPF</label>
-              <InputText keyfilter='pint' id='cpf' value={this.state.cpf} onChange={(e) => this.setState({cpf: e.target.value})}/>
+              <InputMask mask='99999999999' id='cpf' value={this.state.cpf} onChange={(e) => this.setState({cpf: e.target.value})}></InputMask>
               <br/>
               <label htmlFor='senha'>Senha</label>
               <Password id='senha' value={this.state.senha} onChange={(e) => this.setState({senha: e.target.value})} feedback={false}/>
@@ -104,7 +90,7 @@ export class Login extends React.Component{
               <Button label='Logar'/>
               <p>Ainda não possui uma conta?
                 <Link to={{
-                    pathname: '/manterusuario',
+                    pathname: '/manterUsuario',
                     state: {acao: 'cadastrar'}
                   }}
                 >

@@ -15,31 +15,43 @@ export class Header extends React.Component{
     let items;
 
     switch (this.props.tipo) {
-      case 'aluno':
+      case 'A':
         items = [
           {
             label: 'Perfil',
             icon: 'pi pi-fw pi-user',
             command: (e) =>{
-              window.location.pathname = '/perfil'
+              this.props.history.push({
+                pathname: '/perfil',
+                state: {user: this.props.user}
+              })
             }
           },
           {
             label: 'Fichas',
             command: (e) =>{
-              window.location.pathname = '/fichas'
+              this.props.history.push({
+                pathname: '/listarFichas',
+                state: {user: this.props.user}
+              })
             }
           },
           {
             label: 'Exercícios',
             command: (e) =>{
-              window.location.pathname = '/exercicios'
+              this.props.history.push({
+                pathname: '/listarExercicios',
+                state: {user: this.props.user}
+              })
             }
           },
           {
             label: 'Avaliações',
             command: (e) =>{
-              window.location.pathname = '/avaliacoes'
+              this.props.history.push({
+                pathname: '/listarAvaliacoes',
+                state: {user: this.props.user}
+              })
             }
           }
         ];
@@ -51,13 +63,16 @@ export class Header extends React.Component{
           </header>
         );
 
-      case 'instrutor':
+      case 'I':
         items = [
           {
             label: 'Perfil',
             icon: 'pi pi-fw pi-user',
             command: (e) =>{
-              window.location.pathname = '/perfil';
+              this.props.history.push({
+                pathname: '/perfil',
+                state: {user: this.props.user}
+              })
             }
           },
           {
@@ -66,7 +81,10 @@ export class Header extends React.Component{
               {
                 label: 'Listar',
                 command: (e) =>{
-                  window.location.pathname = '/exercicios'
+                  this.props.history.push({
+                    pathname: '/listarExercicios',
+                    state: {user: this.props.user}
+                  })
                 }
               },
               {
@@ -74,12 +92,36 @@ export class Header extends React.Component{
               },
               {
                 label: 'Inserir',
+                command: (e) => {
+                  this.props.history.push({
+                    pathname: '/manterExercicio',
+                    state: {
+                      user: this.props.user,
+                      acao: 'cadastrar'
+                    }
+                  })
+                }
               },
               {
-                label: 'Alterar'
+                label: 'Alterar',
+                command: (e) => {
+                  this.props.history.push({
+                    pathname: '/manterExercicio',
+                    state: {
+                      user: this.props.user,
+                      acao: 'alterar'
+                    }
+                  })
+                }
               },
               {
                 label: 'Remover',
+                command: (e) => {
+                  this.props.history.push({
+                    pathname: '/removerExercicios',
+                    state: {user: this.props.user}
+                  })
+                }
               }
             ]
           },
@@ -88,8 +130,11 @@ export class Header extends React.Component{
             items: [
               {
                 label: 'Listar',
-                command: (e) =>{
-                  window.location.pathname = '/alunos';
+                command: (e) => {
+                  this.props.history.push({
+                    pathname: '/listarAlunos',
+                    state: {user: this.props.user}
+                  })
                 }
               },
               {
@@ -97,8 +142,11 @@ export class Header extends React.Component{
                 items: [
                   {
                     label: 'Listar',
-                    command: (e) =>{
-                      window.location.pathname = '/avaliacoes';
+                    command: (e) => {
+                      this.props.history.push({
+                        pathname: '/listarAvaliacoes',
+                        state: {user: this.props.user}
+                      })
                     }
                   },
                   {
@@ -106,12 +154,36 @@ export class Header extends React.Component{
                   },
                   {
                     label: 'Inserir',
+                    command: (e) => {
+                      this.props.history.push({
+                        pathname: '/manterAvaliacao',
+                        state: {
+                          user: this.props.user,
+                          acao: 'cadastrar'
+                        },
+                      })
+                    }
                   },
                   {
                     label: 'Alterar',
+                    command: (e) => {
+                      this.props.history.push({
+                        pathname: '/manterAvaliacao',
+                        state: {
+                          user: this.props.user,
+                          acao: 'alterar'
+                        },
+                      })
+                    }
                   },
                   {
                     label: 'Remover',
+                    command: (e) => {
+                      this.props.history.push({
+                        pathname: '/removerAvaliacoes',
+                        state: {user: this.props.user},
+                      })
+                    }
                   }
                 ]
               },
@@ -120,21 +192,48 @@ export class Header extends React.Component{
                 items: [
                   {
                     label: 'Listar',
-                    command: (e) =>{
-                      window.location.pathname = '/fichas';
+                    command: (e) => {
+                      this.props.history.push({
+                        pathname: '/listarFichas',
+                        state: {user: this.props.user}
+                      })
                     }
                   },
                   {
                     separator: true
                   },
                   {
-                    label: 'Inserir'
+                    label: 'Inserir',
+                    command: (e) => {
+                      this.props.history.push({
+                        pathname: '/manterFicha',
+                        state: {
+                          user: this.props.user,
+                          acao: 'cadastrar'
+                        }
+                      })
+                    }
                   },
                   {
-                    label: 'Alterar'
+                    label: 'Alterar',
+                    command: (e) => {
+                      this.props.history.push({
+                        pathname: '/manterFicha',
+                        state: {
+                          user: this.props.user,
+                          acao: 'alterar'
+                        }
+                      })
+                    }
                   },
                   {
-                    label: 'Remover'
+                    label: 'Remover',
+                    command: (e) => {
+                      this.props.history.push({
+                        pathname: '/removerFichas',
+                        state: {user: this.props.user}
+                      })
+                    }
                   }
                 ]
               }
@@ -150,13 +249,16 @@ export class Header extends React.Component{
           </header>
         );
 
-      case 'coordenador':
+      case 'C':
         items = [
           {
             label: 'Perfil',
             icon: 'pi pi-fw pi-user',
             command: (e) =>{
-              window.location.pathname = '/perfil';
+              this.props.history.push({
+                pathname: '/perfil',
+                state: {user: this.props.user}
+              })
             }
           },
           {
@@ -164,8 +266,11 @@ export class Header extends React.Component{
             items: [
               {
                 label: 'Listar',
-                command: (e) =>{
-                  window.location.pathname = '/instrutores';
+                command: (e) => {
+                  this.props.history.push({
+                    pathname: '/listarInstrutores',
+                    state: {user: this.props.user}
+                  })
                 }
               },
               {
@@ -173,17 +278,25 @@ export class Header extends React.Component{
               },
               {
                 label: 'Remover',
+                command: (e) => {
+                  this.props.history.push({
+                    pathname: '/removerInstrutores',
+                    state: {user: this.props.user}
+                  })
+                }
               }
             ]
           },
           {
             label: 'Alunos',
-
-            item: [
+            items: [
               {
                 label: 'Listar',
-                command: (e) =>{
-                  window.location.pathname = '/alunos';
+                command: (e) => {
+                  this.props.history.push({
+                    pathname: '/listarAlunos',
+                    state: {user: this.props.user}
+                  })
                 }
               },
               {
@@ -191,6 +304,12 @@ export class Header extends React.Component{
               },
               {
                 label: 'Remover',
+                command: (e) => {
+                  this.props.history.push({
+                    pathname: '/removerAlunos',
+                    state: {user: this.props.user}
+                  })
+                }
               }
             ]
           },
@@ -199,8 +318,11 @@ export class Header extends React.Component{
             items: [
               {
                 label: 'Listar',
-                command: (e) =>{
-                  window.location.pathname = '/exercicios';
+                command: (e) => {
+                  this.props.history.push({
+                    pathname: '/listarExercicios',
+                    state: {user: this.props.user}
+                  })
                 }
               },
               {
@@ -208,12 +330,36 @@ export class Header extends React.Component{
               },
               {
                 label: 'Inserir',
+                command: (e) => {
+                  this.props.history.push({
+                    pathname: '/manterExercicio',
+                    state: {
+                      user: this.props.user,
+                      acao: 'cadastrar'
+                    }
+                  })
+                }
               },
               {
                 label: 'Alterar',
+                command: (e) => {
+                  this.props.history.push({
+                    pathname: '/manterExercicio',
+                    state: {
+                      user: this.props.user,
+                      acao: 'alterar'
+                    }
+                  })
+                }
               },
               {
                 label: 'Remover',
+                command: (e) => {
+                  this.props.history.push({
+                    pathname: '/removerExercicios',
+                    state: {user: this.props.user}
+                  })
+                }
               }
             ]
           }
