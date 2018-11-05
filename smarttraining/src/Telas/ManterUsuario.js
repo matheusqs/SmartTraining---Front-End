@@ -96,8 +96,7 @@ export class ManterUsuario extends React.Component {
       headers: {
         'Accept': 'application/json',
         'Content-type': 'application/json; charset=utf-8'
-      },
-      mode: 'no-cors'
+      }
     })
     .then(response => response.json())
     .catch(error => console.error('Error:', error));

@@ -1,8 +1,8 @@
 import React from 'react';
-import {Header} from '../Components/Header';
-import {Footer} from '../Components/Footer';
-import {BotaoVoltar} from '../Components/BotaoVoltar';
-import {Objetivos} from '../Components/Objetivos';
+import {Header} from '../../Components/Header';
+import {Footer} from '../../Components/Footer';
+import {BotaoVoltar} from '../../Components/BotaoVoltar';
+import {SelectTable} from '../../Components/SelectTable';
 import {InputText} from 'primereact/inputtext';
 import {Dropdown} from 'primereact/dropdown';
 import {Button} from 'primereact/button';
@@ -92,7 +92,7 @@ export class ManterAvaliacao extends React.Component{
   render(){
     return(
       <div>
-        <Header/>
+        <Header tipo={this.props.location.state.user.tipo} user={this.props.location.state.user}/>
         <div>
           {
             this.props.location.state.acao === 'cadastrar' ?
@@ -182,8 +182,8 @@ export class ManterAvaliacao extends React.Component{
               onChange={(e) => this.setState({...this.state.avaliacao.tamanhoPanturrilhaDireita = e.target.value})}/>
             <br/>
 
-            <Objetivos objetivos={this.state.objetivos} objetivosSelecionados={this.state.objetivosSelecionados} 
-              selectionHandler={this.selectionHandler}/>
+            <SelectTable opcoes={this.state.objetivos} selecionados={this.state.objetivosSelecionados} 
+              selectionHandler={this.selectionHandler} header='Objetivo'/>
 
 
             <Button label={this.props.location.state.acao === 'cadastrar' ? 'Cadastrar' : 'Alterar'}/>

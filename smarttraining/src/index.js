@@ -7,8 +7,10 @@ import {Login} from './Telas/Login';
 import {ManterUsuario} from './Telas/ManterUsuario';
 import {AlunoIndex} from './Telas/AlunoIndex';
 import {ListaExercicios} from './Telas/ListaExercicios';
-import {ManterAvaliacao} from './Telas/ManterAvaliacao';
-import {ListarAvaliacoes} from './Telas/ListarAvaliacoes';
+import {ManterAvaliacao} from './Telas/Avaliacao/ManterAvaliacao';
+import {ListarAvaliacoes} from './Telas/Avaliacao/ListarAvaliacoes';
+import {RemoverAvaliacao} from './Telas/Avaliacao/RemoverAvaliacao'
+import {VerAvaliacao} from './Telas/Avaliacao/VerAvaliacao';
 import registerServiceWorker from './registerServiceWorker';
 
 ReactDOM.render(
@@ -20,6 +22,8 @@ ReactDOM.render(
       <Route path='/listarExercicios' component={ListaExercicios}/>
       <Route path='/manterAvaliacao' component={ManterAvaliacao}/>
       <Route path='listarAvaliacoes' component={ListarAvaliacoes}/>
+      <Route path='removerAvaliacao' component={RemoverAvaliacao}/>
+      <Route path='verAvaliacao' component={VerAvaliacao}/>
     </Switch>
   </BrowserRouter>,
   document.querySelector('.root')
