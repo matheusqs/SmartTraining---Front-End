@@ -21,14 +21,14 @@ export class VerAvaliacao extends React.Component {
         .then(resposta => resposta.json())
         .then(resultado => {
             this.setState({avaliacao: resultado})
-        })
+        });
     }
 
     render(){
         let objetivos = this.state.avaliacao.listaObjetivos;
         objetivos = objetivos.map(objetivo => {
             <li>{objetivo.nome}</li>
-        })
+        });
 
         return(
             <div>
@@ -119,6 +119,6 @@ export class VerAvaliacao extends React.Component {
                     </div>
                 <Footer/>
             </div>
-        )
+        );
     }
 }

@@ -6,11 +6,13 @@ import {BotaoVoltar} from '../../Components/BotaoVoltar';
 import {InputText} from 'primereact/inputtext';
 import {InputTextarea} from 'primereact/inputtextarea';
 import {Button} from 'primereact/button';
+import {Dropdown} from 'primereact/dropdown';
 
 export class ManterExercicio extends React.Component {
     constructor(props){
         super(props);
 
+        this.changeHandler = this.changeHandler.bind(this);
         this.submitHandler = this.submitHandler.bind(this);
     }
 
@@ -43,14 +45,39 @@ export class ManterExercicio extends React.Component {
         })
         .then(resposta => resposta.json())
         .catch(error => console.error('Error:', error));
-
     }
+
+    changeHandler = (e) => {
+        this.setState({exercicio: e.data});
+
+        let url = `http://localhost:8080/servletweb?acao=MostrarExercicio&cod=${this.state.exercicio.cod}`;
+        fetch(url, {
+            headers: {
+                'Accept': 'application/json'
+            }
+        })
+        .then(resposta => resposta.json)
+        .then(resultado => {
+            this.setState({
+                ...this.state.exercicio.nome = resultado.nome,
+                ...this.state.exercicio.descricao = resultado.descricao,
+                ...this.state.exercicio.aparelhos = resultado.aparelhos
+            })
+        });
+    } 
 
     render(){
         return(
             <div>
                 <Header/>
                 <div>
+                    {
+                        this.props.location.state.acao === 'alterar' ?
+                        <Dropdown placeholder='Selecione um exercício' options={this.state.exercicios} value={this.state.exercicio}
+                            onChange={this.changeHandler} /> :
+                        null
+                    }
+
                     <form onSubmit={this.submitHandler}>
                         <label htmlFor='nome'>Nome</label>
                         <InputText id='nome' value={this.state.nome} onChange={(e) => this.setState({nome: e.target.value})} />

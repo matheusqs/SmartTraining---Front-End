@@ -58,7 +58,7 @@ export class ManterAvaliacao extends React.Component{
         'Accept': 'application/json'
       }
     })
-    .then(respota => respota.json())
+    .then(resposta => resposta.json())
     .then(resultado => this.setState({alunos: resultado}));
 
     if(this.props.location.state.acao !== 'alterar'){
@@ -80,6 +80,41 @@ export class ManterAvaliacao extends React.Component{
 
   submitHandler = (e) => {
     e.preventDefault();
+
+    let date = new Date();
+    let dia = date.getDate();
+    let mes = date.getMonth()+1;
+    let ano = date.getFullYear();
+    
+    dia < 10 ? dia = '0' + dia : null;
+    mes < 10 ? mes = '0' + mes : null;
+
+    this.setState({
+      ...this.state.avaliacao.day = dia,
+      ...this.state.avaliacao.month = mes,
+      ...this.state.avaliacao.year = ano
+    });
+
+    let data = Object.entries(this.state.avaliacao).map(state => {
+      return encodeURIComponent(state[0]) + '=' + encodeURIComponent(state[1])
+    });
+
+    let url = 'http://localhost:8080/servletweb?';
+    
+    if(this.props.location.state.acao === 'cadastrar'){
+      url += 'acao=CadastrarAvaliacao';
+    }else{
+      url += 'acao=AlterarAvaliacao';
+    }
+
+    fetch(url, {
+      method: 'POST',
+      body: data,
+      headers: {
+        'Accept': 'application/json'
+      }
+    })
+
   }
 
   selectionHandler = (e) => {
@@ -96,7 +131,7 @@ export class ManterAvaliacao extends React.Component{
         <div>
           {
             this.props.location.state.acao === 'cadastrar' ?
-            <Dropdown value={this.state.aluno} options={this.state.alunos} placeholder='Selecione um aluno' 
+            <Dropdown value={this.state.aluno.nome} options={this.state.alunos.nome} placeholder='Selecione um aluno' 
             onChange={(e) => this.setState({aluno: e.value})} /> :
             <p>Aluno: {this.state.aluno}</p>
           }

@@ -10,12 +10,14 @@ export class ListarAvaliacoes extends React.Component {
     constructor(props){
         super(props);
 
-        this.state({
+        this.state({ 
             aluno: {
                 nome: null,
                 cpf: null
             }
         });
+
+        this.changeHandler = this.changeHandler.bind(this);
     }
 
     componentDidMount(){
@@ -30,9 +32,7 @@ export class ListarAvaliacoes extends React.Component {
             }
         })
         .then(resposta => resposta.json())
-        .then(resultado => {
-            this.setState({avaliacoes: resultado})
-        })
+        .then(resultado => this.setState({avaliacoes: resultado}));
 
         if(this.props.location.state.user.tipo === 'I'){
             url = `http://localhost:8080/servletweb?acao=ListarAlunos`;
@@ -43,10 +43,21 @@ export class ListarAvaliacoes extends React.Component {
                 }
             })
             .then(resposta => resposta.json())
-            .then(resultado => {
-                this.setState({alunos: resultado})
-            })
+            .then(resultado => this.setState({alunos: resultado}));
         }
+    }
+
+    changeHandler = (e) => {
+        this.setState({aluno: e.value});
+
+        let url = `http://localhost:8080/servletweb?acao=ListarAvaliacoes&codCpf${this.state.aluno.cpf}`;
+        fetch(url, {
+            headers: {
+                'Accept': 'application/json'
+            }
+        })
+        .then(resposta => resposta.json())
+        .then(resultado => this.setState({avaliacoes: resultado}));
     }
 
     render(){
@@ -95,7 +106,7 @@ export class ListarAvaliacoes extends React.Component {
                     {
                         this.props.location.state.user.tipo === 'I' ?
                         <Dropdown placeholder='Selecione um aluno' value={this.state.aluno.nome} options={this.state.alunos}
-                            onChange={(e) => this.setState({...this.state.aluno.nome = e.value})}/> :
+                            onChange={this.changeHandler}/> :
                         null
                     }
 
