@@ -17,15 +17,17 @@ export class ManterExercicio extends React.Component {
     }
 
     componentDidMount(){
-        let url = 'http://localhost:8080/servletweb?acao=ListarAparelhos';
+        if(this.props.location.state.acao === 'alterar'){
+            let url = 'http://localhost:8080/servletweb?acao=ListarAparelhos';
 
-        fetch(url, {
-            headers: {
-                'Accept': 'application/json'
-            }
-        })
-        .then(resposta => resposta.json())
-        .then(resultado => this.setState({listaAparelhos: resultado}));
+            fetch(url, {
+                headers: {
+                    'Accept': 'application/json'
+                }
+            })
+            .then(resposta => resposta.json())
+            .then(resultado => this.setState({listaAparelhos: resultado}));
+        }        
     }
 
     submitHandler = (e) => {
@@ -69,7 +71,7 @@ export class ManterExercicio extends React.Component {
     render(){
         return(
             <div>
-                <Header/>
+                <Header tipo={this.props.location.state.user.tipo} user={this.props.location.state.user}/>
                 <div>
                     {
                         this.props.location.state.acao === 'alterar' ?

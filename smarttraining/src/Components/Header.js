@@ -129,25 +129,19 @@ export class Header extends React.Component{
             label: 'Alunos',
             items: [
               {
-                label: 'Listar',
-                command: (e) => {
-                  this.props.history.push({
-                    pathname: '/listarAlunos',
-                    state: {user: this.props.user}
-                  })
-                }
+                label: <Link to={{
+                  pathname: '/listarAlunos',
+                  state: {user: this.props.user}
+                }}>Listar</Link>
               },
               {
                 label: 'Avaliações',
                 items: [
                   {
-                    label: 'Listar',
-                    command: (e) => {
-                      this.props.history.push({
-                        pathname: '/listarAvaliacoes',
-                        state: {user: this.props.user}
-                      })
-                    }
+                    label: <Link to={{
+                      pathname: '/listarAvaliacoes',
+                      state: {user: this.props.user}
+                    }}>Listar</Link>
                   },
                   {
                     separator: true

@@ -41,8 +41,8 @@ export class RemoverAvaliacao extends React.Component{
                 headers: {
                     'Accept': 'application/json'
                 }
-            })
-        })
+            });
+        });
     }
 
     alunoChange = (e) => {
@@ -60,7 +60,7 @@ export class RemoverAvaliacao extends React.Component{
 
     selectionHandler = (e) => {
         this.setState({
-            avaliacoesSelecionadas: e.data,
+            selecionadas: e.data
         })
     }
 

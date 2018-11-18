@@ -10,7 +10,7 @@ export class ListarAvaliacoes extends React.Component {
     constructor(props){
         super(props);
 
-        this.state({ 
+        this.state = ({ 
             aluno: {
                 nome: null,
                 cpf: null
@@ -18,6 +18,7 @@ export class ListarAvaliacoes extends React.Component {
         });
 
         this.changeHandler = this.changeHandler.bind(this);
+        this.montaLista = this.montaLista.bind(this);
     }
 
     componentDidMount(){
@@ -43,7 +44,7 @@ export class ListarAvaliacoes extends React.Component {
                 }
             })
             .then(resposta => resposta.json())
-            .then(resultado => this.setState({alunos: resultado}));
+            .then(resultado => console.log(resultado));
         }
     }
 
@@ -60,9 +61,8 @@ export class ListarAvaliacoes extends React.Component {
         .then(resultado => this.setState({avaliacoes: resultado}));
     }
 
-    render(){
+    montaLista = () => {
         let lista = this.state.avaliacoes;
-        let usuario = this.props.location.state.user;
         if(this.props.location.state.user.tipo === 'A'){
             lista = lista.map(
                 avaliacao => {
@@ -79,6 +79,7 @@ export class ListarAvaliacoes extends React.Component {
                     </li>
                 }
             );
+            return lista;
         }else{
             lista = lista.map(
                 avaliacao => {
@@ -95,9 +96,12 @@ export class ListarAvaliacoes extends React.Component {
                         ><Button label='Ver avaliação'/></Link>
                     </li>
                 }
-            )
-        }        
+            );
+            return lista;
+        }
+    }
 
+    render(){     
         return(
             <div>
                 <Header tipo={this.props.location.state.user.tipo} user={this.props.location.state.user}/>
@@ -111,7 +115,7 @@ export class ListarAvaliacoes extends React.Component {
                     }
 
                     <ul>
-                        {lista}
+                        {this.montaLista}
                     </ul>
                     <BotaoVoltar/>
                 </div>

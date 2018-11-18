@@ -1,7 +1,6 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
-import {Redirect} from 'react-router-dom';
-import {InputMask} from 'primereact/inputmask';
+import {InputText} from 'primereact/inputtext';
 import {Password} from 'primereact/password';
 import {Button} from 'primereact/button';
 import {Dialog} from 'primereact/dialog';
@@ -18,6 +17,8 @@ export class Login extends React.Component{
       visible: false,
       person:{}
     });
+
+    this.logar = this.logar.bind(this);
   }
 
   logar = (e) => {
@@ -82,7 +83,7 @@ export class Login extends React.Component{
           <div>
             <form onSubmit={this.logar}>
               <label htmlFor='cpf'>CPF</label>
-              <InputMask mask='99999999999' id='cpf' value={this.state.cpf} onChange={(e) => this.setState({cpf: e.target.value})}></InputMask>
+              <InputText id='cpf' value={this.state.cpf} onChange={(e) => this.setState({cpf: e.target.value})}/>
               <br/>
               <label htmlFor='senha'>Senha</label>
               <Password id='senha' value={this.state.senha} onChange={(e) => this.setState({senha: e.target.value})} feedback={false}/>
