@@ -7,38 +7,92 @@
     <link rel="stylesheet" type="text/css" href="../css/body.css">
     <link rel="stylesheet" type="text/css" href="../css/footer.css">
     <link rel="stylesheet" type="text/css" href="../css/div.css">
+    <link rel="stylesheet" type="text/css" href="../css/form.css">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
     <title>Cadastro</title>
   </head>
   <body>
+    <article>
     <header>
+        <ul>
+          <li><a href="">Perfil</a></li>
+          <li><a href="">Fichas</a></li>
+          <li><a href="">Exercícios</a></li>
+          <li><a href="">Avaliações</a></li>
+          <li class="sair"><a href="">Sair</a></li>
+        </ul>
+      </header>
 
-    </header>
-
-    <div class="container">
+    <div class="form_div">    
       <form>
-        <label for="nome">Nome:</label>
-        <input type="text" name="nome" required><br>
-        <label for="cpf">CPF:</label>
-        <input type="number" name="cpf" required><br>
-        <label for="email">Email:</label>
-        <input type="text" name="email" required><br>
-        <label for="nasc">Data de nascimento:</label>
-        <input type="date" name="nasc" required><br>
-        <label for="senha">Senha:</label>
-        <input type="password" name="senha" required><br>
-        <label for="cnf">Confirme sua senha:</label>
-        <input type="password" name="cnf" required><br>
+      	<h2>Cadastro:</h2>
+        <label class="field a-field a-field_a1 page__field form_label">
+          <input type="text" name="nome" class="field__input" placeholder="Ex. João Silva" required>
+          <span class="field__label-wrap">
+            <span class="field__label">Nome</span>
+          </span>
+        </label>
+        
+
+        <label class="field a-field a-field_a1 page__field form_label">
+          <input type="text" name="cpf" class="field__input" placeholder="Ex. 111.111.111-11" required>
+          <span class="field__label-wrap">
+            <span class="field__label">CPF</span>
+          </span>
+        </label>
+        <br><br>
+
+
+        <label class="field a-field a-field_a1 page__field form_label">
+          <input type="text" name="email" class="field__input" placeholder="Ex. 111.111.111-11" required>
+          <span class="field__label-wrap">
+            <span class="field__label">Email</span>
+          </span>
+        </label>
+
+        <label class="field a-field a-field_a1 page__field form_label">
+          <input type="date" name="nasc" class="field__input" placeholder="Ex. 111.111.111-11" required>
+          <span class="field__label-wrap">
+            <span class="field__label">Data de nascimento</span>
+          </span>
+        </label>
+        <br><br>
+
+        <label class="field a-field a-field_a1 page__field form_label">
+          <input type="password" name="email" class="field__input" placeholder="Ex. 111.111.111-11" required>
+          <span class="field__label-wrap">
+            <span class="field__label">Senha</span>
+          </span>
+        </label>
+
+        <label class="field a-field a-field_a1 page__field form_label">
+          <input type="password" name="cnf" class="field__input" placeholder="Ex. 111.111.111-11" required>
+          <span class="field__label-wrap">
+            <span class="field__label">Confirmação</span>
+          </span>
+        </label>
+        <br><br>
+
+        
+
         <input type="checkbox" name="" required> Instrutor <br>
-        <label for="cref">Número CREF:</label>
-        <input type="number" name="cref" required><br>
+
+        <label class="field a-field a-field_a1 page__field form_label">
+          <input type="text" name="cref" class="field__input" placeholder="Ex. 111.111.111-11" required>
+          <span class="field__label-wrap">
+            <span class="field__label">CREF</span>
+          </span>
+        </label>
+        <br><br>
+
         <button type="button" class="btn btn-right">Voltar</button>
         <input type="button" class="btn btn-right" value="Confirmar">
       </form>
     </div>
 
-    <footer class="footer footer-p">
-      <p>SmartTraining &copy 2018</p>
-      <p>Desenvolvedores:</p>
-    </footer>
+    <footer class="footer">
+        <p class="footer-p">SmartTraining &copy 2018</p>
+      </footer>
+      </article>
   </body>
 </html>

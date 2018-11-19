@@ -3,9 +3,11 @@
 }
 
 .metade{
-	width: 50%;
-  padding-left: 1%;
-  padding-right: 1%;
+	justify-content: center;
+	left: 50%;
+	width: 25%;
+  	padding-left: 1%;
+  	padding-right: 1%;
 }
 
 .metade-direita{

@@ -3,7 +3,8 @@ ul {
     margin: 0;
     padding: 0;
     overflow: hidden;
-    background-color: black;
+    background-color: #181818;
+    font-family: 'Montserrat', sans-serif;
 }
 
 li {
@@ -11,7 +12,7 @@ li {
 }
 
 li a {
-    border: 2px solid black;
+    border: 2px #181818;
     display: block;
     color: white;
     text-align: center;

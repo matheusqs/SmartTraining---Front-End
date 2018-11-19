@@ -1,6 +1,6 @@
 .btn {
     background-color: black; /* Green */
-    border: 2px solid black;
+    border: 1px solid white;
     color: white;
     padding: 16px 32px;
     text-align: center;
@@ -12,6 +12,8 @@
     transition-duration: 0.4s;
     cursor: pointer;
 		border-radius: 8px;
+        font-family: 'Montserrat', sans-serif;
+
 }
 
 .btn:hover {
@@ -21,4 +23,9 @@
 
 .btn-right{
 	float: right;
+}
+
+.div_padding{
+    padding-top: 10px;
+    padding-bottom: 10px;
 }
