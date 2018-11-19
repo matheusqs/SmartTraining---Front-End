@@ -89,8 +89,8 @@ export class ManterExercicio extends React.Component {
                         <InputTextarea id='des' value={this.state.descricao} onChange={(e) => this.setState({descricao: e.target.value})} />
                         <br/>
 
-                        <h2>Aparelhos:</h2>
-                        <SelectTable opcoes={this.state.listaAparelhos} selecionados={this.state.aparelhos}
+                        <label htmlFor='apar'>Aparelhos</label>
+                        <SelectTable opcoes={this.state.listaAparelhos} selecionados={this.state.aparelhos} id='apar'
                             selectionHandler={(e) => this.setState({aparelhos: e.data})} header='Aparelho'/>
                         <br/>
 

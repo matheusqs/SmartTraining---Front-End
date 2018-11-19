@@ -2,27 +2,25 @@ import React from 'react';
 import { Header } from '../../Components/Header';
 import { Footer } from '../../Components/Footer';
 import { SelectTable } from '../../Components/SelectTable';
-import { Button } from 'primereact/button';
 import { BotaoVoltar } from '../../Components/BotaoVoltar';
+import { Button } from 'primereact/button';
 
-export class RemoverExercicio extends React.Component{
+export class RemoverAparelho extends React.Component{
     constructor(props){
         super(props);
 
         this.selectionHandler = this.selectionHandler.bind(this);
-        this.submitHandler = this.submitHandler.bind(this);
     }
 
-    componentDidMount(){
-        let url = 'http://localhost:8080/servletweb?acao=ListarExercicios';
-
-        fetch(url,{
+    componentDidMount = () => {
+        let url = 'http://localhost:8080/servletwev?acao=ListarAparelhos';
+        fetch(url, {
             headers: {
                 'Accept': 'application/json'
             }
         })
         .then(resposta => resposta.json())
-        .then(resultado => this.setState({exercicios: resultado}));
+        .then(resultado => this.setState({aparelhos: resultado}));
     }
 
     selectionHandler = (e) => {
@@ -33,13 +31,13 @@ export class RemoverExercicio extends React.Component{
 
     submitHandler = () => {
         let url;
-        this.state.selecionados.forEach(ex => {
-            url = `http://localhost:8080/servletwev?acao=RemoverExercicio&cod=${ex.cod}`;
+        this.state.selecionados.forEach(aparelho => {
+            url = `http://localhost:8080/servletweb?acao=RemoverAparelho&cod=${aparelho.cod}`;
             fetch(url, {
                 headers: {
                     'Accept': 'application/json'
                 }
-            });
+            })
         });
     }
 
@@ -48,15 +46,15 @@ export class RemoverExercicio extends React.Component{
             <div>
                 <Header tipo={this.props.location.state.user.tipo} user={this.props.location.state.user}/>
                 <div>
-                    <h2>Selecione os exercícios os quais deseja remover</h2>
-                    <SelectTable opcoes={this.state.exercicios} selecionados={this.state.selecionados}
-                        selectionHandler={this.selectionHandler} header='Exercício'/>
+                    <h2>Selecione os aparelhos os quais deseja remover:</h2>
+                    <SelectTable opcoes={this.state.aparelhos} selecionados={this.state.selecionados}
+                        selectionHandler={this.selectionHandler} header='Aparelho'/>
 
                     <Button label='Remover' onClick={this.submitHandler}/>
                     <BotaoVoltar/>
                 </div>
                 <Footer/>
             </div>
-        );
+        )
     }
 }

@@ -18,41 +18,29 @@ export class Header extends React.Component{
       case 'A':
         items = [
           {
-            label: 'Perfil',
+            label: <Link to={{
+              pathname: '/perfil',
+              state: {user: this.props.user}
+            }}>Perfil</Link>,
             icon: 'pi pi-fw pi-user',
-            command: (e) =>{
-              this.props.history.push({
-                pathname: '/perfil',
-                state: {user: this.props.user}
-              })
-            }
           },
           {
-            label: 'Fichas',
-            command: (e) =>{
-              this.props.history.push({
-                pathname: '/listarFichas',
-                state: {user: this.props.user}
-              })
-            }
+            label: <Link to={{
+              pathname: '/listarFichas',
+              state: {user: this.props.user}
+            }}>Fichas</Link>
           },
           {
-            label: 'Exercícios',
-            command: (e) =>{
-              this.props.history.push({
-                pathname: '/listarExercicios',
-                state: {user: this.props.user}
-              })
-            }
+            label: <Link to={{
+              pathname: '/listarExercicios',
+              state: {user: this.props.user}
+            }}>Exercícios</Link>
           },
           {
-            label: 'Avaliações',
-            command: (e) =>{
-              this.props.history.push({
-                pathname: '/listarAvaliacoes',
-                state: {user: this.props.user}
-              })
-            }
+            label: <Link to={{
+              pathname: '/listarAvaliacoes',
+              state: {user: this.props.user}
+            }}>Avaliações</Link>
           }
         ];
         return (
@@ -66,62 +54,41 @@ export class Header extends React.Component{
       case 'I':
         items = [
           {
-            label: 'Perfil',
-            icon: 'pi pi-fw pi-user',
-            command: (e) =>{
-              this.props.history.push({
-                pathname: '/perfil',
-                state: {user: this.props.user}
-              })
-            }
+            label: <Link to={{
+              pathname: '/perfil',
+              state: {user: this.props.user}
+            }}>Perfil</Link>,
+            icon: 'pi pi-fw pi-user'
           },
           {
             label: 'Exercícios',
             items: [
               {
-                label: 'Listar',
-                command: (e) =>{
-                  this.props.history.push({
-                    pathname: '/listarExercicios',
-                    state: {user: this.props.user}
-                  })
-                }
+                label: <Link to={{
+                  pathname: '/listarExercicios',
+                  state: {user: this.props.user}
+                }}>Listar</Link>
               },
               {
                 separator: true
               },
               {
-                label: 'Inserir',
-                command: (e) => {
-                  this.props.history.push({
-                    pathname: '/manterExercicio',
-                    state: {
-                      user: this.props.user,
-                      acao: 'cadastrar'
-                    }
-                  })
-                }
+                label: <Link to={{
+                  pathname: '/manterExercicio',
+                  state: {user: this.props.user, acao: 'cadastrar'}
+                }}>Inserir</Link>
               },
               {
-                label: 'Alterar',
-                command: (e) => {
-                  this.props.history.push({
-                    pathname: '/manterExercicio',
-                    state: {
-                      user: this.props.user,
-                      acao: 'alterar'
-                    }
-                  })
-                }
+                label: <Link to={{
+                  pathname: '/manterExercicio',
+                  state: {user: this.props.user, acao: 'alterar'}
+                }}>Alterar</Link>
               },
               {
-                label: 'Remover',
-                command: (e) => {
-                  this.props.history.push({
-                    pathname: '/removerExercicios',
-                    state: {user: this.props.user}
-                  })
-                }
+                label: <Link to={{
+                  pathname: '/removerExercicio',
+                  state: {user: this.props.user}
+                }}>Remover</Link>
               }
             ]
           },
@@ -147,37 +114,22 @@ export class Header extends React.Component{
                     separator: true
                   },
                   {
-                    label: 'Inserir',
-                    command: (e) => {
-                      this.props.history.push({
-                        pathname: '/manterAvaliacao',
-                        state: {
-                          user: this.props.user,
-                          acao: 'cadastrar'
-                        },
-                      })
-                    }
+                    label: <Link to={{
+                      pathname: '/manterAvaliacao',
+                      state: {user: this.props.user, acao: 'cadastrar'}
+                    }}>Inserir</Link>
                   },
                   {
-                    label: 'Alterar',
-                    command: (e) => {
-                      this.props.history.push({
-                        pathname: '/manterAvaliacao',
-                        state: {
-                          user: this.props.user,
-                          acao: 'alterar'
-                        },
-                      })
-                    }
+                    label: <Link to={{
+                      pathname: '/manterAvaliacao',
+                      state: {user: this.props.user, acao: 'alterar'}
+                    }}>Alterar</Link>
                   },
                   {
-                    label: 'Remover',
-                    command: (e) => {
-                      this.props.history.push({
-                        pathname: '/removerAvaliacoes',
-                        state: {user: this.props.user},
-                      })
-                    }
+                    label: <Link to={{
+                      pathname: '/removerAvaliacao',
+                      state: {user: this.props.user}
+                    }}>Remover</Link>
                   }
                 ]
               },
@@ -185,49 +137,31 @@ export class Header extends React.Component{
                 label: 'Fichas',
                 items: [
                   {
-                    label: 'Listar',
-                    command: (e) => {
-                      this.props.history.push({
-                        pathname: '/listarFichas',
-                        state: {user: this.props.user}
-                      })
-                    }
+                    label: <Link to={{
+                      pathname: '/listarFichas',
+                      state: {user: this.props.user}
+                    }}>Listar</Link>
                   },
                   {
                     separator: true
                   },
                   {
-                    label: 'Inserir',
-                    command: (e) => {
-                      this.props.history.push({
-                        pathname: '/manterFicha',
-                        state: {
-                          user: this.props.user,
-                          acao: 'cadastrar'
-                        }
-                      })
-                    }
+                    label: <Link to={{
+                      pathname: '/manterFicha',
+                      state: {user: this.props.user, acao: 'cadastrar'}
+                    }}>Inserir</Link>
                   },
                   {
-                    label: 'Alterar',
-                    command: (e) => {
-                      this.props.history.push({
-                        pathname: '/manterFicha',
-                        state: {
-                          user: this.props.user,
-                          acao: 'alterar'
-                        }
-                      })
-                    }
+                    label: <Link to={{
+                      pathname: '/manterFicha',
+                      state: {user: this.props.user, acao: 'alterar'}
+                    }}>Alterar</Link>
                   },
                   {
-                    label: 'Remover',
-                    command: (e) => {
-                      this.props.history.push({
-                        pathname: '/removerFichas',
-                        state: {user: this.props.user}
-                      })
-                    }
+                    label: <Link to={{
+                      pathname: '/removerFicha',
+                      state: {user: this.props.user}
+                    }}>Remover</Link>
                   }
                 ]
               }
@@ -246,38 +180,29 @@ export class Header extends React.Component{
       case 'C':
         items = [
           {
-            label: 'Perfil',
-            icon: 'pi pi-fw pi-user',
-            command: (e) =>{
-              this.props.history.push({
-                pathname: '/perfil',
-                state: {user: this.props.user}
-              })
-            }
+            label: <Link to={{
+              pathname: '/perfil',
+              state: {user: this.props.user}
+            }}>Perfil</Link>,
+            icon: 'pi pi-fw pi-user'
           },
           {
             label: 'Instrutores',
             items: [
               {
-                label: 'Listar',
-                command: (e) => {
-                  this.props.history.push({
-                    pathname: '/listarInstrutores',
-                    state: {user: this.props.user}
-                  })
-                }
+                label: <Link to={{
+                  pathname: '/listarInstrutores',
+                  state: {user: this.props.user}
+                }}>Listar</Link>
               },
               {
                 separator: true
               },
               {
-                label: 'Remover',
-                command: (e) => {
-                  this.props.history.push({
-                    pathname: '/removerInstrutores',
-                    state: {user: this.props.user}
-                  })
-                }
+                label: <Link to={{
+                  pathname: '/removerInstrutor',
+                  state: {user: this.props.user}
+                }}>Remover</Link>
               }
             ]
           },
@@ -285,25 +210,83 @@ export class Header extends React.Component{
             label: 'Alunos',
             items: [
               {
-                label: 'Listar',
-                command: (e) => {
-                  this.props.history.push({
-                    pathname: '/listarAlunos',
-                    state: {user: this.props.user}
-                  })
-                }
+                label: <Link to={{
+                  pathname: '/listarAlunos',
+                  state: {user: this.props.user}
+                }}>Listar</Link>
+              },
+              {
+                label: <Link to={{
+                  pathname: '/removerAluno',
+                  state: {user: this.props.user}
+                }}>Remover</Link>
               },
               {
                 separator: true
               },
               {
-                label: 'Remover',
-                command: (e) => {
-                  this.props.history.push({
-                    pathname: '/removerAlunos',
-                    state: {user: this.props.user}
-                  })
-                }
+                label: 'Avaliações',
+                items: [
+                  {
+                    label: <Link to={{
+                      pathname: '/listarAvaliacoes',
+                      state: {user: this.props.user}
+                    }}>Listar</Link>
+                  },
+                  {
+                    separator: true
+                  },
+                  {
+                    label: <Link to={{
+                      pathname: '/manterAvaliacao',
+                      state: {user: this.props.user, acao: 'cadastrar'}
+                    }}>Inserir</Link>
+                  },
+                  {
+                    label: <Link to={{
+                      pathname: '/manterAvaliacao',
+                      state: {user: this.props.user, acao: 'alterar'}
+                    }}>Alterar</Link>
+                  },
+                  {
+                    label: <Link to={{
+                      pathname: '/removerAvaliacao',
+                      state: {user: this.props.user}
+                    }}>Remover</Link>
+                  }
+                ]
+              },
+              {
+                label: 'Fichas',
+                items: [
+                  {
+                    label: <Link to={{
+                      pathname: '/listarFichas',
+                      state: {user: this.props.user}
+                    }}>Listar</Link>
+                  },
+                  {
+                    separator: true
+                  },
+                  {
+                    label: <Link to={{
+                      pathname: '/manterFicha',
+                      state: {user: this.props.user, acao: 'cadastrar'}
+                    }}>Inserir</Link>
+                  },
+                  {
+                    label: <Link to={{
+                      pathname: '/manterFicha',
+                      state: {user: this.props.user, acao: 'alterar'}
+                    }}>Alterar</Link>
+                  },
+                  {
+                    label: <Link to={{
+                      pathname: '/removerFicha',
+                      state: {user: this.props.user}
+                    }}>Remover</Link>
+                  }
+                ]
               }
             ]
           },
@@ -311,49 +294,63 @@ export class Header extends React.Component{
             label: 'Exercícios',
             items: [
               {
-                label: 'Listar',
-                command: (e) => {
-                  this.props.history.push({
-                    pathname: '/listarExercicios',
-                    state: {user: this.props.user}
-                  })
-                }
+                label: <Link to={{
+                  pathname: '/listarExercicios',
+                  state: {user: this.props.user}
+                }}>Listar</Link>
               },
               {
                 separator: true
               },
               {
-                label: 'Inserir',
-                command: (e) => {
-                  this.props.history.push({
-                    pathname: '/manterExercicio',
-                    state: {
-                      user: this.props.user,
-                      acao: 'cadastrar'
-                    }
-                  })
-                }
+                label: <Link to={{
+                  pathname: '/manterExercicio',
+                  state: {user: this.props.user, acao: 'cadastrar'}
+                }}>Inserir</Link>
               },
               {
-                label: 'Alterar',
-                command: (e) => {
-                  this.props.history.push({
-                    pathname: '/manterExercicio',
-                    state: {
-                      user: this.props.user,
-                      acao: 'alterar'
-                    }
-                  })
-                }
+                label: <Link to={{
+                  pathname: '/manterExercicio',
+                  state: {user: this.props.user, acao: 'alterar'}
+                }}>Alterar</Link>
               },
               {
-                label: 'Remover',
-                command: (e) => {
-                  this.props.history.push({
-                    pathname: '/removerExercicios',
-                    state: {user: this.props.user}
-                  })
-                }
+                label: <Link to={{
+                  pathname: '/removerExercicio',
+                  state: {user: this.props.user}
+                }}>Remover</Link>
+              }
+            ]
+          },
+          {
+            label: 'Aparelhos',
+            items: [
+              {
+                label: <Link to={{
+                  pathname: '/listarAparelhos',
+                  state: {user: this.props.user}
+                }}>Listar</Link>
+              },
+              {
+                separator: true
+              },
+              {
+                label: <Link to={{
+                  pathname: '/manterAparelho',
+                  state: {user: this.props.user, acao: 'cadastrar'}
+                }}>Inserir</Link>
+              }, 
+              {
+                label: <Link to={{
+                  pathname: '/manterAparelho',
+                  state: {user: this.props.user, acao: 'alterar'}
+                }}>Alterar</Link>
+              },
+              {
+                label: <Link to={{
+                  pathname: '/removerAparelho',
+                  state: {user: this.props.user}
+                }}>Remover</Link>
               }
             ]
           }

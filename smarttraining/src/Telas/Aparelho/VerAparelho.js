@@ -5,27 +5,24 @@ import { BotaoVoltar } from '../../Components/BotaoVoltar';
 import { Link } from 'react-router-dom';
 import { Button } from 'primereact/button';
 
-export class VerExercicio extends React.Component{
+export class VerAparelho extends React.Component{
     constructor(props){
         super(props);
-
-        this.montaLista = this.montaLista.bind(this);
     }
 
-    montaLista = () => {
-        let lista = this.props.location.state.exercicio.musculos.map(musculo => {
+    montarLista = () => {
+        let lista = this.props.location.state.aparelho.exercicios(exercicio => {
             <li>
-                {musculo.nome}
+                {exercicio.nome}
                 <Link to={{
-                    pathname: '/verMusculo',
+                    pathname: '/verExercicio',
                     state: {
                         user: this.props.location.state.user,
-                        musculo: musculo
+                        exercicio: exercicio
                     }                    
-                }}><Button label='Ver músculo'/></Link>
+                }}><Button label='Ver exercício'/></Link>
             </li>
-        })
-
+        });
         return lista;
     }
 
@@ -34,21 +31,16 @@ export class VerExercicio extends React.Component{
             <div>
                 <Header tipo={this.props.location.state.user.tipo} user={this.props.location.state.user}/>
                 <div>
-                    <h2>Nome:</h2>
-                    <p>{this.props.location.state.exercicio.nome}</p>
+                    <h2>Nome</h2>
+                    <p>{this.props.location.state.aparelho.nome}</p>
 
-                    <h2>Descrição</h2>
-                    <textarea disabled>
-                        {this.props.location.state.exercicio.descricao}
-                    </textarea>
-
-                    <h2>Músculos</h2>
-                    <ul>{this.montaLista}</ul>
+                    <h2>Exercícios</h2>
+                    <ul>{this.montarLista}</ul>
 
                     <BotaoVoltar/>
                 </div>
                 <Footer/>
             </div>
-        )
+        );
     }
 }

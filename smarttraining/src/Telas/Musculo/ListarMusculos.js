@@ -31,8 +31,10 @@ export class ListarMusculos extends React.Component{
                 {musculo.nome}
                 <Link to={{
                     pathname: '/verMusculo',
-                    user: this.props.location.state.user,
-                    musculo: musculo
+                    state: {
+                        user: this.props.location.state.user,
+                        musculo: musculo
+                    }                    
                 }}><Button label='Ver músculo'/></Link>
             </li>
         });
