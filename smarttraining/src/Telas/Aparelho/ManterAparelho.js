@@ -12,7 +12,7 @@ export class ManterAparelho extends React.Component{
         super(props);
 
         this.changeHandler = this.changeHandler.bind(this);
-        this.submitHandler = this.submitHandler.bind(this);d
+        this.submitHandler = this.submitHandler.bind(this);
     }
 
     componentDidMount = () => {

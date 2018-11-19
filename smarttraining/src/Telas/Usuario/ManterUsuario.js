@@ -6,9 +6,9 @@ import {Password} from 'primereact/password';
 import {Calendar} from 'primereact/calendar';
 import {Checkbox} from 'primereact/checkbox';
 import {Button} from 'primereact/button';
-import {Header} from '../Components/Header';
-import {Footer} from '../Components/Footer';
-import {BotaoVoltar} from '../Components/BotaoVoltar';
+import {Header} from '../../Components/Header';
+import {Footer} from '../../Components/Footer';
+import {BotaoVoltar} from '../../Components/BotaoVoltar';
 
 export class ManterUsuario extends React.Component {
   constructor(props) {

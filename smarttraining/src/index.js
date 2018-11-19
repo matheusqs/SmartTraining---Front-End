@@ -4,30 +4,63 @@ import {BrowserRouter} from 'react-router-dom';
 import {Switch} from 'react-router-dom';
 import {Route} from 'react-router-dom';
 import {Login} from './Telas/Login';
-import {ManterUsuario} from './Telas/ManterUsuario';
-import {AlunoIndex} from './Telas/AlunoIndex';
+
+import {ManterUsuario} from './Telas/Usuario/ManterUsuario';
+import {AlunoIndex} from './Telas/Usuario/AlunoIndex';
+import {InstrutorIndex} from './Telas/Usuario/InstrutorIndex';
+import {CoordenadorIndex} from './Telas/Usuario/CoordenadorIndex';
+import {ListarAlunos} from './Telas/Usuario/ListarAlunos';
+import {ListarInstrutores} from './Telas/Usuario/ListarInstrutores';
+
 import {ListarExercicios} from './Telas/Exercicio/ListarExercicios';
-import {ManterAvaliacao} from './Telas/Avaliacao/ManterAvaliacao';
+import {ManterExercicio} from './Telas/Exercicio/ManterExercicio';
+import {RemoverExercicio} from './Telas/Exercicio/RemoverExercicio';
+import {VerExercicio} from './Telas/Exercicio/VerExercicio';
+
 import {ListarAvaliacoes} from './Telas/Avaliacao/ListarAvaliacoes';
-import {RemoverAvaliacao} from './Telas/Avaliacao/RemoverAvaliacao'
+import {ManterAvaliacao} from './Telas/Avaliacao/ManterAvaliacao';
+import {RemoverAvaliacao} from './Telas/Avaliacao/RemoverAvaliacao';
 import {VerAvaliacao} from './Telas/Avaliacao/VerAvaliacao';
+
+import {ListarAparelhos} from './Telas/Aparelho/ListarAparelhos';
+import {ManterAparelho} from './Telas/Aparelho/ManterAparelho';
+import {RemoverAparelho} from './Telas/Aparelho/RemoverAparelho';
+import {VerAparelho} from './Telas/Aparelho/VerAparelho';
+
+import {ListarMusculos} from './Telas/Musculo/ListarMusculos';
+import {VerMusculo} from './Telas/Musculo/VerMusculo';
+
 import registerServiceWorker from './registerServiceWorker';
-import { InstrutorIndex } from './Telas/InstrutorIndex';
-import { ListarAlunos } from './Telas/ListarAlunos';
 
 ReactDOM.render(
   <BrowserRouter>
     <Switch>
       <Route path='/' exact={true} component={Login}/>
+
       <Route path='/manterUsuario' component={ManterUsuario}/>
       <Route path='/alunoIndex' component={AlunoIndex}/>
-      <Route path='/listarExercicios' component={ListarExercicios}/>
-      <Route path='/manterAvaliacao' component={ManterAvaliacao}/>
+      <Route path='/instrutorIndex' component={InstrutorIndex}/>
+      <Route path='/coordenadorIndex' component={CoordenadorIndex}/>
+      <Route path='/listarAlunos' component={ListarAlunos}/>
+      <Route path='/listarInstrutores' component={ListarInstrutores}/>
+
+      <Route path='/listarAparelhos' component={ListarAparelhos}/>
+      <Route path='/manterAparelho' component={ManterAparelho}/>
+      <Route path='/removerAparelho' component={RemoverAparelho}/>
+      <Route path='/verAparelho' component={VerAparelho}/>
+      
       <Route path='/listarAvaliacoes' component={ListarAvaliacoes}/>
+      <Route path='/manterAvaliacao' component={ManterAvaliacao}/>
       <Route path='/removerAvaliacao' component={RemoverAvaliacao}/>
       <Route path='/verAvaliacao' component={VerAvaliacao}/>
-      <Route path='/instrutorIndex' component={InstrutorIndex}/>
-      <Route path='/listarAlunos' component={ListarAlunos} />
+
+      <Route path='/listarExercicios' component={ListarExercicios}/>
+      <Route path='/manterExercicio' component={ManterExercicio}/>
+      <Route path='/removerExercicio' component={RemoverExercicio}/>
+      <Route path='/verExercicio' component={VerExercicio}/>
+
+      <Route path='/listarMusculos' component={ListarMusculos}/>
+      <Route path='verMusculo' component={VerMusculo}/>
     </Switch>
   </BrowserRouter>,
   document.querySelector('.root')

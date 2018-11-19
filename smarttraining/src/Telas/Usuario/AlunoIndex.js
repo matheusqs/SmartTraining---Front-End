@@ -2,8 +2,8 @@ import React from 'react';
 import {Button} from 'primereact/button';
 import {DataTable} from 'primereact/datatable';
 import {Column} from 'primereact/column';
-import {Header} from '../Components/Header';
-import {Footer} from '../Components/Footer';
+import {Header} from '../../Components/Header';
+import {Footer} from '../../Components/Footer';
 
 export class AlunoIndex extends React.Component {
   constructor(props) {
