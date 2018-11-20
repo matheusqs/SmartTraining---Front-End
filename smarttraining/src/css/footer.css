@@ -1,0 +1,14 @@
+.footer {
+ width: 100%;
+ background: black;
+ color: white;
+ height: 40px;
+ display: flex;
+
+}
+
+.footer-p{
+	margin-left:auto;
+  	margin-right:auto; 
+  	float: center;
+}

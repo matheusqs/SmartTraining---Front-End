@@ -3,7 +3,9 @@ import 'primereact/resources/primereact.min.css';
 import 'primeicons/primeicons.css';
 import {Link} from 'react-router-dom';
 import {Menubar} from 'primereact/menubar';
-import {Button} from 'primereact/button'
+import {Button} from 'primereact/button';
+import './../css/header.css';
+
 
 export class Header extends React.Component{
   constructor(props) {
@@ -365,7 +367,9 @@ export class Header extends React.Component{
 
       default:
         return (
+        
           <header>
+
             <p>SmartTraining</p>
           </header>
       );

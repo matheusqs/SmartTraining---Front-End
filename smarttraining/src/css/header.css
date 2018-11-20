@@ -1,0 +1,34 @@
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #181818;
+    font-family: 'Montserrat', sans-serif;
+}
+
+li {
+    float: left;
+}
+
+li a {
+    border: 2px #181818;
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    -webkit-transition-duration: 0.4s; /* Safari */
+    transition-duration: 0.4s;
+    cursor: pointer;
+    border-radius: 8px;
+}
+
+li a:hover {
+    background-color: white;
+    color: black;
+}
+
+.sair{
+  float: right;
+}
