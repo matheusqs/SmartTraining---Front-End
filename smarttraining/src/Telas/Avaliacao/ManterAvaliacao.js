@@ -3,9 +3,7 @@ import {Header} from '../../Components/Header';
 import {Footer} from '../../Components/Footer';
 import {BotaoVoltar} from '../../Components/BotaoVoltar';
 import {SelectTable} from '../../Components/SelectTable';
-import {InputText} from 'primereact/inputtext';
 import {Dropdown} from 'primereact/dropdown';
-import {Button} from 'primereact/button';
 
 export class ManterAvaliacao extends React.Component{
   constructor(props) {
@@ -138,82 +136,82 @@ export class ManterAvaliacao extends React.Component{
 
           <form onSubmit={this.submitHandler}>
             <label htmlFor='peso'>Peso</label>
-            <InputText id='peso' value={this.state.avaliacao.peso}
+            <input type='number' id='peso' value={this.state.avaliacao.peso}
               onChange={(e) => this.setState({...this.state.avaliacao.peso = e.target.value})}/>
             <br/>
 
             <label htmlFor='pgord'>Percentual de Gordura</label>
-            <InputText id='pgord' value={this.state.avaliacao.percentualGordura}
+            <input type='number' id='pgord' value={this.state.avaliacao.percentualGordura}
               onChange={(e) => this.setState({...this.state.avaliacao.percentualGordura = e.target.value})}/>
             <br/>
 
             <label htmlFor='pesc'>Tamanho do Pescoço</label>
-            <InputText id='pesc' value={this.state.avaliacao.tamanhoPescoco}
+            <input type='number' id='pesc' value={this.state.avaliacao.tamanhoPescoco}
               onChange={(e) => this.setState({...this.state.avaliacao.tamanhoPescoco = e.target.value})}/>
             <br/>
 
             <label htmlFor='omb'>Tamanho do Ombro</label>
-            <InputText id='omb' value={this.state.avaliacao.tamanhoOmbro}
+            <input type='number' id='omb' value={this.state.avaliacao.tamanhoOmbro}
               onChange={(e) => this.setState({...this.state.avaliacao.tamanhoOmbro = e.target.value})}/>
             <br/>
 
             <label htmlFor='tor'>Tamanho do Tórax</label>
-            <InputText id='tor' value={this.state.avaliacao.tamanhoTorax}
+            <input type='number' id='tor' value={this.state.avaliacao.tamanhoTorax}
               onChange={(e) => this.setState({...this.state.avaliacao.tamanhoTorax = e.target.value})}/>
             <br/>
 
             <label htmlFor='abd'>Tamanho do Abdômen</label>
-            <InputText id='abd' value={this.state.avaliacao.tamanhoAbdomen}
+            <input type='number' id='abd' value={this.state.avaliacao.tamanhoAbdomen}
               onChange={(e) => this.setState({...this.state.avaliacao.tamanhoAbdomen = e.target.value})}/>
             <br/>
 
             <label htmlFor='cint'>Tamanho da Cintura</label>
-            <InputText id='cint' value={this.state.avaliacao.tamanhoCintura}
+            <input type='number' id='cint' value={this.state.avaliacao.tamanhoCintura}
               onChange={(e) => this.setState({...this.state.avaliacao.tamanhoCintura = e.target.value})}/>
             <br/>
 
             <label htmlFor='quad'>Tamanho do Quadril</label>
-            <InputText id='quad' value={this.state.avaliacao.tamanhoQuadril}
+            <input type='number' id='quad' value={this.state.avaliacao.tamanhoQuadril}
               onChange={(e) => this.setState({...this.state.avaliacao.tamanhoQuadril = e.target.value})}/>
             <br/>
 
             <label htmlFor='besq'>Tamanho do Braço Esquerdo</label>
-            <InputText id='besq' value={this.state.avaliacao.tamanhoBracoEsquerdo}
+            <input type='number' id='besq' value={this.state.avaliacao.tamanhoBracoEsquerdo}
               onChange={(e) => this.setState({...this.state.avaliacao.tamanhoBracoEsquerdo = e.target.value})}/>
             <br/>
 
             <label htmlFor='bdir'>Tamanho do Braço Direito</label>
-            <InputText id='bdir' value={this.state.avaliacao.tamanhoBracoDireito}
+            <input type='number' id='bdir' value={this.state.avaliacao.tamanhoBracoDireito}
               onChange={(e) => this.setState({...this.state.avaliacao.tamanhoBracoDireito = e.target.value})}/>
             <br/>
 
             <label htmlFor='antbesq'>Tamanho do Antebraço Esquerdo</label>
-            <InputText id='antbesq' value={this.state.avaliacao.tamanhoAntebracoEsquerdo}
+            <input type='number' id='antbesq' value={this.state.avaliacao.tamanhoAntebracoEsquerdo}
               onChange={(e) => this.setState({...this.state.avaliacao.tamanhoAntebracoEsquerdo = e.target.value})}/>
             <br/>
 
             <label htmlFor='antbdir'>Tamanho do Antebraço Direito</label>
-            <InputText id='antbdir' value={this.state.avaliacao.tamanhoAntebracoDireito}
+            <input type='number' id='antbdir' value={this.state.avaliacao.tamanhoAntebracoDireito}
               onChange={(e) => this.setState({...this.state.avaliacao.tamanhoAntebracoDireito = e.target.value})}/>
             <br/>
 
             <label htmlFor='cesq'>Tamanho da Coxa Esquerda</label>
-            <InputText id='cesq' value={this.state.avaliacao.tamanhoCoxaEsquerda}
+            <input type='number' id='cesq' value={this.state.avaliacao.tamanhoCoxaEsquerda}
               onChange={(e) => this.setState({...this.state.avaliacao.tamanhoCoxaEsquerda = e.target.value})}/>
             <br/>
 
             <label htmlFor='cdir'>Tamanho da Coxa Direita</label>
-            <InputText id='cdir' value={this.state.avaliacao.tamanhoCoxaDireita}
+            <input type='number' id='cdir' value={this.state.avaliacao.tamanhoCoxaDireita}
               onChange={(e) => this.setState({...this.state.avaliacao.tamanhoCoxaDireita = e.target.value})}/>
             <br/>
 
             <label htmlFor='pesq'>Tamanho da Panturrilha Esquerda</label>
-            <InputText id='pesq' value={this.state.avaliacao.tamanhoPanturrilhaEsquerda}
+            <input type='number' id='pesq' value={this.state.avaliacao.tamanhoPanturrilhaEsquerda}
               onChange={(e) => this.setState({...this.state.avaliacao.tamanhoPanturrilhaEsquerda = e.target.value})}/>
             <br/>
 
             <label htmlFor='pdir'>Tamanho da Panturrilha Direita</label>
-            <InputText id='pdir' value={this.state.avaliacao.tamanhoPanturrilhaDireita}
+            <input type='number' id='pdir' value={this.state.avaliacao.tamanhoPanturrilhaDireita}
               onChange={(e) => this.setState({...this.state.avaliacao.tamanhoPanturrilhaDireita = e.target.value})}/>
             <br/>
 
@@ -221,7 +219,7 @@ export class ManterAvaliacao extends React.Component{
               selectionHandler={this.selectionHandler} header='Objetivo'/>
 
 
-            <Button label={this.props.location.state.acao === 'cadastrar' ? 'Cadastrar' : 'Alterar'}/>
+            <input type='submit' value={this.props.location.state.acao === 'cadastrar' ? 'Cadastrar' : 'Alterar'}/>
           </form>
           <BotaoVoltar/>
         </div>

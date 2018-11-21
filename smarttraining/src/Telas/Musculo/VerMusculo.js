@@ -2,7 +2,6 @@ import React from 'react';
 import { Header } from '../../Components/Header';
 import { Footer } from '../../Components/Footer';
 import { Link } from 'react-router-dom';
-import { Button } from 'primereact/button';
 import { BotaoVoltar } from '../../Components/BotaoVoltar';
 
 export class VerMusculo extends React.Component{
@@ -22,7 +21,7 @@ export class VerMusculo extends React.Component{
                         user: this.props.location.state.user,
                         exercicio: exercicio
                     }                    
-                }}><Button label='Ver exercício'/></Link>
+                }}><input type='button' value='Ver exercício'/></Link>
             </li>
         });
         return lista;

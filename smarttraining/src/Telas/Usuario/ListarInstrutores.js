@@ -2,7 +2,6 @@ import React from 'react';
 import { Header } from '../../Components/Header';
 import { Footer } from '../../Components/Footer';
 import { BotaoVoltar } from '../../Components/BotaoVoltar';
-import { Button } from 'primereact/button';
 import { Link } from 'react-router-dom';
 
 export class ListarInstrutores extends React.Component{
@@ -37,7 +36,7 @@ export class ListarInstrutores extends React.Component{
                         user: this.props.location.state.user,
                         instrutor: instrutor
                     }
-                }}><Button label='Ver perfil'/></Link>
+                }}><input type='button' value='Ver perfil'/></Link>
             </li>
         });
 

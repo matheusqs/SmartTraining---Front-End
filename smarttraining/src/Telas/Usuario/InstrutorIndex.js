@@ -2,7 +2,6 @@ import React from 'react';
 import {Header} from '../../Components/Header';
 import {Footer} from '../../Components/Footer';
 import {Link} from 'react-router-dom';
-import { Button } from 'primereact/button';
 
 export class InstrutorIndex extends React.Component {
     constructor(props){
@@ -30,7 +29,7 @@ export class InstrutorIndex extends React.Component {
                     pathname: '/verAluno',
                     user: this.props.location.state.user,
                     aluno: aluno
-                }}><Button label='Ver aluno'/></Link>
+                }}><input type='button' value='Ver aluno'/></Link>
             </li>
         });
 
@@ -42,7 +41,7 @@ export class InstrutorIndex extends React.Component {
             <div>
                 <Header tipo={this.props.location.state.user.tipo} user={this.props.location.state.user} />
                 <div>
-                    <h2>Lista de alunos</h2>
+                    <h2>Alunos:</h2>
                     <ul>{this.montarLista}</ul>
                 </div>
                 <Footer/>

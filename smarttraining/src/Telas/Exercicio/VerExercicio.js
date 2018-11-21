@@ -3,7 +3,6 @@ import { Header } from '../../Components/Header';
 import { Footer } from '../../Components/Footer';
 import { BotaoVoltar } from '../../Components/BotaoVoltar';
 import { Link } from 'react-router-dom';
-import { Button } from 'primereact/button';
 
 export class VerExercicio extends React.Component{
     constructor(props){
@@ -22,7 +21,7 @@ export class VerExercicio extends React.Component{
                         user: this.props.location.state.user,
                         musculo: musculo
                     }                    
-                }}><Button label='Ver músculo'/></Link>
+                }}><input type='button' value='Ver músculo'/></Link>
             </li>
         })
 

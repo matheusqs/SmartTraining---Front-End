@@ -1,5 +1,4 @@
 import React from 'react';
-import {Button} from 'primereact/button';
 
 export class BotaoVoltar extends React.Component {
   static contextTypes = {
@@ -7,6 +6,6 @@ export class BotaoVoltar extends React.Component {
   }
 
   render(){
-    return <Button onClick={this.context.router.history.goBack} label='Voltar'/>
+    return <input type='button' onClick={this.context.router.history.goBack} value='Voltar'/>
   }
 }

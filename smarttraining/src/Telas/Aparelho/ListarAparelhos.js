@@ -3,7 +3,6 @@ import { Header } from '../../Components/Header';
 import { Footer } from '../../Components/Footer';
 import { BotaoVoltar } from '../../Components/BotaoVoltar';
 import { Link } from 'react-router-dom';
-import { Button } from 'primereact/button';
 
 export class ListarAparelhos extends React.Component{
     constructor(props){
@@ -37,7 +36,7 @@ export class ListarAparelhos extends React.Component{
                         user: this.props.location.state.user,
                         aparelho: aparelho
                     }
-                }}><Button label='Ver aparelho'/></Link>
+                }}><input type='button' value='Ver aparelho'/></Link>
             </li>
         });
         return lista;

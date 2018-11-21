@@ -2,9 +2,7 @@ import React from 'react';
 import { Header } from '../../Components/Header';
 import { Footer } from '../../Components/Footer';
 import { Dropdown } from 'primereact/dropdown';
-import { InputText } from 'primereact/inputtext';
 import { SelectTable } from '../../Components/SelectTable';
-import { Button } from 'primereact/button';
 import { BotaoVoltar } from '../../Components/BotaoVoltar';
 
 export class ManterAparelho extends React.Component{
@@ -74,18 +72,18 @@ export class ManterAparelho extends React.Component{
 
                     <form onSubmit={this.submitHandler}>
                         <label htmlFor='nome'>Nome</label>
-                        <InputText id='nome' value={this.state.nome} onChange={(e) => this.setState({nome: e.target.value})}/>
+                        <input type='text' id='nome' value={this.state.nome} onChange={(e) => this.setState({nome: e.target.value})}/>
                         <br/>
 
                         <label htmlFor='des'>Descrição</label>
-                        <InputText id='des' value={this.state.descricao} onChange={(e) => this.setState({descricao: e.target.value})}/>
+                        <input type='text' id='des' value={this.state.descricao} onChange={(e) => this.setState({descricao: e.target.value})}/>
                         <br/>
 
                         <label htmlFor='ex'>Exercícios</label>
                         <SelectTable opcoes={this.state.listaExercicios} selecionados={this.state.exercicios} id='ex'
                             selectionHandler={(e) => this.setState({exercicios: e.data})} header='Exercício' />
 
-                        <Button label='Cadastrar'/>
+                        <input type='submit' value='Cadastrar'/>
                     </form>
                     <BotaoVoltar/>
                 </div>

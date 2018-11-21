@@ -1,8 +1,6 @@
 import React from 'react';
 import 'primereact/resources/primereact.min.css';
 import 'primeicons/primeicons.css';
-import {InputText} from 'primereact/inputtext';
-import {Password} from 'primereact/password';
 import {Calendar} from 'primereact/calendar';
 import {Checkbox} from 'primereact/checkbox';
 import {Button} from 'primereact/button';
@@ -126,23 +124,23 @@ export class ManterUsuario extends React.Component {
         <Header/>
         <form onSubmit={this.submitHandler} formAction='POST' >
           <label htmlFor='user'>Nome</label>
-          <InputText id='user' value={this.state.person.nome} onChange={(e) => this.setState({...this.state.person.nome = e.target.value})}/>
+          <input type='text' id='user' value={this.state.person.nome} onChange={(e) => this.setState({...this.state.person.nome = e.target.value})}/>
           <br/>
 
           <label htmlFor='pass'>Senha</label>
-          <Password id='pass' value={this.state.person.senha} onChange={(e) => this.setState({...this.state.person.senha = e.target.value})} feedback={false}/>
+          <input type='password' id='pass' value={this.state.person.senha} onChange={(e) => this.setState({...this.state.person.senha = e.target.value})} feedback={false}/>
           <br/>
 
           <label htmlFor='confPass'>Confirme sua senha</label>
-          <Password id='confPass' value={this.state.confSenha} onChange={(e) => this.setState({confSenha: e.target.value})} feedback={false}/>
+          <input type='password' id='confPass' value={this.state.confSenha} onChange={(e) => this.setState({confSenha: e.target.value})} feedback={false}/>
           <br/>
 
           <label htmlFor='cpf'>CPF</label>
-          <InputText id='cpf' value={this.state.person.cpf} onChange={(e) => this.setState({...this.state.person.cpf = e.target.value})} keyfilter='pint'/>
+          <input type='number' id='cpf' value={this.state.person.cpf} onChange={(e) => this.setState({...this.state.person.cpf = e.target.value})} keyfilter='pint'/>
           <br/>
 
           <label htmlFor='email'>E-mail</label>
-          <InputText id='email' value={this.state.person.email} onChange={(e) => this.setState({...this.state.person.email = e.target.value})}/>
+          <input type='text' id='email' value={this.state.person.email} onChange={(e) => this.setState({...this.state.person.email = e.target.value})}/>
           <br/>
 
           <label htmlFor='birthDate'>Data de nascimento</label>
@@ -160,12 +158,12 @@ export class ManterUsuario extends React.Component {
           {this.state.person.tipo === 'I' ? [
               <div>
                 <label htmlFor='cref'>Número CREF</label>
-                <InputText id='cref' value={this.state.person.cref} onChange={(e) => this.setState({...this.state.person.cref = e.target.value})}/>
+                <input type='number' id='cref' value={this.state.person.cref} onChange={(e) => this.setState({...this.state.person.cref = e.target.value})}/>
               </div>
             ] : null
           }
 
-          <Button label='Cadastrar'/>
+          <input type='submit' value='Cadastrar'/>
         </form>
         <BotaoVoltar/>
         <Footer/>

@@ -2,7 +2,6 @@ import React from 'react';
 import { Header } from '../../Components/Header';
 import { Footer } from '../../Components/Footer';
 import { SelectTable } from '../../Components/SelectTable';
-import { Button } from 'primereact/button';
 import { BotaoVoltar } from '../../Components/BotaoVoltar';
 
 export class RemoverExercicio extends React.Component{
@@ -52,7 +51,7 @@ export class RemoverExercicio extends React.Component{
                     <SelectTable opcoes={this.state.exercicios} selecionados={this.state.selecionados}
                         selectionHandler={this.selectionHandler} header='Exercício'/>
 
-                    <Button label='Remover' onClick={this.submitHandler}/>
+                    <input type='button' value='Remover' onClick={this.submitHandler}/>
                     <BotaoVoltar/>
                 </div>
                 <Footer/>

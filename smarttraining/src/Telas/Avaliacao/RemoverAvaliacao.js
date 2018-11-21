@@ -2,7 +2,6 @@ import React from 'react';
 import { Header } from '../../Components/Header';
 import { Footer } from '../../Components/Footer';
 import { Dropdown } from 'primereact/dropdown';
-import { Button } from 'primereact/button';
 import { SelectTable } from '../../Components/SelectTable';
 import { BotaoVoltar } from '../../Components/BotaoVoltar';
 
@@ -77,7 +76,7 @@ export class RemoverAvaliacao extends React.Component{
                     <SelectTable opcoes={this.state.avaliacoes} selecionados={this.state.selecionadas}
                         selectionHandler={this.selectionHandler} header='Avaliação'/>
 
-                    <Button label='Remover' onClick={this.submitHandler}/>
+                    <input type='button' value='Remover' onClick={this.submitHandler}/>
                     <BotaoVoltar/>
                 </div>
                 <Footer/>

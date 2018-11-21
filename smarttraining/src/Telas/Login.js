@@ -1,12 +1,11 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
-import {InputText} from 'primereact/inputtext';
-import {Password} from 'primereact/password';
-import {Button} from 'primereact/button';
 import {Dialog} from 'primereact/dialog';
 import {Header} from '../Components/Header';
 import {Footer} from '../Components/Footer';
 import './../css/form.css';
+import './../css/button.css';
+import './../css/div.css';
 
 export class Login extends React.Component{
   constructor(props) {
@@ -77,31 +76,31 @@ export class Login extends React.Component{
     return(
       <div>
         <Header/>
-        <div>
-          <div>
+        <div className='flex'>
+          <div className='metade metade-direita'>
             <p>ENCHER LINGUIÇA COLOCAR DISPLAY FLEX</p>
           </div>
-          <div class="form_div">
-            <form onSubmit={this.logar} class="form">
-              <label class="field a-field a-field_a1 page__field form_label">
-                <input type='text' id='cpf' class="field__input" placeholder="Ex. 111.111.111-11" value={this.state.cpf} onChange={(e) => this.setState({cpf: e.target.value})}/>
-                <span class="field__label-wrap">
-                  <span class="field__label">CPF</span>
+          <div className="form_div metade metade-direita">
+            <form onSubmit={this.logar} className="form">
+              <label className="field a-field a-field_a1 page__field form_label">
+                <input type='text' id='cpf' className="field__input" placeholder="Ex. 111.111.111-11" value={this.state.cpf} onChange={(e) => this.setState({cpf: e.target.value})}/>
+                <span className="field__label-wrap">
+                  <span className="field__label">CPF</span>
                 </span>
               </label>
 
               
               <br/>
 
-              <label class="field a-field a-field_a1 page__field form_label">
-                <input type='password' id='senha' class="field__input"  placeholder="Ex. ******" value={this.state.senha} onChange={(e) => this.setState({senha: e.target.value})} feedback={false}/>
-                <span class="field__label-wrap">
-                  <span class="field__label" htmlFor='senha'>Senha</span>
+              <label className="field a-field a-field_a1 page__field form_label">
+                <input type='password' id='senha' className="field__input"  placeholder="Ex. ******" value={this.state.senha} onChange={(e) => this.setState({senha: e.target.value})} feedback={false}/>
+                <span className="field__label-wrap">
+                  <span className="field__label" htmlFor='senha'>Senha</span>
                 </span>
               </label>
 
               <br/>
-              <Button label='Logar'/>
+              <input type='submit' value='Logar' className='btn'/>
               <p>Ainda não possui uma conta?
                 <Link to={{
                     pathname: '/manterUsuario',

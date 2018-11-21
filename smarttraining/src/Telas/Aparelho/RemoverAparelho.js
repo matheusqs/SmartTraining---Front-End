@@ -3,7 +3,6 @@ import { Header } from '../../Components/Header';
 import { Footer } from '../../Components/Footer';
 import { SelectTable } from '../../Components/SelectTable';
 import { BotaoVoltar } from '../../Components/BotaoVoltar';
-import { Button } from 'primereact/button';
 
 export class RemoverAparelho extends React.Component{
     constructor(props){
@@ -50,7 +49,7 @@ export class RemoverAparelho extends React.Component{
                     <SelectTable opcoes={this.state.aparelhos} selecionados={this.state.selecionados}
                         selectionHandler={this.selectionHandler} header='Aparelho'/>
 
-                    <Button label='Remover' onClick={this.submitHandler}/>
+                    <input type='button' value='Remover' onClick={this.submitHandler}/>
                     <BotaoVoltar/>
                 </div>
                 <Footer/>

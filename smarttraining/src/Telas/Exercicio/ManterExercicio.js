@@ -3,9 +3,6 @@ import {Header} from '../../Components/Header';
 import {Footer} from '../../Components/Footer';
 import {SelectTable} from '../../Components/SelectTable';
 import {BotaoVoltar} from '../../Components/BotaoVoltar';
-import {InputText} from 'primereact/inputtext';
-import {InputTextarea} from 'primereact/inputtextarea';
-import {Button} from 'primereact/button';
 import {Dropdown} from 'primereact/dropdown';
 
 export class ManterExercicio extends React.Component {
@@ -82,11 +79,11 @@ export class ManterExercicio extends React.Component {
 
                     <form onSubmit={this.submitHandler}>
                         <label htmlFor='nome'>Nome</label>
-                        <InputText id='nome' value={this.state.nome} onChange={(e) => this.setState({nome: e.target.value})} />
+                        <input type='text' id='nome' value={this.state.nome} onChange={(e) => this.setState({nome: e.target.value})} />
                         <br/>
 
                         <label htmlFor='des'>Descrição</label>
-                        <InputTextarea id='des' value={this.state.descricao} onChange={(e) => this.setState({descricao: e.target.value})} />
+                        <input type='textarea'id='des' value={this.state.descricao} onChange={(e) => this.setState({descricao: e.target.value})} />
                         <br/>
 
                         <label htmlFor='apar'>Aparelhos</label>
@@ -94,7 +91,7 @@ export class ManterExercicio extends React.Component {
                             selectionHandler={(e) => this.setState({aparelhos: e.data})} header='Aparelho'/>
                         <br/>
 
-                        <Button label='Cadastrar'/>
+                        <input type='submit' value='Cadastrar'/>
                     </form>
                     <BotaoVoltar/>
                 </div>

@@ -3,7 +3,6 @@ import {Header} from '../../Components/Header';
 import {Footer} from '../../Components/Footer';
 import {BotaoVoltar} from '../../Components/BotaoVoltar';
 import {Dropdown} from 'primereact/dropdown';
-import {Button} from 'primereact/button';
 import {Link} from 'react-router-dom';
 
 export class ListarAvaliacoes extends React.Component {
@@ -75,7 +74,7 @@ export class ListarAvaliacoes extends React.Component {
                                 avaliacao: avaliacao
                             }
                         }}
-                        ><Button label='Ver Avaliação'/></Link>
+                        ><input type='button' value='Ver Avaliação'/></Link>
                     </li>
                 }
             );
@@ -93,7 +92,7 @@ export class ListarAvaliacoes extends React.Component {
                                 avaliacao: avaliacao
                             }
                         }}
-                        ><Button label='Ver avaliação'/></Link>
+                        ><input type='button' value='Ver Avaliação'/></Link>
                     </li>
                 }
             );
