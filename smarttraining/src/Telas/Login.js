@@ -5,12 +5,8 @@ import {Header} from '../Components/Header';
 import {Footer} from '../Components/Footer';
 import './../css/form.css';
 import './../css/button.css';
-<<<<<<< HEAD
 import './../css/div.css';
-=======
 import './../css/link.css';
-
->>>>>>> 9c4a3a28826e70c66c4aa0ae672e1188330c3cf9
 
 export class Login extends React.Component{
   constructor(props) {
@@ -105,11 +101,7 @@ export class Login extends React.Component{
               </label>
 
               <br/>
-<<<<<<< HEAD
               <input type='submit' value='Logar' className='btn'/>
-=======
-              <Button label='Logar' className="btn"/>
->>>>>>> 9c4a3a28826e70c66c4aa0ae672e1188330c3cf9
               <p>Ainda não possui uma conta?
                 <Link className="link" to={{
                     pathname: '/manterUsuario',
