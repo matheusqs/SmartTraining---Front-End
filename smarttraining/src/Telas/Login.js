@@ -7,6 +7,9 @@ import {Dialog} from 'primereact/dialog';
 import {Header} from '../Components/Header';
 import {Footer} from '../Components/Footer';
 import './../css/form.css';
+import './../css/button.css';
+import './../css/link.css';
+
 
 export class Login extends React.Component{
   constructor(props) {
@@ -101,9 +104,9 @@ export class Login extends React.Component{
               </label>
 
               <br/>
-              <Button label='Logar'/>
+              <Button label='Logar' className="btn"/>
               <p>Ainda não possui uma conta?
-                <Link to={{
+                <Link className="link" to={{
                     pathname: '/manterUsuario',
                     state: {acao: 'cadastrar'}
                   }}

@@ -125,28 +125,60 @@ export class ManterUsuario extends React.Component {
       <div>
         <Header/>
         <form onSubmit={this.submitHandler} formAction='POST' >
-          <label htmlFor='user'>Nome</label>
-          <InputText id='user' value={this.state.person.nome} onChange={(e) => this.setState({...this.state.person.nome = e.target.value})}/>
+
+          <label class="field a-field a-field_a1 page__field form_label">
+
+                <input type='text' id='user' class="field__input"  placeholder="Ex. Fulano da Silva" value={this.state.person.nome} onChange={(e) => this.setState({...this.state.person.nome = e.target.value})}/>
+                <span class="field__label-wrap">
+                  <span class="field__label" htmlFor='user'>Nome</span>
+                </span>
+              </label>
+
           <br/>
 
-          <label htmlFor='pass'>Senha</label>
-          <Password id='pass' value={this.state.person.senha} onChange={(e) => this.setState({...this.state.person.senha = e.target.value})} feedback={false}/>
+            <label class="field a-field a-field_a1 page__field form_label">
+                <input type='password' id='pass' class="field__input"  placeholder=" " value={this.state.person.senha} onChange={(e) => this.setState({...this.state.person.senha = e.target.value})} feedback={false}/>
+                <span class="field__label-wrap">
+                  <span class="field__label" htmlFor='pass'>Senha</span>
+                </span>
+              </label>
+
           <br/>
 
-          <label htmlFor='confPass'>Confirme sua senha</label>
-          <Password id='confPass' value={this.state.confSenha} onChange={(e) => this.setState({confSenha: e.target.value})} feedback={false}/>
+            <label class="field a-field a-field_a1 page__field form_label">
+                <input type='password' id='confPass' class="field__input"  placeholder=" " value={this.state.confSenha} onChange={(e) => this.setState({confSenha: e.target.value})} feedback={false}/>
+                <span class="field__label-wrap">
+                  <span class="field__label" htmlFor='confPass'>Confirme sua senha</span>
+                </span>
+              </label>
+
           <br/>
 
-          <label htmlFor='cpf'>CPF</label>
-          <InputText id='cpf' value={this.state.person.cpf} onChange={(e) => this.setState({...this.state.person.cpf = e.target.value})} keyfilter='pint'/>
+            <label class="field a-field a-field_a1 page__field form_label">
+                <input type='text' id='cpf' class="field__input"  placeholder="Ex. 111.111.111-11" value={this.state.person.cpf} onChange={(e) => this.setState({...this.state.person.cpf = e.target.value})} keyfilter='pint'/>
+                <span class="field__label-wrap">
+                  <span class="field__label" htmlFor='cpf'>CPF</span>
+                </span>
+              </label>
+
           <br/>
 
-          <label htmlFor='email'>E-mail</label>
-          <InputText id='email' value={this.state.person.email} onChange={(e) => this.setState({...this.state.person.email = e.target.value})}/>
+            <label class="field a-field a-field_a1 page__field form_label">
+                <input type='text' id='email' class="field__input"  placeholder="Ex. 111.111.111-11" value={this.state.person.email} onChange={(e) => this.setState({...this.state.person.email = e.target.value})}/>
+                <span class="field__label-wrap">
+                  <span class="field__label" htmlFor='email'>E-mail</span>
+                </span>
+              </label>
+
           <br/>
 
-          <label htmlFor='birthDate'>Data de nascimento</label>
-          <Calendar className='p-calendar' id='birthDate' value={this.state.data} onChange={(e) => this.setState({data: e.value})}/>
+            <label class="field a-field a-field_a1 page__field form_label">
+                <input type='date' id='birthDate' class="field__input"  placeholder="Ex. 111.111.111-11" value={this.state.data} onChange={(e) => this.setState({data: e.value})}/>
+                <span class="field__label-wrap">
+                  <span class="field__label" htmlFor='birthDate'>Data de nascimento</span>
+                </span>
+              </label>
+
           <br/>
 
           {this.props.location.state.acao === 'cadastrar' ? [
