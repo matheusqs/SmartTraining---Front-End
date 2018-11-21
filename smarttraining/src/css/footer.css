@@ -1,14 +1,15 @@
-.footer {
+footer {
  width: 100%;
  background: black;
  color: white;
- height: 40px;
  display: flex;
-
+ position: absolute;  /* posicionamento absoluto, colado lá em baixo */
+ bottom: 0;
+ height: var(--footer-height);  /* altura do footer foi fixada */
 }
 
-.footer-p{
+footer p{
+	padding: 5px;
 	margin-left:auto;
-  	margin-right:auto; 
-  	float: center;
+  margin-right:auto;
 }
