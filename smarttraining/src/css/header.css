@@ -67,3 +67,10 @@ header div button:hover{
     background-color: white;
 }
 
+header p{
+    margin: 0px;
+    padding-left: 10px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
