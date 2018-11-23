@@ -359,7 +359,7 @@ export class Header extends React.Component{
         ];
         return (
           <header>
-            <Menubar model={items}>
+            <Menubar model={items} className="width: 100%">
               <Button label='Sair' icon='pi pi-power-off'/>
             </Menubar>
           </header>

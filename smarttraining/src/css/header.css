@@ -1,4 +1,4 @@
-ul {
+.ul {
     list-style-type: none;
     margin: 0;
     padding: 0;
@@ -7,11 +7,11 @@ ul {
     font-family: 'Montserrat', sans-serif;
 }
 
-li {
+.li {
     float: left;
 }
 
-li a {
+.li .a {
     border: 2px #181818;
     display: block;
     color: white;
@@ -24,11 +24,46 @@ li a {
     border-radius: 8px;
 }
 
-li a:hover {
+.li .a:hover {
     background-color: white;
     color: black;
 }
 
+
+
 .sair{
   float: right;
 }
+
+header{
+    background-color: black;
+    width: 100%
+}
+
+header li a{
+    transition-duration: 0.2s;
+    border-radius: 8px;
+    color: white;
+}
+
+header li:hover > a, header li:hover >  a span a {
+    background-color: white;
+    color: black;
+}
+
+a{
+    text-decoration: none;
+}
+
+header div button{
+    transition-duration: 0.2s;
+    border-radius: 8px;
+    color: white;
+    background-color: black;
+}
+
+header div button:hover{
+    color: black;
+    background-color: white;
+}
+
