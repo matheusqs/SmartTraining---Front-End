@@ -121,79 +121,80 @@ export class ManterUsuario extends React.Component {
     return (
       <div>
         <Header />
-        <form onSubmit={this.submitHandler} formAction='POST' >
-          <label className="field a-field a-field_a1 page__field form_label">
-            <input type='text' id='user' className="field__input" placeholder="Ex. Fulano da Silva" value={this.state.person.nome} onChange={(e) => this.setState({ ...this.state.person.nome = e.target.value })} />
-            <span className="field__label-wrap">
-              <span className="field__label" htmlFor='user'>Nome</span>
-            </span>
-          </label>
+        <div className="form-div">
+	        <form onSubmit={this.submitHandler} formAction='POST' >
+	          <label className="field a-field a-field_a1 page__field form_label">
+	            <input type='text' id='user' className="field__input" placeholder="Ex. Fulano da Silva" value={this.state.person.nome} onChange={(e) => this.setState({ ...this.state.person.nome = e.target.value })} />
+	            <span className="field__label-wrap">
+	              <span className="field__label" htmlFor='user'>Nome</span>
+	            </span>
+	          </label>
 
-    
+	    
 
-          <label className="field a-field a-field_a1 page__field form_label">
-            <input type='text' id='cpf' className="field__input" placeholder="Ex. 111.111.111-11" value={this.state.person.cpf} onChange={(e) => this.setState({ ...this.state.person.cpf = e.target.value })} keyfilter='pint' />
-            <span className="field__label-wrap">
-              <span className="field__label" htmlFor='cpf'>CPF</span>
-            </span>
-          </label>
+	          <label className="field a-field a-field_a1 page__field form_label">
+	            <input type='text' id='cpf' className="field__input" placeholder="Ex. 111.111.111-11" value={this.state.person.cpf} onChange={(e) => this.setState({ ...this.state.person.cpf = e.target.value })} keyfilter='pint' />
+	            <span className="field__label-wrap">
+	              <span className="field__label" htmlFor='cpf'>CPF</span>
+	            </span>
+	          </label>
 
-          <br />
+	          <br />
 
-          <label className="field a-field a-field_a1 page__field form_label">
-            <input type='password' id='pass' className="field__input" placeholder=" " value={this.state.person.senha} onChange={(e) => this.setState({ ...this.state.person.senha = e.target.value })} feedback={false} />
-            <span className="field__label-wrap">
-              <span className="field__label" htmlFor='pass'>Senha</span>
-            </span>
-          </label>
+	          <label className="field a-field a-field_a1 page__field form_label">
+	            <input type='password' id='pass' className="field__input" placeholder=" " value={this.state.person.senha} onChange={(e) => this.setState({ ...this.state.person.senha = e.target.value })} feedback={false} />
+	            <span className="field__label-wrap">
+	              <span className="field__label" htmlFor='pass'>Senha</span>
+	            </span>
+	          </label>
 
-          <label className="field a-field a-field_a1 page__field form_label">
-            <input type='password' id='confPass' className="field__input" placeholder=" " value={this.state.confSenha} onChange={(e) => this.setState({ confSenha: e.target.value })} feedback={false} />
-            <span className="field__label-wrap">
-              <span className="field__label" htmlFor='confPass'>Confirme sua senha</span>
-            </span>
-          </label>
+	          <label className="field a-field a-field_a1 page__field form_label">
+	            <input type='password' id='confPass' className="field__input" placeholder=" " value={this.state.confSenha} onChange={(e) => this.setState({ confSenha: e.target.value })} feedback={false} />
+	            <span className="field__label-wrap">
+	              <span className="field__label" htmlFor='confPass'>Confirme sua senha</span>
+	            </span>
+	          </label>
 
-          <br />
+	          <br />
 
-          
+	          
 
-          <label className="field a-field a-field_a1 page__field form_label">
-            <input type='text' id='email' className="field__input" placeholder="Ex. 111.111.111-11" value={this.state.person.email} onChange={(e) => this.setState({ ...this.state.person.email = e.target.value })} />
-            <span className="field__label-wrap">
-              <span className="field__label" htmlFor='email'>E-mail</span>
-            </span>
-          </label>
-          
+	          <label className="field a-field a-field_a1 page__field form_label">
+	            <input type='text' id='email' className="field__input" placeholder="Ex. 111.111.111-11" value={this.state.person.email} onChange={(e) => this.setState({ ...this.state.person.email = e.target.value })} />
+	            <span className="field__label-wrap">
+	              <span className="field__label" htmlFor='email'>E-mail</span>
+	            </span>
+	          </label>
+	          
 
-          <label className="field a-field a-field_a1 page__field form_label">
-            <input type='date' id='birthDate' className="field__input" placeholder="Ex. 111.111.111-11" value={this.state.data} onChange={(e) => this.setState({ data: e.value })} />
-            <span className="field__label-wrap">
-              <span className="field__label" htmlFor='birthDate'>Data de nascimento</span>
-            </span>
-          </label>
+	          <label className="field a-field a-field_a1 page__field form_label">
+	            <input type='date' id='birthDate' className="field__input" placeholder="Ex. 111.111.111-11" value={this.state.data} onChange={(e) => this.setState({ data: e.value })} />
+	            <span className="field__label-wrap">
+	              <span className="field__label" htmlFor='birthDate'>Data de nascimento</span>
+	            </span>
+	          </label>
 
-          <br />
+	          <br />
 
-          {this.props.location.state.acao === 'cadastrar' ? [
-            <div>
-              <Checkbox inputId='inst' onChange={this.isInstrutor} chekced={this.state.checked} />
-              <label htmlFor='inst'>Instrutor</label>
-            </div>
-          ] : null
-          }
+	          {this.props.location.state.acao === 'cadastrar' ? [
+	            <div>
+	              <Checkbox inputId='inst' onChange={this.isInstrutor} chekced={this.state.checked} />
+	              <label htmlFor='inst'>Instrutor</label>
+	            </div>
+	          ] : null
+	          }
 
-          {this.state.person.tipo === 'I' ? [
-            <div>
-              <label htmlFor='cref'>Número CREF</label>
-              <input type='number' id='cref' value={this.state.person.cref} 
-              onChange={(e) => this.setState({ ...this.state.person.cref = e.target.value })} />
-            </div>
-            ] : null
-          }
-
-          <input type='submit' value='Cadastrar' className='btn' />
-        </form>
+	          {this.state.person.tipo === 'I' ? [
+	            <div>
+	              <label htmlFor='cref'>Número CREF</label>
+	              <input type='number' id='cref' value={this.state.person.cref} 
+	              onChange={(e) => this.setState({ ...this.state.person.cref = e.target.value })} />
+	            </div>
+	            ] : null
+	          }
+	          <button type='submit' className="btn">Cadastrar</button>
+	        </form>
+        </div>
         <BotaoVoltar />
         <Footer />
       </div>
