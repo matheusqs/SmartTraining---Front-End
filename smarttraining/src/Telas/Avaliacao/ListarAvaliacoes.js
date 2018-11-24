@@ -15,9 +15,7 @@ export class ListarAvaliacoes extends React.Component{
     }
 
     componentDidMount = () => {
-        this.setState({aluno: this.props.location.state.aluno});
-
-        let url = `http://localhost:8080/servletweb?acao=ListarAvaliacoes&codCpf=${this.state.aluno.cpf}`;
+        let url = `http://localhost:8080/servletweb?acao=ListarAvaliacoes&codCpf=${this.props.location.state.aluno.cpf}`;
         fetch(url, {
             headers: {
                 'Accept': 'application/json'
@@ -49,7 +47,7 @@ export class ListarAvaliacoes extends React.Component{
             <div>
                 <Header tipo={this.props.location.state.user.tipo} user={this.props.location.state.user}/>
                 <div>
-                    <h2>{this.props.location.state.user.tipo === 'A' ? 'Avaliações:' : 'Avaliações ' + this.props.aluno.nome + ':'}</h2>
+                    <h2>{this.props.location.state.user.tipo === 'A' ? 'Avaliações:' : 'Avaliações ' + this.props.location.state.aluno.nome + ':'}</h2>
                     
                     {
                         this.props.location.state.user.tipo !== 'A' ?
@@ -58,13 +56,16 @@ export class ListarAvaliacoes extends React.Component{
                                 pathname: '/inserirAvaliacao',
                                 state: {
                                     user: this.props.location.state.user,
-                                    aluno: this.state.aluno 
+                                    aluno: this.props.location.state.aluno 
                                 }
                             }}><button type='button' className='btn btn-right'>Inserir Avaliação</button></Link>
 
                             <Link to={{
                                 pathname: '/removerAvaliacoes',
-                                state: {user: this.props.location.state.user}
+                                state: {
+                                    user: this.props.location.state.user,
+                                    aluno: this.props.location.state.aluno
+                                }
                             }}><button type='button' className='btn btn-right'>Remover</button></Link> 
                         </span>: null
                     }

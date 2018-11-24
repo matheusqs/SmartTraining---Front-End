@@ -2,40 +2,43 @@ import React from 'react';
 import {Header} from '../../Components/Header';
 import {Footer} from '../../Components/Footer';
 import {BotaoVoltar} from '../../Components/BotaoVoltar';
- 
+
 export class VerAvaliacao extends React.Component {
     constructor(props){
         super(props);
+        this.state = ({
+            avaliacao: {}
+        });
     }
 
     componentDidMount = () => {
-        let cpf;
-        this.props.location.state.user.tipo === 'A' ? cpf = this.props.location.state.user.cpf : cpf = this.props.location.state.aluno.cpf;
-        
-        let url = `http://localhost:8080/servletweb?acao=MostrarAvaliacao&data=${this.props.location.state.avaliacao.data}&codCpf=${cpf}`;
+        let aval = this.props.location.state.avaliacao;
+        let url = `http://localhost:8080/servletweb?acao=MostrarAvaliacao&data=${aval.data}&codCpf=${aval.cpf}`;
         fetch(url, {
             headers: {
                 'Accept': 'application/json'
             }
         })
         .then(resposta => resposta.json())
-        .then(resultado => {
-            this.setState({avaliacao: resultado})
-        });
+        .then(resultado => this.setState({avaliacao: resultado}));
     }
 
     render(){
-        let objetivos = this.state.avaliacao.listaObjetivos;
-        objetivos = objetivos.map(objetivo => {
-            <li>{objetivo.nome}</li>
-        });
+        let lista;
+        if(this.state.avaliacao.objetivos){
+            lista = this.state.avaliacao.objetivos.map((objetivo, i) =>
+                <li key={i}>
+                    {objetivo.nome}
+                </li>
+            );
+        }
 
         return(
             <div>
                 <Header tipo={this.props.location.state.user.tipo} user={this.props.location.state.user}/>
                     <div>
-                        <h2>Data: {this.state.avaliacao.data}</h2>
-                        <h3>Medidas:</h3>
+                        <h2>Avaliação - Data: {this.state.avaliacao.data}</h2>
+                        <h2>Medidas:</h2>
                         <table>
                             <tr>
                                 <th>Região</th>
@@ -111,9 +114,9 @@ export class VerAvaliacao extends React.Component {
                             </tr>
                         </table>
 
-                        <h3>Objetivos:</h3>
+                        <h2>Objetivos:</h2>
                         <ul>
-                            {objetivos}
+                            {lista}
                         </ul>
                         <BotaoVoltar/>
                     </div>

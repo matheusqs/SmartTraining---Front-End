@@ -7,34 +7,50 @@ import { Link } from 'react-router-dom';
 export class VerAparelho extends React.Component{
     constructor(props){
         super(props);
+
+        this.state = ({
+            aparelho: {}
+        });
     }
 
-    montarLista = () => {
-        let lista = this.props.location.state.aparelho.exercicios(exercicio => {
-            <li>
-                {exercicio.nome}
-                <Link to={{
-                    pathname: '/verExercicio',
-                    state: {
-                        user: this.props.location.state.user,
-                        exercicio: exercicio
-                    }                    
-                }}><input type='button' value='Ver exercício'/></Link>
-            </li>
-        });
-        return lista;
+    componentDidMount = () => {
+        let url = `http://localhost:8080/servletweb?acao=MostrarAparelho&cod=${this.props.location.state.aparelho.cod}`;
+        fetch(url, {
+            headers: {
+                'Accept': 'application/json'
+            }
+        })
+        .then(res => res.json())
+        .then(resultado => this.setState({aparelho: resultado}));
     }
 
     render(){
+        let lista;
+        if(this.state.aparelho.exercicios){
+            lista = this.state.aparelho.exercicios.map((exercicio, i) => 
+                <li key={i}>
+                    {exercicio.nome}
+
+                    <Link to={{
+                        pathname: '/verExercicio',
+                        state: {
+                            user: this.props.location.state.user,
+                            exercicio: exercicio
+                        }
+                    }}><button type='button' className='btn btn-right'>Ver</button></Link>
+                </li>
+            );
+        }
+        
         return(
             <div>
                 <Header tipo={this.props.location.state.user.tipo} user={this.props.location.state.user}/>
                 <div>
                     <h2>Nome</h2>
-                    <p>{this.props.location.state.aparelho.nome}</p>
+                    <p>{this.state.aparelho.nome}</p>
 
                     <h2>Exercícios</h2>
-                    <ul>{this.montarLista}</ul>
+                    <ul>{lista}</ul>
 
                     <BotaoVoltar/>
                 </div>
