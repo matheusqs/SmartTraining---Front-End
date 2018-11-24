@@ -54,18 +54,12 @@ export class ListarExercicios extends React.Component {
                         <span> 
                             <Link to={{
                                 pathname: '/inserirExercicio',
-                                state: {
-                                    user: this.props.location.state.user,
-                                    exercicio: exercicio
-                                }
+                                state: {user: this.props.location.state.user}
                             }}><input type='button' value='Inserir'/></Link>
 
                             <Link to={{
                                 pathname: '/removerExercicio',
-                                state: {
-                                    user: this.props.location.state.user,
-                                    exercicio: exercicio
-                                }
+                                state: {user: this.props.location.state.user}
                             }}><input type='button' value='Remover'/></Link> 
                         </span> : null
                     }
