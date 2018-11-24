@@ -9,10 +9,8 @@ export class ListarExercicios extends React.Component {
         super(props);
 
         this.state = ({
-            exercicios: null
+            exercicios: []
         });
-
-        this.montaLista = this.montaLista.bind(this);
     }
 
     componentDidMount(){
@@ -27,33 +25,28 @@ export class ListarExercicios extends React.Component {
         .then(resultado => this.setState({exercicios: resultado}));
     }
 
-    montaLista = () => {
-        if(!this.state.exercicios){
-            return;
+    render(){
+        let lista;
+        if(this.state.exercicios){
+            lista = this.state.exercicios.map((exercicio, i) => 
+                <li key={i}>
+                    {exercicio.nome}
+                    <Link to={{
+                        pathname: '/verExercicio',
+                        state: {
+                            user: this.props.location.state.user,
+                            exercicio: exercicio
+                        }
+                    }}><input type='button' value='Ver exercício'/></Link>
+                </li>
+            );
         }
 
-        let exercicios = this.state.exercicios.map(exercicio => {
-            <li>
-                {exercicio.nome}
-                <Link to={{
-                    pathname: '/verExercicio',
-                    state: {
-                        user: this.props.location.state.user,
-                        exercicio: exercicio
-                    }
-                }}><input type='button' value='Ver exercício'/></Link>
-            </li>
-        });
-
-        return exercicios;
-    }
-
-    render(){
         return(
             <div>
                 <Header tipo={this.props.location.state.user.tipo} user={this.props.location.state.user}/>
                 <div>
-                    <ul>{this.montaLista}</ul>
+                    <ul>{lista}</ul>
                     <BotaoVoltar/>
                 </div>
                 <Footer/> 

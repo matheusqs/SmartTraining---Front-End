@@ -7,6 +7,10 @@ import { BotaoVoltar } from '../../Components/BotaoVoltar';
 export class ListarMusculos extends React.Component{
     constructor(props){
         super(props);
+
+        this.state = ({
+            musculos: []
+        });
     }
 
     componentDidMount(){
@@ -20,32 +24,28 @@ export class ListarMusculos extends React.Component{
         .then(resultado => this.setState({musculos: resultado}));
     }
 
-    montarLista = () => {
-        if(!this.state.musculos){
-            return;
+    render(){
+        let lista;
+        if(this.state.musculos){
+            lista = this.state.musculos.map((musculo, i) => 
+                <li key={i}>
+                    {musculo.nome}
+                    <Link to={{
+                        pathname: '/verMusculo',
+                        state: {
+                            user: this.props.location.state.user,
+                            musculo: musculo
+                        }                    
+                    }}><input type='button' value='Ver músculo'/></Link>
+                </li>
+            );
         }
 
-        let lista = this.state.musculos.map(musculo => {
-            <li>
-                {musculo.nome}
-                <Link to={{
-                    pathname: '/verMusculo',
-                    state: {
-                        user: this.props.location.state.user,
-                        musculo: musculo
-                    }                    
-                }}><input type='button' value='Ver músculo'/></Link>
-            </li>
-        });
-        return lista;
-    }
-
-    render(){
         return(
             <div>
                 <Header tipo={this.props.location.state.user.tipo} user={this.props.location.state.user}/>
                 <div>
-                    <ul>{this.montarLista}</ul>
+                    <ul>{lista}</ul>
                     <BotaoVoltar/>
                 </div>
                 <Footer/>

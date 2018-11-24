@@ -13,11 +13,11 @@ export class ListarAvaliacoes extends React.Component {
             aluno: {
                 nome: null,
                 cpf: null
-            }
+            },
+            avaliacoes: []
         });
 
         this.changeHandler = this.changeHandler.bind(this);
-        this.montaLista = this.montaLista.bind(this);
     }
 
     componentDidMount(){
@@ -60,47 +60,39 @@ export class ListarAvaliacoes extends React.Component {
         .then(resultado => this.setState({avaliacoes: resultado}));
     }
 
-    montaLista = () => {
-        let lista = this.state.avaliacoes;
-        if(this.props.location.state.user.tipo === 'A'){
-            lista = lista.map(
-                avaliacao => {
-                    <li>
-                        Avaliação: {avaliacao.data}
-                        <Link to={{
-                            pathname: '/verAvaliacao',
-                            state:{
-                                user: this.props.location.state.user,
-                                avaliacao: avaliacao
-                            }
-                        }}
-                        ><input type='button' value='Ver Avaliação'/></Link>
-                    </li>
-                }
+    render(){
+        let lista;
+        if(this.state.avaliacoes & this.props.location.state.tipo === 'A'){
+            lista = this.state.avaliacoes.map((avaliacao, i) => 
+                <li key={i}>
+                    Avaliação: {avaliacao.data}
+                    <Link to={{
+                        pathname: '/verAvaliacao',
+                        state:{
+                            user: this.props.location.state.user,
+                            avaliacao: avaliacao
+                        }
+                    }}
+                    ><input type='button' value='Ver Avaliação'/></Link>
+                </li>
             );
-            return lista;
-        }else{
-            lista = lista.map(
-                avaliacao => {
-                    <li>
-                        Avaliação: {avaliacao.data}
-                        <Link to={{
-                            pathname:'/verAvaliacao',
-                            state: {
-                                user: this.props.location.state.user,
-                                aluno: this.state.aluno,
-                                avaliacao: avaliacao
-                            }
-                        }}
-                        ><input type='button' value='Ver Avaliação'/></Link>
-                    </li>
-                }
+        }else if(this.state.avaliacoes & this.props.location.state.tipo === 'I'){
+            lista = this.state.avaliacoes.map((avaliacao, i) => 
+                <li key={i}>
+                    Avaliação: {avaliacao.data}
+                    <Link to={{
+                        pathname: '/verAvaliacao',
+                        state:{
+                            user: this.props.location.state.user,
+                            aluno: this.state.aluno,
+                            avaliacao: avaliacao
+                        }
+                    }}
+                    ><input type='button' value='Ver Avaliação'/></Link>
+                </li>
             );
-            return lista;
         }
-    }
-
-    render(){     
+        
         return(
             <div>
                 <Header tipo={this.props.location.state.user.tipo} user={this.props.location.state.user}/>
@@ -114,7 +106,7 @@ export class ListarAvaliacoes extends React.Component {
                     }
 
                     <ul>
-                        {this.montaLista}
+                        {lista}
                     </ul>
                     <BotaoVoltar/>
                 </div>

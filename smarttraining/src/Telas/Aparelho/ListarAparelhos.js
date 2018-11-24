@@ -8,7 +8,9 @@ export class ListarAparelhos extends React.Component{
     constructor(props){
         super(props);
 
-        this.montarLista = this.montarLista.bind(this);
+        this.state = ({
+            aparelhos: []
+        });
     }
 
     componentDidMount = () => {
@@ -22,32 +24,28 @@ export class ListarAparelhos extends React.Component{
         .then(resultado => this.setState({aparelhos: resultado}));
     }
 
-    montarLista = () => {
-        if(!this.state.aparelhos){
-            return;
+    render(){
+        let lista;
+        if(this.state.aparelhos){
+            lista = this.state.aparelhos.map((aparelho, i) => 
+                <li key={i}>
+                    {aparelho.nome}
+                    <Link to={{
+                        pathname: '/verAparelho',
+                        state: {                        
+                            user: this.props.location.state.user,
+                            aparelho: aparelho
+                        }
+                    }}><input type='button' value='Ver aparelho'/></Link>
+                </li>
+            );
         }
 
-        let lista = this.state.aparelhos.map(aparelho => {
-            <li>
-                {aparelho.nome}
-                <Link to={{
-                    pathname: '/verAparelho',
-                    state: {                        
-                        user: this.props.location.state.user,
-                        aparelho: aparelho
-                    }
-                }}><input type='button' value='Ver aparelho'/></Link>
-            </li>
-        });
-        return lista;
-    }
-
-    render(){
         return(
             <div>
                 <Header tipo={this.props.location.state.user.tipo} user={this.props.location.state.user}/>
                 <div>
-                    <ul>{this.montarLista}</ul>
+                    <ul>{lista}</ul>
                     <BotaoVoltar/>
                 </div>
                 <Footer/>
