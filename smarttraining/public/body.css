@@ -1,16 +1,38 @@
-html, body {
-    width: 100%;
-    height: 100%;
-    background-image: linear-gradient(to bottom, #444444 , black);
-	color: white;
-	margin: 0px;
-	font-family: 'Montserrat', sans-serif;
-    background-attachment: fixed;
+:root {
+    --footer-height: 3rem;
 }
 
-article {
-    min-height: 100%;
-    display: grid;
-    grid-template-rows: auto 1fr auto;
-    grid-template-columns: 100%;
+* {
+    box-sizing: border-box;
 }
+
+html {
+    height: 100%;
+} 
+
+body {
+    min-height: 100%;
+    background-image: linear-gradient(to bottom, #444444 , black);
+	color: white;
+	margin: 0;
+	font-family: 'Montserrat', sans-serif;
+    background-attachment: fixed;
+    position: relative;
+    padding-bottom: calc(1.2 * var(--footer-height));
+}
+
+footer {
+    width: 100%;
+    background: black;
+    color: white;
+    display: flex;
+    position: absolute;  /* posicionamento absoluto, colado lá em baixo */
+    bottom: 0;
+    height: var(--footer-height);  /* altura do footer foi fixada */
+   }
+   
+   footer p{
+     padding: 5px;
+     margin-left:auto;
+     margin-right:auto;
+   }

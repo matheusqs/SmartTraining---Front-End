@@ -38,7 +38,23 @@ export class ListarAlunos extends React.Component{
                             user: this.props.location.state.user,
                             aluno: aluno
                         }
-                    }}><input type='button' value='Ver perfil'/></Link>
+                    }}><input type='button' value='Perfil'/></Link>
+                    
+                    <Link to={{
+                        pathname: '/listarAvaliacoes',
+                        state:{
+                            user: this.props.location.state.user,
+                            aluno: aluno
+                        }
+                    }}><input type='button' value='Avaliações'/></Link>
+
+                    <Link to={{
+                        pathname: '/listarFichas',
+                        state:{
+                            user: this.props.location.state.user,
+                            aluno: aluno
+                        }
+                    }}><input type='button' value='Fichas'/></Link>
                 </li>
             );
         }
@@ -47,6 +63,16 @@ export class ListarAlunos extends React.Component{
             <div>
                 <Header tipo={this.props.location.state.user.tipo} user={this.props.location.state.user}/>
                 <div>
+                    <h2>Alunos:</h2>
+
+                    {
+                        this.props.location.state.user.tipo === 'C' ?
+                        <Link to={{
+                            pathname: '/removerAlunos',
+                            state:{user: this.props.location.state.user}
+                        }}><input type='button' value='Remover'/></Link> : null
+                    }
+
                     <ul>
                         {lista}
                     </ul>

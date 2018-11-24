@@ -1,56 +1,23 @@
 import React from 'react';
-import {Header} from '../../Components/Header';
-import {Footer} from '../../Components/Footer';
-import {BotaoVoltar} from '../../Components/BotaoVoltar';
-import {Dropdown} from 'primereact/dropdown';
-import {Link} from 'react-router-dom';
+import { Header } from '../../Components/Header';
+import { BotaoVoltar } from '../../Components/BotaoVoltar';
+import { Footer } from '../../Components/Footer';
+import { Link } from 'react-router-dom';
 
-export class ListarAvaliacoes extends React.Component {
+export class ListarAvaliacoes extends React.Component{
     constructor(props){
         super(props);
 
-        this.state = ({ 
-            aluno: {
-                nome: null,
-                cpf: null
-            },
+        this.state = ({
+            aluno: {},
             avaliacoes: []
         });
-
-        this.changeHandler = this.changeHandler.bind(this);
     }
 
-    componentDidMount(){
-        let url;
-        this.props.location.state.user.tipo === 'A' ? 
-            url = `http://localhost:8080/servletweb?acao=ListarAvaliacoes&codCpf=${this.props.location.state.user.cpf}` :
-            url = `http://localhost:8080/servletweb?acao=ListarAvaliacoes&codCpf=${this.state.aluno.cpf}`;
+    componentDidMount = () => {
+        this.setState({aluno: this.props.location.state.aluno});
 
-        fetch(url, {
-            headers: {
-                'Accept': 'application/json'
-            }
-        })
-        .then(resposta => resposta.json())
-        .then(resultado => this.setState({avaliacoes: resultado}));
-
-        if(this.props.location.state.user.tipo === 'I'){
-            url = `http://localhost:8080/servletweb?acao=ListarAlunos`;
-
-            fetch(url, {
-                headers: {
-                    'Accept': 'application/json'
-                }
-            })
-            .then(resposta => resposta.json())
-            .then(resultado => console.log(resultado));
-        }
-    }
-
-    changeHandler = (e) => {
-        this.setState({aluno: e.value});
-
-        let url = `http://localhost:8080/servletweb?acao=ListarAvaliacoes&codCpf${this.state.aluno.cpf}`;
+        let url = `http://localhost:8080/servletweb?acao=ListarAvaliacoes&codCpf=${this.state.aluno.cpf}`;
         fetch(url, {
             headers: {
                 'Accept': 'application/json'
@@ -59,58 +26,52 @@ export class ListarAvaliacoes extends React.Component {
         .then(resposta => resposta.json())
         .then(resultado => this.setState({avaliacoes: resultado}));
     }
-
+    
     render(){
         let lista;
-        if(this.state.avaliacoes & this.props.location.state.tipo === 'A'){
+        if(this.state.avaliacoes){
             lista = this.state.avaliacoes.map((avaliacao, i) => 
                 <li key={i}>
                     Avaliação: {avaliacao.data}
+
                     <Link to={{
                         pathname: '/verAvaliacao',
-                        state:{
+                        state: {
                             user: this.props.location.state.user,
                             avaliacao: avaliacao
                         }
-                    }}
-                    ><input type='button' value='Ver Avaliação'/></Link>
-                </li>
-            );
-        }else if(this.state.avaliacoes & this.props.location.state.tipo === 'I'){
-            lista = this.state.avaliacoes.map((avaliacao, i) => 
-                <li key={i}>
-                    Avaliação: {avaliacao.data}
-                    <Link to={{
-                        pathname: '/verAvaliacao',
-                        state:{
-                            user: this.props.location.state.user,
-                            aluno: this.state.aluno,
-                            avaliacao: avaliacao
-                        }
-                    }}
-                    ><input type='button' value='Ver Avaliação'/></Link>
+                    }}><button type='button'>Ver</button></Link>
                 </li>
             );
         }
-        
+
         return(
             <div>
                 <Header tipo={this.props.location.state.user.tipo} user={this.props.location.state.user}/>
-                
                 <div>
+                    <h2>{this.props.location.state.user.tipo === 'A' ? 'Avaliações:' : 'Avaliações ' + this.props.aluno.nome + ':'}</h2>
+                    
                     {
-                        this.props.location.state.user.tipo === 'I' ?
-                        <Dropdown placeholder='Selecione um aluno' value={this.state.aluno.nome} options={this.state.alunos}
-                            onChange={this.changeHandler}/> :
-                        null
+                        this.props.location.state.user.tipo !== 'A' ?
+                        <span>
+                            <Link to={{
+                                pathname: '/inserirAvaliacao',
+                                state: {
+                                    user: this.props.location.state.user,
+                                    aluno: this.state.aluno 
+                                }
+                            }}><button type='button' className='btn btn-right'>Inserir Avaliação</button></Link>
+
+                            <Link to={{
+                                pathname: '/removerAvaliacoes',
+                                state: {user: this.props.location.state.user}
+                            }}><button type='button' className='btn btn-right'>Remover</button></Link> 
+                        </span>: null
                     }
 
-                    <ul>
-                        {lista}
-                    </ul>
+                    <ul>{lista}</ul>
                     <BotaoVoltar/>
                 </div>
-                
                 <Footer/>
             </div>
         )

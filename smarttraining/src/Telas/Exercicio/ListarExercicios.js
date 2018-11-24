@@ -31,6 +31,7 @@ export class ListarExercicios extends React.Component {
             lista = this.state.exercicios.map((exercicio, i) => 
                 <li key={i}>
                     {exercicio.nome}
+                    
                     <Link to={{
                         pathname: '/verExercicio',
                         state: {
@@ -46,6 +47,29 @@ export class ListarExercicios extends React.Component {
             <div>
                 <Header tipo={this.props.location.state.user.tipo} user={this.props.location.state.user}/>
                 <div>
+                    <h2>Exercícios:</h2>
+                    
+                    {
+                        this.props.location.state.user.tipo !== 'A' ?
+                        <span> 
+                            <Link to={{
+                                pathname: '/inserirExercicio',
+                                state: {
+                                    user: this.props.location.state.user,
+                                    exercicio: exercicio
+                                }
+                            }}><input type='button' value='Inserir'/></Link>
+
+                            <Link to={{
+                                pathname: '/removerExercicio',
+                                state: {
+                                    user: this.props.location.state.user,
+                                    exercicio: exercicio
+                                }
+                            }}><input type='button' value='Remover'/></Link> 
+                        </span> : null
+                    }
+
                     <ul>{lista}</ul>
                     <BotaoVoltar/>
                 </div>

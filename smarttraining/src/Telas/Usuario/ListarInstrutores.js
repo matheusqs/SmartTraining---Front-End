@@ -30,13 +30,14 @@ export class ListarInstrutores extends React.Component{
             lista = this.state.instrutores.map((instrutor, i) => 
                 <li key={i}>
                     {instrutor.nome}
+
                     <Link to={{
                         pathname: '/verPerfil',
                         state: {
                             user: this.props.location.state.user,
                             instrutor: instrutor
                         }
-                    }}><input type='button' value='Ver perfil'/></Link>
+                    }}><input type='button' value='Ver'/></Link>
                 </li>
             );
         }
@@ -45,6 +46,16 @@ export class ListarInstrutores extends React.Component{
             <div>
                 <Header tipo={this.props.location.state.user.tipo} user={this.props.location.state.user}/>
                 <div>
+                    <h2>Instrutores:</h2>
+
+                    {
+                        this.props.location.state.user.tipo === 'C' ?
+                        <Link to={{
+                            pathname: '/removerInstrutores',
+                            state: {user: this.props.location.state.user}
+                        }}><input type='button' value='Remover'/></Link> : null
+                    }
+
                     <ul>{lista}</ul>
                     <BotaoVoltar/>
                 </div>

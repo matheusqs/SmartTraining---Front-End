@@ -30,13 +30,14 @@ export class ListarMusculos extends React.Component{
             lista = this.state.musculos.map((musculo, i) => 
                 <li key={i}>
                     {musculo.nome}
+
                     <Link to={{
                         pathname: '/verMusculo',
                         state: {
                             user: this.props.location.state.user,
                             musculo: musculo
                         }                    
-                    }}><input type='button' value='Ver músculo'/></Link>
+                    }}><input type='button' value='Ver'/></Link>
                 </li>
             );
         }
@@ -45,6 +46,7 @@ export class ListarMusculos extends React.Component{
             <div>
                 <Header tipo={this.props.location.state.user.tipo} user={this.props.location.state.user}/>
                 <div>
+                    <h2>Músculos:</h2>
                     <ul>{lista}</ul>
                     <BotaoVoltar/>
                 </div>
