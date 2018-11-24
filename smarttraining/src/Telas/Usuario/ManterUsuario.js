@@ -191,11 +191,11 @@ export class ManterUsuario extends React.Component {
 	              onChange={(e) => this.setState({ ...this.state.person.cref = e.target.value })} />
 	            </div>
 	            ] : null
-	          }
-	          <button type='submit' className="btn">Cadastrar</button>
+            }
+            <BotaoVoltar />
+	          <button type='submit' className="btn btn-right">Cadastrar</button>
 	        </form>
         </div>
-        <BotaoVoltar />
         <Footer />
       </div>
     );

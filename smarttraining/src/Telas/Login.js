@@ -78,40 +78,43 @@ export class Login extends React.Component{
       <div>
         <Header/>
         <div className='flex'>
-          <div className='metade metade-direita'>
+          <div className='metade metade-esquerda'>
             <p>ENCHER LINGUIÇA COLOCAR DISPLAY FLEX</p>
           </div>
-          <div className="form_div metade metade-direita">
-            <form onSubmit={this.logar} className="form">
-              <label className="field a-field a-field_a1 page__field form_label">
-                <input type='text' id='cpf' className="field__input" placeholder="Ex. 111.111.111-11" value={this.state.cpf} onChange={(e) => this.setState({cpf: e.target.value})}/>
-                <span className="field__label-wrap">
-                  <span className="field__label">CPF</span>
-                </span>
-              </label>
+          <div className="metade metade-direita">
+            <h1>Login</h1>
+            <div className='form_div '>
+              <form onSubmit={this.logar} className="form">
+                <label className="field a-field a-field_a1 page__field form_label">
+                  <input type='text' id='cpf' className="field__input" placeholder="Ex. 111.111.111-11" value={this.state.cpf} onChange={(e) => this.setState({cpf: e.target.value})}/>
+                  <span className="field__label-wrap">
+                    <span className="field__label">CPF</span>
+                  </span>
+                </label>
 
-              
-              <br/>
+                
+                <br/>
 
-              <label className="field a-field a-field_a1 page__field form_label">
-                <input type='password' id='senha' className="field__input"  placeholder="Ex. ******" value={this.state.senha} onChange={(e) => this.setState({senha: e.target.value})} feedback={false}/>
-                <span className="field__label-wrap">
-                  <span className="field__label" htmlFor='senha'>Senha</span>
-                </span>
-              </label>
+                <label className="field a-field a-field_a1 page__field form_label">
+                  <input type='password' id='senha' className="field__input"  placeholder="Ex. ******" value={this.state.senha} onChange={(e) => this.setState({senha: e.target.value})} feedback={false}/>
+                  <span className="field__label-wrap">
+                    <span className="field__label" htmlFor='senha'>Senha</span>
+                  </span>
+                </label>
 
-              <br/>
-              <input type='submit' value='Logar' className='btn'/>
-              <p>Ainda não possui uma conta?
-                <Link className="link" to={{
-                    pathname: '/manterUsuario',
-                    state: {acao: 'cadastrar'}
-                  }}
-                >
-                Cadastre-se!
-              </Link>
-              </p>
-            </form>
+                <br/>
+                <input type='submit' value='Logar' className='btn'/>
+                <p>Ainda não possui uma conta?
+                  <Link className="link" to={{
+                      pathname: '/manterUsuario',
+                      state: {acao: 'cadastrar'}
+                    }}
+                  >
+                  Cadastre-se!
+                </Link>
+                </p>
+              </form>
+            </div>
           </div>
         </div>
         <Footer/>
