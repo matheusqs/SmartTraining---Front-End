@@ -81,7 +81,6 @@ export class Login extends React.Component{
           <div className='metade metade-esquerda'>
             <p>ENCHER LINGUIÇA COLOCAR DISPLAY FLEX</p>
           </div>
-<<<<<<< HEAD
           <div className="metade metade-direita">
             <h1>Login</h1>
             <div className='form_div '>
@@ -92,16 +91,6 @@ export class Login extends React.Component{
                     <span className="field__label">CPF</span>
                   </span>
                 </label>
-=======
-          <div className="div-form-login metade metade-direita">
-            <form onSubmit={this.logar} className="form ">
-              <label className="field a-field a-field_a1 page__field form_label">
-                <input type='text' id='cpf' className="field__input" placeholder="Ex. 111.111.111-11" value={this.state.cpf} onChange={(e) => this.setState({cpf: e.target.value})}/>
-                <span className="field__label-wrap">
-                  <span className="field__label">CPF</span>
-                </span>
-              </label>
->>>>>>> aab625166869eba240f87edadc9f8b1af88c3d61
 
                 
                 <br/>
@@ -113,9 +102,8 @@ export class Login extends React.Component{
                   </span>
                 </label>
 
-<<<<<<< HEAD
                 <br/>
-                <input type='submit' value='Logar' className='btn'/>
+                <button type='submit' className='btn'>Logar</button>
                 <p>Ainda não possui uma conta?
                   <Link className="link" to={{
                       pathname: '/manterUsuario',
@@ -127,20 +115,6 @@ export class Login extends React.Component{
                 </p>
               </form>
             </div>
-=======
-              <br/>
-              <button type='submit' className='btn'>Logar</button>
-              <p>Ainda não possui uma conta?
-                <Link className="link" to={{
-                    pathname: '/manterUsuario',
-                    state: {acao: 'cadastrar'}
-                  }}
-                >
-                Cadastre-se!
-              </Link>
-              </p>
-            </form>
->>>>>>> aab625166869eba240f87edadc9f8b1af88c3d61
           </div>
         </div>
         <Footer/>
