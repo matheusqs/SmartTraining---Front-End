@@ -223,3 +223,8 @@ LEVEL 4. SETTINGS
   --fieldBorderColor: gold;
   --fieldBorderColorActive: #50C6FF;
 }
+
+.div-form-login{
+  left: 90%;
+}
+
