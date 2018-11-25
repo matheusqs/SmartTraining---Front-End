@@ -30,7 +30,7 @@ export class ManterAvaliacao extends React.Component{
     if(this.props.location.state.acao === 'alterar'){
       let aval = this.props.location.state.avaliacao;
       url = `http://localhost:8080/servletweb?acao=MostrarAvaliacao&data=${aval.data}&codCpf=${aval.cpf}`;
-      
+
       fetch(url, {
         headers: {
           'Accept': 'application/json'
@@ -48,7 +48,7 @@ export class ManterAvaliacao extends React.Component{
     let dia = date.getDate();
     let mes = date.getMonth()+1;
     let ano = date.getFullYear();
-    
+
     dia < 10 ? dia = '0' + dia : null;
     mes < 10 ? mes = '0' + mes : null;
 
@@ -60,12 +60,20 @@ export class ManterAvaliacao extends React.Component{
         ...this.state.avaliacao.cpfAluno = this.props.location.state.aluno.cpf,
         ...this.state.avaliacao.cpfInstrutor = this.props.location.state.user.cpf
       });
+    }else{
+      let data = this.state.avaliacao.data.split('-');
+      this.setState({...this.state.avaliacao.data = {}});
+      this.setState({
+        ...this.state.avaliacao.data.day = data[2],
+        ...this.state.avaliacao.data.month = data[1],
+        ...this.state.avaliacao.data.year = data[0],
+      });
     }
 
     let data = JSON.stringify(this.state.avaliacao);
 
     let url = 'http://localhost:8080/servletweb?';
-    
+
     if(this.props.location.state.acao === 'cadastrar'){
       url += 'acao=CadastrarAvaliacao';
     }else{
@@ -169,7 +177,7 @@ export class ManterAvaliacao extends React.Component{
             <br/>
 
             <label>Objetivos:</label>
-            <SelectTable opcoes={this.state.objetivos} selecionados={this.state.avaliacao.objetivos} 
+            <SelectTable opcoes={this.state.objetivos} selecionados={this.state.avaliacao.objetivos}
               selectionHandler={(e) => this.setState({...this.state.avaliacao.objetivos = e.data})} header='Objetivo'/>
 
 
