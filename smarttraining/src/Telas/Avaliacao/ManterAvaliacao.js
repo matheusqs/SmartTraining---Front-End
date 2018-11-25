@@ -50,12 +50,14 @@ export class ManterAvaliacao extends React.Component{
     dia < 10 ? dia = '0' + dia : null;
     mes < 10 ? mes = '0' + mes : null;
 
-    this.setState({
-      ...this.state.avaliacao.day = dia,
-      ...this.state.avaliacao.month = mes,
-      ...this.state.avaliacao.year = ano
-    });
-
+    if(this.props.location.state.acao === 'cadastrar'){
+      this.setState({
+        ...this.state.avaliacao.data.day = dia,
+        ...this.state.avaliacao.data.month = mes,
+        ...this.state.avaliacao.data.year = ano
+      });
+    }
+    
     let data = JSON.stringify(this.state.avaliacao);
 
     let url = 'http://localhost:8080/servletweb?';
