@@ -1,85 +1,85 @@
 import React from 'react';
-import { Header } from '../../Components/Header';
-import { BotaoVoltar } from '../../Components/BotaoVoltar';
-import { Footer } from '../../Components/Footer';
 import { Link } from 'react-router-dom';
+import { Header } from '../../Components/Header';
+import { Footer } from '../../Components/Footer';
+import { BotaoVoltar } from '../../Components/BotaoVoltar';
 
-export class ListarAvaliacoes extends React.Component{
+export class ListarFichas extends React.Component{
     constructor(props){
         super(props);
 
         this.state = ({
-            avaliacoes: []
+            fichas: []
         });
     }
 
     componentDidMount = () => {
-        let url = `http://localhost:8080/servletweb?acao=ListarAvaliacoes&codCpf=${this.props.location.state.aluno.cpf}`;
+        let aluno = this.props.location.state.aluno;
+        let url = `http://localhost:8080/servletweb?acao=ListarFichas&codCpf=${aluno.cpf}`;
         fetch(url, {
             headers: {
                 'Accept': 'application/json'
             }
         })
-        .then(resposta => resposta.json())
-        .then(resultado => this.setState({avaliacoes: resultado}));
+        .then(res => res.json())
+        .then(resultado => this.setState({fichas: resultado}));
     }
-    
+
     render(){
         let lista;
-        if(this.state.avaliacoes){
-            lista = this.state.avaliacoes.map((avaliacao, i) => 
+        if(this.state.fichas){
+            lista = this.state.fichas.map((ficha, i) =>
                 <li key={i}>
-                    Avaliação: {avaliacao.data}
+                    Ficha: {ficha.data}
 
                     <Link to={{
-                        pathname: '/verAvaliacao',
+                        pathname: '/verFicha',
                         state: {
                             user: this.props.location.state.user,
-                            avaliacao: avaliacao
+                            ficha: ficha
                         }
                     }}><button type='button'>Ver</button></Link>
-                    
+
                     {
                         this.props.location.state.user.tipo !== 'A' ?
                         <Link to={{
-                            pathname: '/manterAvaliacao',
+                            pathname: '/manterFicha',
                             state: {
                                 user: this.props.location.state.user,
                                 acao: 'alterar',
-                                avaliacao: avaliacao
+                                ficha: ficha
                             }
-                        }}><input type='button' value='alterar'/></Link> : null
+                        }}><button type='button'>Alterar</button></Link> : null
                     }
-                </li>
+                </li>    
             );
         }
 
         return(
             <div>
                 <Header tipo={this.props.location.state.user.tipo} user={this.props.location.state.user}/>
-                <div className='container'>
-                    <h2>{this.props.location.state.user.tipo === 'A' ? 'Avaliações:' : 'Avaliações ' + this.props.location.state.aluno.nome + ':'}</h2>
-                    
+                <div>
+                    <h2>{this.props.location.state.user.tipo === 'A' ? 'Fichas:' : 'Fichas ' + this.props.location.state.aluno.nome + ':'}</h2>
+
                     {
                         this.props.location.state.user.tipo !== 'A' ?
                         <span>
                             <Link to={{
-                                pathname: '/removerAvaliacoes',
+                                pathname: '/removerFichas',
                                 state: {
                                     user: this.props.location.state.user,
                                     aluno: this.props.location.state.aluno
                                 }
-                            }}><button type='button' className='btn btn-right'>Remover</button></Link> 
+                            }}></Link>
 
                             <Link to={{
-                                pathname: '/manterAvaliacao',
+                                pathname: '/manterFicha',
                                 state: {
                                     user: this.props.location.state.user,
                                     acao: 'cadastrar',
-                                    aluno: this.props.location.state.aluno 
+                                    aluno:this.props.location.state.aluno
                                 }
-                            }}><button type='button' className='btn btn-right'>Inserir</button></Link>
-
+                            }}><button type='button'>Cadastrar</button></Link> 
                         </span>: null
                     }
                     <br/>

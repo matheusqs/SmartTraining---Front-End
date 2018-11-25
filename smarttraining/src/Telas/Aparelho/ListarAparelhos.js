@@ -40,7 +40,7 @@ export class ListarAparelhos extends React.Component{
                     }}><input type='button' value='Ver'/></Link>
 
                     {
-                        this.props.location.state.user.tipo !== 'A' ?
+                        this.props.location.state.user.tipo === 'C' ?
                         <Link to={{
                             pathname: '/manterAparelho',
                             state: {

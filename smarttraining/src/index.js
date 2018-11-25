@@ -27,6 +27,9 @@ import {ManterAparelho} from './Telas/Aparelho/ManterAparelho';
 import {RemoverAparelho} from './Telas/Aparelho/RemoverAparelho';
 import {VerAparelho} from './Telas/Aparelho/VerAparelho';
 
+import {ListarFichas} from './Telas/Ficha/ListarFichas';
+import {VerFicha} from './Telas/Ficha/VerFicha';
+
 import {ListarMusculos} from './Telas/Musculo/ListarMusculos';
 import {VerMusculo} from './Telas/Musculo/VerMusculo';
 
@@ -58,6 +61,9 @@ ReactDOM.render(
       <Route path='/manterExercicio' component={ManterExercicio}/>
       <Route path='/removerExercicio' component={RemoverExercicio}/>
       <Route path='/verExercicio' component={VerExercicio}/>
+
+      <Route path='/listarFichas' component={ListarFichas}/>
+      <Route path='/verFicha' component={VerFicha}/>
 
       <Route path='/listarMusculos' component={ListarMusculos}/>
       <Route path='/verMusculo' component={VerMusculo}/>

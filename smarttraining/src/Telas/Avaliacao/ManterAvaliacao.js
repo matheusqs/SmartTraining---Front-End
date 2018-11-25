@@ -3,7 +3,6 @@ import {Header} from '../../Components/Header';
 import {Footer} from '../../Components/Footer';
 import {BotaoVoltar} from '../../Components/BotaoVoltar';
 import {SelectTable} from '../../Components/SelectTable';
-import {Dropdown} from 'primereact/dropdown';
 
 export class ManterAvaliacao extends React.Component{
   constructor(props) {
@@ -17,14 +16,14 @@ export class ManterAvaliacao extends React.Component{
   }
 
   componentDidMount(){
-    let url = `http://localhost:8080/servletweb?acao=telaCadastrarAvaliacao`;
+    let url = `http://localhost:8080/servletweb?acao=TelaCadastrarAvaliacao`;
     fetch(url, {
       headers: {
         'Accept': 'application/json'
       }
     })
     .then(resposta => resposta.json())
-    .then(resultado => this.setState({objetivos: resultado.listaObjetivos}));
+    .then(resultado => this.setState({objetivos: resultado.objetivos}));
 
     if(this.props.location.state.acao === 'alterar'){
       let aval = this.props.location.state.avaliacao;
