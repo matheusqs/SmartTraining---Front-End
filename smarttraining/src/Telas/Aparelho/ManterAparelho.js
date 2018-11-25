@@ -49,9 +49,7 @@ export class ManterAparelho extends React.Component{
             url += 'acao=AlterarAparelho';
         }
 
-        let data = Object.entries(this.state).map(state => {
-            return encodeURIComponent(state[0]) + '=' + encodeURIComponent(state[1])
-        }).join('&');
+        let data = JSON.stringify(this.state.aparelho);
 
         fetch(url, {
             method: 'POST',

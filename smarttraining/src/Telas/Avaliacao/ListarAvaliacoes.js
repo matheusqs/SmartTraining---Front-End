@@ -64,7 +64,7 @@ export class ListarAvaliacoes extends React.Component{
                         this.props.location.state.user.tipo !== 'A' ?
                         <span>
                             <Link to={{
-                                pathname: '/removerAvaliacoes',
+                                pathname: '/removerAvaliacao',
                                 state: {
                                     user: this.props.location.state.user,
                                     aluno: this.props.location.state.aluno

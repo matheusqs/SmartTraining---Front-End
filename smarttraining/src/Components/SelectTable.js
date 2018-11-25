@@ -12,7 +12,7 @@ export class SelectTable extends React.Component {
             <div>
                 <DataTable value={this.props.opcoes} selection={this.props.selecionados} onSelectionChange={this.props.selectionHandler}>
                     <Column selectionMode="multiple" style={{width:'2em'}}/>
-                    <Column field='nome' header={this.props.header}/>                
+                    <Column field={!this.props.fielder ? 'nome' : this.props.fielder} header={this.props.header}/>                
                 </DataTable>
             </div>
         )

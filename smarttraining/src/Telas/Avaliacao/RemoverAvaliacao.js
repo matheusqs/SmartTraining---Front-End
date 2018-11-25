@@ -10,32 +10,30 @@ export class RemoverAvaliacao extends React.Component{
         super(props);
 
         this.state = ({
-            alunos: null,
-            aluno: null,
-            avaliacoes: null,
-            selecionadas: null
+            avaliacoes: [],
+            selecionadas: []
         });
 
-        this.alunoChange = this.alunoChange.bind(this);
-        this.selectionHandler = this.selectionHandler.bind(this);
+        this.submitHandler = this.submitHandler.bind(this);
     }
 
     componentDidMount = () => {
-        let url = 'http://localhost:8080/servletweb?acao=ListarAlunos';
-
+        let aluno = this.props.location.state.aluno;
+        let url = `http://localhost:8080/servletweb?acao=ListarAvaliacoes&codCpf=${aluno.cpf}`;
         fetch(url, {
             headers: {
                 'Accept': 'application/json'
             }
         })
-        .then(resposta => resposta.json())
-        .then(resultado => this.setState({alunos: resultado}));
+        .then(res => res.json())
+        .then(resultado => this.setState({avaliacoes: resultado}));
+        
     }
 
     submitHandler = () => {
         let url;
         this.state.selecionadas.forEach(aval => {
-            url = `http://localhost:8080/servletweb?acao=RemoverAvaliacao&data=${aval.data}&codCpf=${aval.codCpfAluno}`
+            url = `http://localhost:8080/servletweb?acao=RemoverAvaliacao&data=${aval.data}&codCpf=${aval.cpf}`
             fetch(url, {
                 headers: {
                     'Accept': 'application/json'
@@ -43,38 +41,15 @@ export class RemoverAvaliacao extends React.Component{
             });
         });
     }
-
-    alunoChange = (e) => {
-        this.setState({aluno: e.value});
-        let url = `http://localhost:8080/servletweb?acao=ListarAvaliacoes&codCpf=${e.value.cpf}`;
-
-        fetch(url, {
-            headers: {
-                'Accept': 'application/json'
-            }
-        })
-        .then(resposta => resposta.json())
-        .then(resultado => this.setState({avaliacoes: resultado}))
-    }
-
-    selectionHandler = (e) => {
-        this.setState({
-            selecionadas: e.data
-        })
-    }
-
+    
     render(){
         return(
             <div>
                 <Header/>
                 <div>
-                    <h2>Selecione um aluno:</h2>
-                    <Dropdown placeholder='Selecione um aluno' value={this.state.aluno.nome} options={this.state.alunos}
-                        onChange={this.alunoChange}/>
-
                     <h2>Selecione as avaliações que deseja remover:</h2>
                     <SelectTable opcoes={this.state.avaliacoes} selecionados={this.state.selecionadas}
-                        selectionHandler={this.selectionHandler} header='Avaliação'/>
+                        selectionHandler={(e) => this.setState({selecionadas: e.data})} header='Avaliação' fielder='data'/>
 
                     <input type='button' value='Remover' onClick={this.submitHandler}/>
                     <BotaoVoltar/>
