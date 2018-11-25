@@ -76,10 +76,11 @@ export class ManterAparelho extends React.Component{
                         <input type='text' id='des' value={this.state.aparelho.descricao} onChange={(e) => this.setState({...this.state.aparelho.descricao = e.target.value})}/>
                         <br/>
 
-                        <label htmlFor='ex'>Exercícios</label>
-                        <SelectTable opcoes={this.state.listaExercicios} selecionados={this.state.aparelho.exercicios} id='ex'
-                            selectionHandler={(e) => this.setState({...this.state.aparelho.exercicios = e.data})} header='Exercício' />
-
+                        {this.props.location.state.acao === 'cadastrar' ?
+                            <span><label htmlFor='ex'>Exercícios</label>
+                            <SelectTable opcoes={this.state.listaExercicios} selecionados={this.state.aparelho.exercicios} id='ex'
+                                selectionHandler={(e) => this.setState({...this.state.aparelho.exercicios = e.data})} header='Exercício' /></span> : null
+                        }
                         <input type='submit' value='Cadastrar'/>
                     </form>
                     <BotaoVoltar/>

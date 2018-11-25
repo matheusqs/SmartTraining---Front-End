@@ -45,7 +45,8 @@ export class ListarAparelhos extends React.Component{
                             pathname: '/manterAparelho',
                             state: {
                                 user: this.props.location.state.user,
-                                acao: 'alterar'
+                                acao: 'alterar',
+                                aparelho: aparelho
                             }
                         }}><button type='button'>Alterar</button></Link> : null
                     }
