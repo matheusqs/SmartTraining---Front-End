@@ -38,6 +38,17 @@ export class ListarAparelhos extends React.Component{
                             aparelho: aparelho
                         }
                     }}><input type='button' value='Ver'/></Link>
+
+                    {
+                        this.props.location.state.user.tipo !== 'A' ?
+                        <Link to={{
+                            pathname: '/manterAparelho',
+                            state: {
+                                user: this.props.location.state.user,
+                                acao: 'alterar'
+                            }
+                        }}><button type='button'>Alterar</button></Link> : null
+                    }
                 </li>
             );
         }
@@ -52,8 +63,11 @@ export class ListarAparelhos extends React.Component{
                         this.props.location.state.user.tipo === 'C' ?
                         <span>
                             <Link to={{
-                                pathname: '/cadastrarAparelho',
-                                state: {user: this.props.location.state.user}
+                                pathname: '/manterAparelho',
+                                state: {
+                                    user: this.props.location.state.user,
+                                    acao: 'cadastrar'
+                                }
                             }}><button type='button' className='btn btn-right'>Cadastrar</button></Link>
 
                             <Link to={{
