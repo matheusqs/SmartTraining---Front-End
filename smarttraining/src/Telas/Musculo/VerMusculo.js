@@ -46,12 +46,8 @@ export class VerMusculo extends React.Component{
         return(
             <div>
                 <Header tipo={this.props.location.state.user.tipo} user={this.props.location.state.user}/>
-                <div>
-                    <h2>Nome</h2>
-                    <p>{this.state.musculo.nome}</p>
-
-                    <h2>Descrição</h2>
-                    <p>{this.state.musculo.descricao}</p>
+                <div className='container'>
+                    <h1>Músculo: {this.state.musculo.nome}</h1>
 
                     <h2>Exercícios</h2>
                     <ul>{lista}</ul>

@@ -10,9 +10,8 @@ export class SelectTable extends React.Component {
     render(){
         return(
             <div>
-                <label>Selecione o(s) objetivo(s)</label>
                 <DataTable value={this.props.opcoes} selection={this.props.selecionados} onSelectionChange={this.props.selectionHandler}>
-                    <Column selectionMode='multiple'/>
+                    <Column selectionMode="multiple" style={{width:'2em'}}/>
                     <Column field='nome' header={this.props.header}/>                
                 </DataTable>
             </div>

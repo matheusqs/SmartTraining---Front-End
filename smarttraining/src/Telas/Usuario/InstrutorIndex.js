@@ -7,7 +7,9 @@ export class InstrutorIndex extends React.Component {
     constructor(props){
         super(props);
 
-        this.montarLista = this.montarLista.bind(this);
+        this.state = ({
+            alunos: []
+        });
     }
 
     componentDidMount = () => {
@@ -21,28 +23,30 @@ export class InstrutorIndex extends React.Component {
         .then(resultado => this.setState({alunos: resultado}));
     }
 
-    montarLista = () => {
-        let lista = this.state.alunos.map(aluno => {
-            <li>
-                {aluno.nome}
-                <Link to={{
-                    pathname: '/verAluno',
-                    user: this.props.location.state.user,
-                    aluno: aluno
-                }}><input type='button' value='Ver aluno'/></Link>
-            </li>
-        });
-
-        return lista;
-    }
-
     render(){
+        let lista;
+        if(this.state.alunos){
+            lista = this.state.alunos.map((aluno, i) => 
+                <li key={i}>
+                    {aluno.nome}
+
+                    <Link to={{
+                        pathname: '/verPerfil',
+                        state: {
+                            user: this.props.location.state.user,
+                            aluno: aluno
+                        }
+                    }}><button type='button' className='btn btn-right'>Ver</button></Link>
+                </li>
+            );
+        }
+
         return(
             <div>
                 <Header tipo={this.props.location.state.user.tipo} user={this.props.location.state.user} />
                 <div>
                     <h2>Alunos:</h2>
-                    <ul>{this.montarLista}</ul>
+                    <ul>{lista}</ul>
                 </div>
                 <Footer/>
             </div>

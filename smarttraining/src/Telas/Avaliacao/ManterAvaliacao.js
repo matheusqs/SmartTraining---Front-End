@@ -10,34 +10,10 @@ export class ManterAvaliacao extends React.Component{
     super(props);
 
     this.state = ({
-      avaliacao:{
-        cpfInstrutor: null,
-        cpfAluno: null,
-        peso: null,
-        percentualGordura: null,
-        tamanhoPescoco: null,
-        tamanhoOmbro: null,
-        tamanhoTorax: null,
-        tamanhoAbdomen: null,
-        tamanhoCintura: null,
-        tamanhoQuadril: null,
-        massaGorda: null,
-        tamanhoBracoEsquerdo: null,
-        tamanhoBracoDireito: null,
-        tamanhoAntebracoEsquerdo: null,
-        tamanhoAntebracoDireito: null,
-        tamanhoCoxaEsquerda: null,
-        tamanhoCoxaDireita: null,
-        tamanhoPanturrilhaEsquerda: null,
-        tamanhoPanturrilhaDireita: null,
-        objetivos: [],
-        data: null
-      },
-      aluno: null
+      avaliacao:{}
     });
 
     this.submitHandler = this.submitHandler.bind(this);
-    this.selectionHandler = this.selectionHandler.bind(this);
   }
 
   componentDidMount(){
@@ -48,32 +24,20 @@ export class ManterAvaliacao extends React.Component{
       }
     })
     .then(resposta => resposta.json())
-    .then(resultado => this.setState({objetivos: resultado.listaObjetivos}))
+    .then(resultado => this.setState({objetivos: resultado.listaObjetivos}));
 
-    url = `http://localhost:8080/servletweb?acao=ListarAlunos`;
-    fetch(url, {
-      headers: {
-        'Accept': 'application/json'
-      }
-    })
-    .then(resposta => resposta.json())
-    .then(resultado => this.setState({alunos: resultado}));
-
-    if(this.props.location.state.acao !== 'alterar'){
-      return;
+    if(this.props.location.state.acao === 'alterar'){
+      let aval = this.props.location.state.avaliacao;
+      url = `http://localhost:8080/servletweb?acao=MostrarAvaliacao&data=${aval.data}&codCpf=${aval.cpf}`;
+      
+      fetch(url, {
+        headers: {
+          'Accept': 'application/json'
+        }
+      })
+      .then(resposta => resposta.json())
+      .then(resultado => this.setState({avaliacao: resultado}));
     }
-
-    url = `http://localhost:8080/servletweb?acao=MostrarAvaliacao&data=${this.props.location.state.avaliacao.data}&codCpf=${this.props.location.state.avaliacao.cpfAluno}`;
-    
-    fetch(url, {
-      headers: {
-        'Accept': 'application/json'
-      }
-    })
-    .then(resposta => resposta.json())
-    .then(resultado => {
-      this.setState({...this.state.avaliacao = resultado})
-    });
   }
 
   submitHandler = (e) => {
@@ -115,25 +79,11 @@ export class ManterAvaliacao extends React.Component{
 
   }
 
-  selectionHandler = (e) => {
-    this.setState({
-      objetivosSelecionados: e.data,
-      ...this.state.avaliacao.objetivos = e.data
-    });
-  }
-
   render(){
     return(
       <div>
         <Header tipo={this.props.location.state.user.tipo} user={this.props.location.state.user}/>
         <div>
-          {
-            this.props.location.state.acao === 'cadastrar' ?
-            <Dropdown value={this.state.aluno.nome} options={this.state.alunos.nome} placeholder='Selecione um aluno' 
-            onChange={(e) => this.setState({aluno: e.value})} /> :
-            <p>Aluno: {this.state.aluno}</p>
-          }
-
           <form onSubmit={this.submitHandler}>
             <label htmlFor='peso'>Peso</label>
             <input type='number' id='peso' value={this.state.avaliacao.peso}
@@ -215,8 +165,9 @@ export class ManterAvaliacao extends React.Component{
               onChange={(e) => this.setState({...this.state.avaliacao.tamanhoPanturrilhaDireita = e.target.value})}/>
             <br/>
 
-            <SelectTable opcoes={this.state.objetivos} selecionados={this.state.objetivosSelecionados} 
-              selectionHandler={this.selectionHandler} header='Objetivo'/>
+            <label>Objetivos:</label>
+            <SelectTable opcoes={this.state.objetivos} selecionados={this.state.avaliacao.objetivos} 
+              selectionHandler={(e) => this.setState({...this.state.avaliacao.objetivos = e.data})} header='Objetivo'/>
 
 
             <input type='submit' value={this.props.location.state.acao === 'cadastrar' ? 'Cadastrar' : 'Alterar'}/>

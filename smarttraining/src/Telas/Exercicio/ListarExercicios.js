@@ -38,7 +38,16 @@ export class ListarExercicios extends React.Component {
                             user: this.props.location.state.user,
                             exercicio: exercicio
                         }
-                    }}><input type='button' value='Ver exercício'/></Link>
+                    }}><input type='button' value='Ver'/></Link>
+
+                    <Link to={{
+                        pathname: '/manterExercicio',
+                        state: {
+                            user: this.props.location.state.user,
+                            acao: 'alterar',
+                            exercicio: exercicio
+                        }
+                    }}><button>Alterar</button></Link>
                 </li>
             );
         }
@@ -53,8 +62,11 @@ export class ListarExercicios extends React.Component {
                         this.props.location.state.user.tipo !== 'A' ?
                         <span> 
                             <Link to={{
-                                pathname: '/inserirExercicio',
-                                state: {user: this.props.location.state.user}
+                                pathname: '/manterExercicio',
+                                state: {
+                                    user: this.props.location.state.user,
+                                    acao: 'cadastrar'
+                                }
                             }}><input type='button' value='Inserir'/></Link>
 
                             <Link to={{
