@@ -13,6 +13,11 @@ export class VerMusculo extends React.Component{
         });
     }
 
+    componentDidMount = () => {
+        let musc = this.props.location.state.musculo;
+        let url = `http://localhost:8080/servletweb?acao=MostrarMusculo&numero=${musc.numero}`;
+    }
+
     render(){
         let lista;
         if(this.state.musculo.exercicios){

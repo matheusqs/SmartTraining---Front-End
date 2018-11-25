@@ -14,7 +14,8 @@ export class VerAparelho extends React.Component{
     }
 
     componentDidMount = () => {
-        let url = `http://localhost:8080/servletweb?acao=MostrarAparelho&cod=${this.props.location.state.aparelho.cod}`;
+        let apar = this.props.location.state.aparelho;
+        let url = `http://localhost:8080/servletweb?acao=MostrarAparelho&numero=${apar.numero}`;
         fetch(url, {
             headers: {
                 'Accept': 'application/json'

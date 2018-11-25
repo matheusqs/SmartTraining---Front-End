@@ -15,7 +15,7 @@ export class VerExercicio extends React.Component{
 
     componentDidMount = () => {
         let exe = this.props.location.state.exercicio;
-        let url = `http://localhost:8080/servletweb?acao=MostrarExercicio&cod=${exe.cod}`;
+        let url = `http://localhost:8080/servletweb?acao=MostrarExercicio&numero=${exe.numero}`;
         fetch(url, {
             headers: {
                 'Accept': 'application/json'
