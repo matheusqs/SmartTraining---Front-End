@@ -140,10 +140,8 @@ export class Header extends React.Component{
 
       default:
         return (
-        
           <header>
-
-            <p>SmartTraining</p>
+            <h2>SmartTraining</h2>
           </header>
       );
     }

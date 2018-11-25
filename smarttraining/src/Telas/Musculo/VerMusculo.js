@@ -16,6 +16,13 @@ export class VerMusculo extends React.Component{
     componentDidMount = () => {
         let musc = this.props.location.state.musculo;
         let url = `http://localhost:8080/servletweb?acao=MostrarMusculo&numero=${musc.numero}`;
+        fetch(url, {
+            headers: {
+                'Accept': 'application/json'
+            }
+        })
+        .then(res => res.json())
+        .then(resultado => this.setState({musculo: resultado}));
     }
 
     render(){
@@ -44,9 +51,7 @@ export class VerMusculo extends React.Component{
                     <p>{this.state.musculo.nome}</p>
 
                     <h2>Descrição</h2>
-                    <textarea disabled>
-                        {this.state.musculo.descricao}
-                    </textarea>
+                    <p>{this.state.musculo.descricao}</p>
 
                     <h2>Exercícios</h2>
                     <ul>{lista}</ul>

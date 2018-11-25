@@ -51,9 +51,7 @@ export class VerExercicio extends React.Component{
                     <p>{this.state.exercicio.nome}</p>
 
                     <h2>Descrição</h2>
-                    <textarea disabled>
-                        {this.state.exercicio.descricao}
-                    </textarea>
+                    <p>{this.state.exercicio.descricao}</p>
 
                     <h2>Músculos</h2>
                     <ul>{lista}</ul>
