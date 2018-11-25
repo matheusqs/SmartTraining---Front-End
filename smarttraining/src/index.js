@@ -60,7 +60,7 @@ ReactDOM.render(
       <Route path='/verExercicio' component={VerExercicio}/>
 
       <Route path='/listarMusculos' component={ListarMusculos}/>
-      <Route path='verMusculo' component={VerMusculo}/>
+      <Route path='/verMusculo' component={VerMusculo}/>
     </Switch>
   </BrowserRouter>,
   document.querySelector('.root')
