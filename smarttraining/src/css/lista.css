@@ -11,7 +11,7 @@ ul.striped-list {
     transform: translate(45%,0%);
 }
 ul.striped-list > li {
-    border-bottom: 1px solid rgb(221,221,221);
+    border-bottom: 1px solid gold;
     padding: 6px;
 }
 ul.striped-list > li:nth-of-type(odd) {

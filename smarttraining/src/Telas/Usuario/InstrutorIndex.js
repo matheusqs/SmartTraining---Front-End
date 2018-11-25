@@ -28,7 +28,7 @@ export class InstrutorIndex extends React.Component {
         if(this.state.alunos){
             lista = this.state.alunos.map((aluno, i) => 
                 <li key={i}>
-                    {aluno.nome}
+                    <div className="div-lista">{aluno.nome}</div>
 
                     <Link to={{
                         pathname: '/verPerfil',
@@ -46,7 +46,7 @@ export class InstrutorIndex extends React.Component {
                 <Header tipo={this.props.location.state.user.tipo} user={this.props.location.state.user} />
                 <div>
                     <h2>Alunos:</h2>
-                    <ul>{lista}</ul>
+                    <ul className="striped-list">{lista}</ul>
                 </div>
                 <Footer/>
             </div>

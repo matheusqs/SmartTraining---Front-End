@@ -31,14 +31,15 @@ export class ListarAlunos extends React.Component{
         if(this.state.alunos){
             lista = this.state.alunos.map((aluno, i) =>
                 <li key={i}>
-                    {aluno.nome}
+                    <div className="div-lista">{aluno.nome}</div>
+                    <span className="lista-right">
                     <Link to={{
                         pathname: '/verPerfil',
                         state:{
                             user: this.props.location.state.user,
                             aluno: aluno
                         }
-                    }}><input type='button' value='Perfil'/></Link>
+                    }}><button type="button" className="btn">Perfil</button></Link>
                     
                     <Link to={{
                         pathname: '/listarAvaliacoes',
@@ -46,7 +47,7 @@ export class ListarAlunos extends React.Component{
                             user: this.props.location.state.user,
                             aluno: aluno
                         }
-                    }}><input type='button' value='Avaliações'/></Link>
+                    }}><button type="button" className="btn">Avaliações</button></Link>
 
                     <Link to={{
                         pathname: '/listarFichas',
@@ -54,7 +55,7 @@ export class ListarAlunos extends React.Component{
                             user: this.props.location.state.user,
                             aluno: aluno
                         }
-                    }}><input type='button' value='Fichas'/></Link>
+                    }}><button type="button" className="btn">Fichas</button></Link></span>
                 </li>
             );
         }
@@ -73,7 +74,7 @@ export class ListarAlunos extends React.Component{
                         }}><input type='button' value='Remover'/></Link> : null
                     }
 
-                    <ul>
+                    <ul className="striped-list">
                         {lista}
                     </ul>
                     <BotaoVoltar/>
