@@ -29,15 +29,16 @@ export class ListarAparelhos extends React.Component{
         if(this.state.aparelhos){
             lista = this.state.aparelhos.map((aparelho, i) => 
                 <li key={i}>
-                    {aparelho.nome}
-                    
+
+                    <div className="div-lista">{aparelho.nome}</div>
+                    <span className="lista-right">
                     <Link to={{
                         pathname: '/verAparelho',
                         state: {                        
                             user: this.props.location.state.user,
                             aparelho: aparelho
                         }
-                    }}><input type='button' value='Ver'/></Link>
+                    }}><button type='button' className="btn">Ver</button></Link>
 
                     {
                         this.props.location.state.user.tipo === 'C' ?
@@ -48,8 +49,8 @@ export class ListarAparelhos extends React.Component{
                                 acao: 'alterar',
                                 aparelho: aparelho
                             }
-                        }}><button type='button'>Alterar</button></Link> : null
-                    }
+                        }}><button type='button' className="btn">Alterar</button></Link> : null 
+                    }</span>
                 </li>
             );
         }
@@ -78,7 +79,7 @@ export class ListarAparelhos extends React.Component{
                         </span>: null
                     }
 
-                    <ul>{lista}</ul>
+                    <ul className="striped-list">{lista}</ul>
                     <BotaoVoltar/>
                 </div>
                 <Footer/>
