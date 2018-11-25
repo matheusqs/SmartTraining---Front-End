@@ -9,7 +9,9 @@ export class ManterAvaliacao extends React.Component{
     super(props);
 
     this.state = ({
-      avaliacao:{}
+      avaliacao:{
+        data: {}
+      }
     });
 
     this.submitHandler = this.submitHandler.bind(this);
@@ -54,10 +56,12 @@ export class ManterAvaliacao extends React.Component{
       this.setState({
         ...this.state.avaliacao.data.day = dia,
         ...this.state.avaliacao.data.month = mes,
-        ...this.state.avaliacao.data.year = ano
+        ...this.state.avaliacao.data.year = ano,
+        ...this.state.avaliacao.cpfAluno = this.props.location.state.aluno.cpf,
+        ...this.state.avaliacao.cpfInstrutor = this.props.location.state.user.cpf
       });
     }
-    
+
     let data = JSON.stringify(this.state.avaliacao);
 
     let url = 'http://localhost:8080/servletweb?';
