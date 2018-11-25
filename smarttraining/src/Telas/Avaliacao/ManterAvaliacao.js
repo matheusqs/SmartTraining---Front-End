@@ -56,9 +56,7 @@ export class ManterAvaliacao extends React.Component{
       ...this.state.avaliacao.year = ano
     });
 
-    let data = Object.entries(this.state.avaliacao).map(state => {
-      return encodeURIComponent(state[0]) + '=' + encodeURIComponent(state[1])
-    });
+    let data = JSON.stringify(this.state.avaliacao);
 
     let url = 'http://localhost:8080/servletweb?';
     
