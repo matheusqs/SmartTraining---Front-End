@@ -10,6 +10,10 @@ export class AlunoIndex extends React.Component {
     super(props);
   }
 
+  componentDidMount = () => {
+    let url = `http://localhost:8080/servletweb?acao=MostrarUltimaFicha&codCpf=${this.props.location.state.user.cpf}`
+  }
+
   render(){
     return(
       <div>

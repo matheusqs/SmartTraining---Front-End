@@ -192,21 +192,19 @@ export class ManterUsuario extends React.Component {
 
 	          <br />
 
-	          {this.props.location.state.acao === 'cadastrar' ? [
+	          {this.props.location.state.acao === 'cadastrar' ?
 	            <div>
 	              <Checkbox inputId='inst' onChange={this.isInstrutor} chekced={this.state.checked} />
 	              <label htmlFor='inst'>Instrutor</label>
-	            </div>
-	          ] : null
+	            </div> : null
 	          }
 
-	          {this.state.person.tipo === 'I' ? [
+	          {this.state.person.tipo === 'I' ?
 	            <div>
 	              <label htmlFor='cref'>Número CREF</label>
 	              <input type='number' id='cref' value={this.state.person.cref} 
 	              onChange={(e) => this.setState({ ...this.state.person.cref = e.target.value })} />
-	            </div>
-	            ] : null
+	            </div> : null
             }
             <BotaoVoltar />
 	          <button type='submit' className="btn btn-right">Cadastrar</button>

@@ -9,13 +9,12 @@ export class VerFicha extends React.Component{
 
         this.state = ({
             ficha: {},
-            nTreioAtual: 0
         });
     }
 
     componentDidMount = () => {
         let ficha = this.props.location.state.ficha;
-        let url = `http://localhost:8080/servletweb?acao=MostrarFicha&data=${ficha.data}&codCpf=${ficha.cpf}`;
+        let url = `http://localhost:8080/servletweb?acao=MostrarFicha&numero=${ficha.numero}&codCpf=${ficha.codCpf}`;
         fetch(url, {
             headers: {
                 'Accept': 'application/json'
@@ -25,28 +24,31 @@ export class VerFicha extends React.Component{
         .then(resultado => this.setState({ficha: resultado}));
     }
 
-    changeHandler = (e) => {
-
-    }
-
     render(){
-        let opcoes;
+        let treinos;
         if(this.state.ficha.treinos){
-            opcoes = this.state.ficha.treinos.map((treino) => 
-                <option key={treino.numero} onClick={this.setState({nTreioAtual: treino.numero})}>Treino {treino.numero + 1}</option>
-            );
-        }
-
-        let tabela;
-        if(this.state.ficha.treino[this.state.nTreioAtual].atividades){
-            tabela = this.state.ficha.treino[this.state.nTreioAtual].atividades.map((atividade, i) => 
-                <tr>
-                    <td>{atividade.nroAparelho}</td>
-                    <td>{atividade.nomExercicio}</td>
-                    <td>{atividade.series}</td>
-                    <td>{atividade.repeticoes}</td>
-                    <td>{atividade.peso}</td>
-                </tr>
+            treinos = this.state.ficha.treinos.map((treino, i) =>
+                <li key={i}>
+                    <h2>Treino {treino.numero}</h2>
+                    <table>
+                        <tr>
+                            <th>Aparelho</th>
+                            <th>Exercício</th>
+                            <th>Séries</th>
+                            <th>Repetições</th>
+                            <th>Peso</th>
+                        </tr>
+                        {treino.atividades.map((atividade, j) =>
+                            <tr>
+                                <th>{atividade.nroAparelho}</th>
+                                <th>{atividade.nomExercicio}</th>
+                                <th>{atividade.nroSeries}</th>
+                                <th>{atividade.nroRepeticoes}</th>
+                                <th>{atividade.qtdPeso}</th>
+                            </tr>
+                        )}
+                    </table>
+                </li>
             );
         }
 
@@ -54,18 +56,7 @@ export class VerFicha extends React.Component{
             <div>
                 <Header tipo={this.props.location.state.user.tipo} user={this.props.location.state.user}/>
                 <div>
-                    <select onChange={this.changeHandler}>{opcoes}</select>
-
-                    <table>
-                        <tr>
-                            <th>Aparelho</th>
-                            <th>Exercício</th>
-                            <th>Nº séries</th>
-                            <th>Nº repetições</th>
-                            <th>Peso</th>
-                        </tr>
-                        {tabela}
-                    </table>
+                    <ul>{treinos}</ul>
                     <BotaoVoltar/>
                 </div>
                 <Footer/>
