@@ -21,10 +21,15 @@ export class Header extends React.Component{
         items = [
           {
             label: <Link to={{
+              pathname: '/alunoIndex',
+              state: {user: this.props.user}
+            }}>Início</Link>
+          },
+          {
+            label: <Link to={{
               pathname: '/perfil',
               state: {user: this.props.user}
-            }}>Perfil</Link>,
-            icon: 'pi pi-fw pi-user',
+            }}>Perfil</Link>
           },
           {
             label: <Link to={{
@@ -57,10 +62,15 @@ export class Header extends React.Component{
         items = [
           {
             label: <Link to={{
+              pathname: '/instrutorIndex',
+              state: {user: this.props.user}
+            }}>Início</Link>
+          },
+          {
+            label: <Link to={{
               pathname: '/perfil',
               state: {user: this.props.user}
-            }}>Perfil</Link>,
-            icon: 'pi pi-fw pi-user'
+            }}>Perfil</Link>
           },
           {
             label: <Link to={{
@@ -100,10 +110,15 @@ export class Header extends React.Component{
         items = [
           {
             label: <Link to={{
+              pathname: '/coordenadorIndex',
+              state: {user: this.props.user}
+            }}>Início</Link>
+          },
+          {
+            label: <Link to={{
               pathname: '/perfil',
               state: {user: this.props.user}
-            }}>Perfil</Link>,
-            icon: 'pi pi-fw pi-user'
+            }}>Perfil</Link>
           },
           {
             label: <Link to={{

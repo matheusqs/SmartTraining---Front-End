@@ -39,18 +39,7 @@ export class ListarAparelhos extends React.Component{
                             aparelho: aparelho
                         }
                     }}><button type='button' className="btn">Ver</button></Link>
-
-                    {
-                        this.props.location.state.user.tipo === 'C' ?
-                        <Link to={{
-                            pathname: '/manterAparelho',
-                            state: {
-                                user: this.props.location.state.user,
-                                acao: 'alterar',
-                                aparelho: aparelho
-                            }
-                        }}><button type='button' className="btn">Alterar</button></Link> : null 
-                    }</span>
+                    </span>
                 </li>
             );
         }
@@ -78,6 +67,7 @@ export class ListarAparelhos extends React.Component{
                             }}><input type='button' value='Remover'/></Link> 
                         </span>: null
                     }
+                    <br/>
 
                     <ul className="striped-list">{lista}</ul>
                     <BotaoVoltar/>

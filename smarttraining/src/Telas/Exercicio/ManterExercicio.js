@@ -29,6 +29,22 @@ export class ManterExercicio extends React.Component {
             aparelhos: resultado.aparelhos,
             musculos: resultado.musculos
         }));
+
+        if(this.props.location.state.acao === 'alterar'){
+            url = `http://localhost:8080/servletweb?acao=MostrarExercicio&numero=${this.props.location.state.exercicio.numero}`;
+            fetch(url, {
+                headers: {
+                    'Accept': 'application/json'
+                }
+            })
+            .then(res => res.json())
+            .then(resultado => this.setState({
+                ...this.state.exercicio.numero = resultado.numero,
+                ...this.state.exercicio.nome = resultado.nome,
+                ...this.state.exercicio.descricao = resultado.descricao,
+                ...this.state.exercicio.musculos = {}
+            }));
+        }
     }
 
     submitHandler = (e) => {
@@ -68,13 +84,18 @@ export class ManterExercicio extends React.Component {
                         <input type='textarea'id='des' value={this.state.exercicio.descricao} onChange={(e) => this.setState({...this.state.exercicio.descricao = e.target.value})} />
                         <br/>
 
-                        <SelectTable opcoes={this.state.aparelhos} selecionados={this.state.exercicio.aparelhos}
-                            selectionHandler={(e) => this.setState({...this.state.exercicio.aparelhos = e.data})} header='Aparelho'/>
-                        <br/>
-
-                        <SelectTable opcoes={this.state.musculos} selecionados={this.state.exercicio.musculos}
-                            selectionHandler={(e) => this.setState({...this.state.exercicio.musculos = e.data})} header='Musculo'/>
+                        {
+                            this.props.location.state.acao === 'cadastrar' ?
+                            <span>
+                                <SelectTable opcoes={this.state.aparelhos} selecionados={this.state.exercicio.aparelhos}
+                                    selectionHandler={(e) => this.setState({...this.state.exercicio.aparelhos = e.data})} header='Aparelho'/>
+                                <br/>
+                            </span>: null
+                        }
                         
+                        <p>*selecione novamente todos os músculos que deseja para este exercício</p>
+                        <SelectTable opcoes={this.state.musculos} selecionados={this.state.exercicio.musculos}
+                            selectionHandler={(e) =>this.setState({...this.state.exercicio.musculos = e.data})} header='Musculo'/>
                         
                         <BotaoVoltar/>
                         <input type='submit' value='Cadastrar'/>
