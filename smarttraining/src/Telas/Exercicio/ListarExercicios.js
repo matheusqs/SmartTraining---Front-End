@@ -58,6 +58,7 @@ export class ListarExercicios extends React.Component {
                 <Header tipo={this.props.location.state.user.tipo} user={this.props.location.state.user}/>
                 <div>
                     <h2>Exercícios:</h2>
+                    <span className="lista-right">
                     
                     {
                         this.props.location.state.user.tipo !== 'A' ?
@@ -68,15 +69,15 @@ export class ListarExercicios extends React.Component {
                                     user: this.props.location.state.user,
                                     acao: 'cadastrar'
                                 }
-                            }}><input type='button' value='Inserir'/></Link>
+                            }}><button type="button" className="btn">Inserir</button></Link>
 
                             <Link to={{
                                 pathname: '/removerExercicio',
                                 state: {user: this.props.location.state.user}
-                            }}><input type='button' value='Remover'/></Link> 
+                            }}><button type="button" className="btn">Remover</button></Link> 
                         </span> : null
                     }
-
+                    </span>
                     <ul className="striped-list">{lista}</ul>
                     <BotaoVoltar/>
                 </div>
