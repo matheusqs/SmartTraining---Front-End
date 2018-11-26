@@ -46,7 +46,7 @@ export class ListarInstrutores extends React.Component{
             <div>
                 <Header tipo={this.props.location.state.user.tipo} user={this.props.location.state.user}/>
                 <div>
-                    <h2>Instrutores:</h2>
+                    <h2 className="lista">Instrutores</h2>
 
                     {
                         this.props.location.state.user.tipo === 'C' ?

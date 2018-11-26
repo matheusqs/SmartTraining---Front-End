@@ -48,23 +48,23 @@ export class ListarAparelhos extends React.Component{
             <div>
                 <Header tipo={this.props.location.state.user.tipo} user={this.props.location.state.user}/>
                 <div>
-                    <h2>Aparelhos:</h2>
+                    <h2 className="lista">Aparelhos</h2>
                     
                     {
                         this.props.location.state.user.tipo === 'C' ?
-                        <span>
+                        <span className="btn-right">
                             <Link to={{
                                 pathname: '/manterAparelho',
                                 state: {
                                     user: this.props.location.state.user,
                                     acao: 'cadastrar'
                                 }
-                            }}><button type='button' className='btn btn-right'>Cadastrar</button></Link>
+                            }}><button type='button' className='btn'>Cadastrar</button></Link>
 
                             <Link to={{
                                 pathname: '/removerAparelho',
                                 state: {user: this.props.location.state.user}
-                            }}><input type='button' value='Remover'/></Link> 
+                            }}><button type="button" className="btn">Remover</button></Link> 
                         </span>: null
                     }
                     <br/>

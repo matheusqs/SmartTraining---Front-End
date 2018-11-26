@@ -57,7 +57,7 @@ export class ListarExercicios extends React.Component {
             <div>
                 <Header tipo={this.props.location.state.user.tipo} user={this.props.location.state.user}/>
                 <div>
-                    <h2>Exercícios:</h2>
+                    <h2 className="lista">Exercícios</h2>
                     <span className="lista-right">
                     
                     {
