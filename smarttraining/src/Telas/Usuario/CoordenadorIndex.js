@@ -2,6 +2,7 @@ import React from 'react';
 import { Header } from '../../Components/Header';
 import { Footer } from '../../Components/Footer';
 import { Link } from 'react-router-dom';
+import './../../css/lista.css'
 
 export class CoordenadorIndex extends React.Component{
     constructor(props){
@@ -39,7 +40,7 @@ export class CoordenadorIndex extends React.Component{
         if(this.state.alunos && this.state.instrutores){
             alunos = this.state.alunos.map((aluno, i) =>
                 <li key={i}>
-                    {aluno.nome}
+                    <div className="div-lista">{aluno.nome}</div>
 
                     <Link to={{
                         pathname: '/verPerfil',
@@ -53,7 +54,8 @@ export class CoordenadorIndex extends React.Component{
 
             instrutores = this.state.instrutores.map((instrutor, i) => 
                 <li key={i}>
-                    {instrutor.nome}
+                	<div className="div-lista">{instrutor.nome}</div>
+                    
 
                     <Link to={{
                         pathname: '/verPerfil',
@@ -69,11 +71,11 @@ export class CoordenadorIndex extends React.Component{
                 <div>
                     <Header tipo={this.props.location.state.user.tipo} user={this.props.location.state.user} />
                     <div>
-                        <h2>Alunos:</h2>
-                        <ul>{alunos}</ul>
+                        <h2 className="lista">Alunos:</h2>
+                        <ul className="striped-list">{alunos}</ul>
 
-                        <h2>Instrutores:</h2>
-                        <ul>{instrutores}</ul>
+                        <h2 className="lista">Instrutores:</h2>
+                        <ul className="striped-list">{instrutores}</ul>
                     </div>
                     <Footer/>
                 </div>
