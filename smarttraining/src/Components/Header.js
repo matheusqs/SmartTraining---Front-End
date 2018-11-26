@@ -53,7 +53,10 @@ export class Header extends React.Component{
         return (
           <header>
             <Menubar model={items}>
-              <Button label='Sair' icon='pi pi-power-off'/>
+            <Link to={{
+                pathname: '/',
+                state: {}
+              }}><Button label='Sair' icon='pi pi-power-off'/></Link>
             </Menubar>
           </header>
         );
@@ -101,7 +104,10 @@ export class Header extends React.Component{
         return (
           <header>
             <Menubar model={items}>
-              <Button label='Sair' icon='pi pi-power-off'/>
+            <Link to={{
+                pathname: '/',
+                state: {}
+              }}><Button label='Sair' icon='pi pi-power-off'/></Link>
             </Menubar>
           </header>
         );
@@ -148,7 +154,10 @@ export class Header extends React.Component{
         return (
           <header>
             <Menubar model={items} className="width: 100%">
-              <Button label='Sair' icon='pi pi-power-off'/>
+              <Link to={{
+                pathname: '/',
+                state: {}
+              }}><Button label='Sair' icon='pi pi-power-off'/></Link>
             </Menubar>
           </header>
         );

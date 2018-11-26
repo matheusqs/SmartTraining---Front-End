@@ -79,7 +79,7 @@ export class Login extends React.Component{
         <Header/>
         <div className='flex'>
           <div className='metade metade-esquerda'>
-            <p>ENCHER LINGUIÇA COLOCAR DISPLAY FLEX</p>
+            <p></p>
           </div>
           <div className="metade metade-direita">
             <h1>Login</h1>
