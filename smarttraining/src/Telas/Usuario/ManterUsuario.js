@@ -15,7 +15,7 @@ export class ManterUsuario extends React.Component {
       person: {
         cpf: null,
         nome: null,
-        tipo: 'A',
+        tipo: this.props.location.state.acao === 'cadastrar' ? 'A' : null,
         senha: null,
         email: null,
         dataNascimento: {
@@ -34,38 +34,53 @@ export class ManterUsuario extends React.Component {
 
   componentDidMount() {
     if (this.props.location.state.acao === 'alterar') {
-      let url = `http://localhost:8080/servletweb?acao=TelaAlterarUsuario&cod=${this.props.location.state.user.cpf}`;
+      let url = `http://localhost:8080/servletweb?acao=MostrarUsuario&codCpf=${this.props.location.state.user.cpf}`;
 
       fetch(url, {
         headers: {
           'Accept': 'application/json'
         }
       })
-        .then(resposta => resposta.json())
-        .then(
-          (resultado) => {
-            this.setState({
-              ...this.state.person.nome = resultado.nome,
-              ...this.state.person.cpf = resultado.cpf,
-              ...this.state.person.email = resultado.email,
-              ...this.state.person.senha = resultado.senha,
-              ...this.state.person.cref = resultado.cref,
-              data: resultado.dataNascimento
-            });
-          }
-        );
+      .then(resposta => resposta.json())
+      .then(
+        (resultado) => {
+          this.setState({
+            ...this.state.person.nome = resultado.nome,
+            ...this.state.person.tipo = resultado.tipo,
+            ...this.state.person.cpf = resultado.cpf,
+            ...this.state.person.email = resultado.email,
+            ...this.state.person.senha = resultado.senha,
+            ...this.state.person.cref = resultado.cref,
+            data: resultado.dataNascimento
+          });
+        }
+      );
     }
   }
 
   submitHandler = (e) => {
     e.preventDefault();
-    let dia = this.state.data.getDate();
-    let mes = this.state.data.getMonth() + 1;
-    let ano = this.state.data.getFullYear();
-    let url;
+    console.log('a');
+    
+    let dia;
+    let mes;
+    let ano;
+    
+    if(this.props.location.state.acao === 'cadastrar' || this.state.dataChange){
+      dia = this.state.data.getDate();
+      mes = this.state.data.getMonth() + 1;
+      ano = this.state.data.getFullYear();
 
-    dia < 10 ? dia = '0' + dia : null;
-    mes < 10 ? mes = '0' + mes : null;
+      dia < 10 ? dia = '0' + dia : null;
+      mes < 10 ? mes = '0' + mes : null;
+    }
+
+    if(this.props.location.state.acao === 'alterar'){
+      let date = this.state.data.split('-');
+      dia = date[2];
+      mes = date[1];
+      ano = date[0];
+    }
 
     this.setState({
       ...this.state.person.dataNascimento.day = dia,
@@ -73,54 +88,55 @@ export class ManterUsuario extends React.Component {
       ...this.state.person.dataNascimento.year = ano
     });
 
+    let url = 'http://localhost:8080/servletweb?acao=';
+
     if (this.props.location.state.acao === 'cadastrar') {
       this.state.person.tipo === 'A' ?
-        url = 'http://localhost:8080/servletweb?acao=CadastrarAluno' :
-        url = 'http://localhost:8080/servletweb?acao=CadastrarInstrutor';
-    } else {
-      this.state.person.tipo === 'A' ?
-        url = 'http://localhost:8080/servletweb?acao=AlterarAluno' :
-        url = 'http://localhost:8080/servletweb?acao=AlterarInstrutor';
+        url += 'CadastrarAluno' :
+        url += 'CadastrarInstrutor';
     }
 
-    let data = Object.entries(this.state.person).map((estado) => {
-      return encodeURIComponent(estado[0]) + '=' + encodeURIComponent(estado[1])
-    }).join('&');
+    if(this.props.location.state.acao === 'alterar'){
+      url += 'AlterarUsuario';
+    }
+
+    let data = JSON.stringify(this.state.person);
 
     fetch(url, {
       method: 'POST',
-      body: data,
       headers: {
-        'Accept': 'application/json',
-        'Content-type': 'application/json; charset=utf-8'
-      }
+        'Accept': 'application/json'
+      },
+      body: data
     })
-      .then(response => response.json())
-      .catch(error => console.error('Error:', error));
+    .then(response => response.json())
+    .catch(error => console.error('Error:', error));
 
   }
 
   isInstrutor = (e) => {
-    if (this.state.checked === false) {
-      this.setState({
-        checked: true,
-        ...this.state.person.tipo = 'I'
-      });
-      console.log(this.state);
-    } else {
-      this.setState({
-        checked: false,
-        ...this.state.person.cref = null,
-        ...this.state.person.tipo = 'A'
-      });
-      console.log(this.state);
+    if(this.props.location.state.acao === 'cadastrar'){
+      if (this.state.checked === false) {
+        this.setState({
+          checked: true,
+          ...this.state.person.tipo = 'I'
+        });
+        console.log(this.state);
+      } else {
+        this.setState({
+          checked: false,
+          ...this.state.person.cref = null,
+          ...this.state.person.tipo = 'A'
+        });
+        console.log(this.state);
+      }
     }
   }
 
   render() {
     return (
       <div>
-        <Header />
+        <Header tipo={this.props.location.state.user.tipo} user={this.props.location.state.user}/>
         <div className="form-div">
 	        <form onSubmit={this.submitHandler} formAction='POST' >
 	          <label className="field a-field a-field_a1 page__field form_label">
@@ -168,7 +184,7 @@ export class ManterUsuario extends React.Component {
 	          
 
 	          <label className="field a-field a-field_a1 page__field form_label">
-	            <input type='date' id='birthDate' className="field__input" placeholder="Ex. 111.111.111-11" value={this.state.data} onChange={(e) => this.setState({ data: e.value })} />
+	            <input type='date' id='birthDate' className="field__input" placeholder="Ex. 111.111.111-11" value={this.state.data} onChange={(e) => this.setState({ data: e.value, dataChange: true })} />
 	            <span className="field__label-wrap">
 	              <span className="field__label" htmlFor='birthDate'>Data de nascimento</span>
 	            </span>

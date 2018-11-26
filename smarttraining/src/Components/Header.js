@@ -27,8 +27,8 @@ export class Header extends React.Component{
           },
           {
             label: <Link to={{
-              pathname: '/perfil',
-              state: {user: this.props.user}
+              pathname: '/verPerfil',
+              state: {user: this.props.user, acao: 'self'}
             }}>Perfil</Link>
           },
           {
@@ -71,8 +71,8 @@ export class Header extends React.Component{
           },
           {
             label: <Link to={{
-              pathname: '/perfil',
-              state: {user: this.props.user}
+              pathname: '/verPerfil',
+              state: {user: this.props.user, acao: 'self'}
             }}>Perfil</Link>
           },
           {
@@ -122,8 +122,8 @@ export class Header extends React.Component{
           },
           {
             label: <Link to={{
-              pathname: '/perfil',
-              state: {user: this.props.user}
+              pathname: '/verPerfil',
+              state: {user: this.props.user, acao: 'self'}
             }}>Perfil</Link>
           },
           {

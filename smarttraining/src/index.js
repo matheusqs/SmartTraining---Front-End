@@ -11,6 +11,7 @@ import {InstrutorIndex} from './Telas/Usuario/InstrutorIndex';
 import {CoordenadorIndex} from './Telas/Usuario/CoordenadorIndex';
 import {ListarAlunos} from './Telas/Usuario/ListarAlunos';
 import {ListarInstrutores} from './Telas/Usuario/ListarInstrutores';
+import {VerPerfil} from './Telas/Usuario/VerPerfil';
 
 import {ListarExercicios} from './Telas/Exercicio/ListarExercicios';
 import {ManterExercicio} from './Telas/Exercicio/ManterExercicio';
@@ -46,6 +47,7 @@ ReactDOM.render(
       <Route path='/coordenadorIndex' component={CoordenadorIndex}/>
       <Route path='/listarAlunos' component={ListarAlunos}/>
       <Route path='/listarInstrutores' component={ListarInstrutores}/>
+      <Route path='/verPerfil' component={VerPerfil}/>
 
       <Route path='/listarAparelhos' component={ListarAparelhos}/>
       <Route path='/manterAparelho' component={ManterAparelho}/>
