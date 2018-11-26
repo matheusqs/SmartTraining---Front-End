@@ -29,7 +29,7 @@ export class ListarInstrutores extends React.Component{
         if(this.state.instrutores){
             lista = this.state.instrutores.map((instrutor, i) => 
                 <li key={i}>
-                    {instrutor.nome}
+                    <div className="div-lista">{instrutor.nome}</div>
 
                     <Link to={{
                         pathname: '/verPerfil',
@@ -37,7 +37,7 @@ export class ListarInstrutores extends React.Component{
                             user: this.props.location.state.user,
                             instrutor: instrutor
                         }
-                    }}><input type='button' value='Ver'/></Link>
+                    }}><button type="button" className="btn lista-right">Ver</button></Link>
                 </li>
             );
         }
@@ -53,10 +53,10 @@ export class ListarInstrutores extends React.Component{
                         <Link to={{
                             pathname: '/removerInstrutores',
                             state: {user: this.props.location.state.user}
-                        }}><input type='button' value='Remover'/></Link> : null
+                        }}><button type="button" className="btn">Remover</button></Link> : null
                     }
 
-                    <ul>{lista}</ul>
+                    <ul className="striped-list">{lista}</ul>
                     <BotaoVoltar/>
                 </div>
                 <Footer/>

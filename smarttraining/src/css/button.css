@@ -31,5 +31,5 @@
 }
 
 .btn-voltar{
-    float: right;
+    transform: translateX(1500%);
 }
