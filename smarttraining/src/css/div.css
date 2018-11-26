@@ -19,5 +19,30 @@
 }
 
 .container{
-	margin: 8px;
+	background-color: grey;
+	border-radius: 8px;
+	width: 50%;
+	margin-top: 7%;
+	transform: translateX(50%);
+	padding-top: 10px;
+	padding-bottom: 10px;
 }
+
+div.container > p{
+	transform: translateX(10%);
+}
+
+div.container > h2{
+	padding: 5px;
+	text-align: center;
+}
+
+div.container > button{
+	transform: translateX(600%);
+}
+
+.btn-container{
+	transform: translateX(550%);
+}
+
+

@@ -3,6 +3,7 @@ import { Header } from '../../Components/Header';
 import { Footer } from '../../Components/Footer';
 import { BotaoVoltar } from '../../Components/BotaoVoltar';
 import { Link } from 'react-router-dom';
+import "./../../css/div.css";
 
 export class VerPerfil extends React.Component{
     constructor(props){
@@ -37,8 +38,8 @@ export class VerPerfil extends React.Component{
         return(
             <div>
                 <Header tipo={this.props.location.state.user.tipo} user={this.props.location.state.user}/>
-                <div>
-                    <h2>Perfil:</h2>
+                <div className="container">
+                    <h2>Perfil</h2>
                     <p>Nome: {this.state.usuario.nome}</p>
                     <p>Função: {this.state.usuario.tipo === 'A' ? 'Aluno' : this.state.usuario === 'I' ? 'Instrutor' : 'Coordenador'}</p>
                     <p>Email: {this.state.usuario.email}</p>
@@ -57,7 +58,7 @@ export class VerPerfil extends React.Component{
                                 user: this.props.location.state.user,
                                 acao: 'alterar'
                             }
-                        }}><button type='button' className='btn'>Alterar</button></Link> : null
+                        }}><button type='button' className='btn btn-container'>Alterar</button></Link> : null
                     }
 
                     <BotaoVoltar/>
