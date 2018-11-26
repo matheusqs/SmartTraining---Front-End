@@ -62,7 +62,7 @@ export class ListarAparelhos extends React.Component{
                             }}><button type='button' className='btn btn-right'>Cadastrar</button></Link>
 
                             <Link to={{
-                                pathname: '/removerAparelhos',
+                                pathname: '/removerAparelho',
                                 state: {user: this.props.location.state.user}
                             }}><input type='button' value='Remover'/></Link> 
                         </span>: null

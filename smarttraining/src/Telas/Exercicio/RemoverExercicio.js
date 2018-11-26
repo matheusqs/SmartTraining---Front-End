@@ -8,7 +8,11 @@ export class RemoverExercicio extends React.Component{
     constructor(props){
         super(props);
 
-        this.selectionHandler = this.selectionHandler.bind(this);
+        this.state = ({
+            exercicios: {},
+            selecionados: {}
+        });
+
         this.submitHandler = this.submitHandler.bind(this);
     }
 
@@ -24,16 +28,10 @@ export class RemoverExercicio extends React.Component{
         .then(resultado => this.setState({exercicios: resultado}));
     }
 
-    selectionHandler = (e) => {
-        this.setState({
-            selecionados: e.data
-        });
-    }
-
     submitHandler = () => {
         let url;
         this.state.selecionados.forEach(ex => {
-            url = `http://localhost:8080/servletwev?acao=RemoverExercicio&cod=${ex.cod}`;
+            url = `http://localhost:8080/servletwev?acao=RemoverExercicio&numero=${ex.numero}`;
             fetch(url, {
                 headers: {
                     'Accept': 'application/json'
@@ -49,7 +47,7 @@ export class RemoverExercicio extends React.Component{
                 <div>
                     <h2>Selecione os exercícios os quais deseja remover</h2>
                     <SelectTable opcoes={this.state.exercicios} selecionados={this.state.selecionados}
-                        selectionHandler={this.selectionHandler} header='Exercício'/>
+                        selectionHandler={(e) => this.setState({selecionados: e.data})} header='Exercício'/>
 
                     <input type='button' value='Remover' onClick={this.submitHandler}/>
                     <BotaoVoltar/>
