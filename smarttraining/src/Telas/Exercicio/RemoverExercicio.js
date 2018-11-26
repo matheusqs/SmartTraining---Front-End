@@ -31,7 +31,7 @@ export class RemoverExercicio extends React.Component{
     submitHandler = () => {
         let url;
         this.state.selecionados.forEach(ex => {
-            url = `http://localhost:8080/servletwev?acao=RemoverExercicio&numero=${ex.numero}`;
+            url = `http://localhost:8080/servletweb?acao=RemoverExercicio&numero=${ex.numero}`;
             fetch(url, {
                 headers: {
                     'Accept': 'application/json'
