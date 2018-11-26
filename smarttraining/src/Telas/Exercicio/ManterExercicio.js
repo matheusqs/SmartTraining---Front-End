@@ -3,6 +3,7 @@ import {Header} from '../../Components/Header';
 import {Footer} from '../../Components/Footer';
 import {SelectTable} from '../../Components/SelectTable';
 import {BotaoVoltar} from '../../Components/BotaoVoltar';
+import './../../css/table.css';
 
 export class ManterExercicio extends React.Component {
     constructor(props){
@@ -76,29 +77,51 @@ export class ManterExercicio extends React.Component {
                 <Header tipo={this.props.location.state.user.tipo} user={this.props.location.state.user}/>
                 <div>
                     <form onSubmit={this.submitHandler}>
-                        <label htmlFor='nome'>Nome</label>
-                        <input type='text' id='nome' value={this.state.exercicio.nome} onChange={(e) => this.setState({...this.state.exercicio.nome = e.target.value})} />
-                        <br/>
-
-                        <label htmlFor='des'>Descrição</label>
-                        <input type='textarea'id='des' value={this.state.exercicio.descricao} onChange={(e) => this.setState({...this.state.exercicio.descricao = e.target.value})} />
-                        <br/>
-
-                        {
-                            this.props.location.state.acao === 'cadastrar' ?
-                            <span>
-                                <SelectTable opcoes={this.state.aparelhos} selecionados={this.state.exercicio.aparelhos}
-                                    selectionHandler={(e) => this.setState({...this.state.exercicio.aparelhos = e.data})} header='Aparelho'/>
-                                <br/>
-                            </span>: null
-                        }
                         
-                        <p>*selecione novamente todos os músculos que deseja para este exercício</p>
-                        <SelectTable opcoes={this.state.musculos} selecionados={this.state.exercicio.musculos}
-                            selectionHandler={(e) =>this.setState({...this.state.exercicio.musculos = e.data})} header='Musculo'/>
-                        
+
+                        <br/>
+                        <div className="div-flex">
+
+                            <div>
+                                    <div className="form-centralizaco">
+                                       <label className="field a-field a-field_a1 page__field form_label">
+                                            <input type='text' id='nome' className="field__input" placeholder="Ex. Supino Reto" value={this.state.exercicio.nome} onChange={(e) => this.setState({...this.state.exercicio.nome = e.target.value})} />                            
+                                            <span className="field__label-wrap">
+                                                <span className="field__label">Nome</span>
+                                            </span>
+                                        </label>
+                                    
+                                 
+
+                                    <br/>
+
+                                    <label className="field a-field a-field_a1 page__field form_label">
+                                        <input type='textarea'id='des' className="field__input" placeholder=" " value={this.state.exercicio.descricao} onChange={(e) => this.setState({...this.state.exercicio.descricao = e.target.value})} />
+                                        <span className="field__label-wrap">
+                                            <span className="field__label"htmlFor='des'>Descrição</span>
+                                        </span>
+                                    </label>
+                                </div>
+                                <p>*selecione novamente todos os músculos que deseja para este exercício</p>
+                                <SelectTable opcoes={this.state.musculos} selecionados={this.state.exercicio.musculos}
+                                    selectionHandler={(e) =>this.setState({...this.state.exercicio.musculos = e.data})} header='Musculo'/>
+                            </div>
+
+                            <div>
+                                {
+                                    this.props.location.state.acao === 'cadastrar' ?
+                                    <span>
+                                        <SelectTable opcoes={this.state.aparelhos} selecionados={this.state.exercicio.aparelhos}
+                                            selectionHandler={(e) => this.setState({...this.state.exercicio.aparelhos = e.data})} header='Aparelho'/>
+                                        <br/>
+                                    </span>: null
+                                }
+                            </div>
+
+                            
+                        </div>
                         <BotaoVoltar/>
-                        <input type='submit' value='Cadastrar'/>
+                        <button className="btn">Cadastrar</button>
                     </form>
                 </div>
                 <Footer/>
