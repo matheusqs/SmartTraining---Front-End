@@ -3,6 +3,7 @@ import { Header } from '../../Components/Header';
 import { BotaoVoltar } from '../../Components/BotaoVoltar';
 import { Footer } from '../../Components/Footer';
 import { Link } from 'react-router-dom';
+import './../../css/lista.css';
 
 export class ListarAvaliacoes extends React.Component{
     constructor(props){
@@ -29,15 +30,15 @@ export class ListarAvaliacoes extends React.Component{
         if(this.state.avaliacoes){
             lista = this.state.avaliacoes.map((avaliacao, i) => 
                 <li key={i}>
-                    Avaliação: {avaliacao.data}
-
+                    <div className="div-lista">Avaliação: {avaliacao.data}</div>
+                    <span className="lista-right">
                     <Link to={{
                         pathname: '/verAvaliacao',
                         state: {
                             user: this.props.location.state.user,
                             avaliacao: avaliacao
                         }
-                    }}><button type='button'>Ver</button></Link>
+                    }}><button type='button' className="btn">Ver</button></Link>
                     
                     {
                         this.props.location.state.user.tipo !== 'A' ?
@@ -48,8 +49,8 @@ export class ListarAvaliacoes extends React.Component{
                                 acao: 'alterar',
                                 avaliacao: avaliacao
                             }
-                        }}><input type='button' value='alterar'/></Link> : null
-                    }
+                        }}><button type='button' className="btn">Alterar</button></Link> : null
+                    }</span>
                 </li>
             );
         }
@@ -84,7 +85,7 @@ export class ListarAvaliacoes extends React.Component{
                     }
                     <br/>
 
-                    <ul>{lista}</ul>
+                    <ul className="striped-list">{lista}</ul>
                     <BotaoVoltar/>
                 </div>
                 <Footer/>
