@@ -82,7 +82,7 @@ export class ListarExercicios extends React.Component {
                         </span> : null
                     }
                     </span>
-                    <ul className="striped-list">{lista}</ul>
+                    <ul className="striped-list gambiarra">{lista}</ul>
                     <BotaoVoltar/>
                 </div>
                 <Footer/> 

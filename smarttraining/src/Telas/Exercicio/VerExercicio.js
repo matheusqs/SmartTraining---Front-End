@@ -30,7 +30,7 @@ export class VerExercicio extends React.Component{
         if(this.state.exercicio.musculos){
             lista = this.state.exercicio.musculos.map((musculo, i) => 
                 <li key={i}>
-                    {musculo.nome}
+                    <div className="div-lista">{musculo.nome}</div>
 
                     <Link to={{
                         pathname: '/verMusculo',
@@ -38,7 +38,7 @@ export class VerExercicio extends React.Component{
                             user: this.props.location.state.user,
                             musculo: musculo
                         }
-                    }}><button type='button' className='btn btn-right'>Ver</button></Link>
+                    }}><button type='button' className='btn lista-right'>Ver</button></Link>
                 </li>
             );
         }
@@ -46,15 +46,12 @@ export class VerExercicio extends React.Component{
         return(
             <div>
                 <Header tipo={this.props.location.state.user.tipo} user={this.props.location.state.user}/>
-                <div>
-                    <h2>Nome:</h2>
-                    <p>{this.state.exercicio.nome}</p>
-
-                    <h2>Descrição</h2>
-                    <p>{this.state.exercicio.descricao}</p>
-
-                    <h2>Músculos</h2>
-                    <ul>{lista}</ul>
+                <div className="container">
+                    
+                    <p>Nome: {this.state.exercicio.nome}</p>
+                    <p>Descrição: {this.state.exercicio.descricao}</p>
+                    <p>Músculos:
+                    <ul className="striped-list">{lista}</ul></p>
 
                     <BotaoVoltar/>
                 </div>

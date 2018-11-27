@@ -66,7 +66,7 @@ export class ListarAvaliacoes extends React.Component{
             <div>
                 <Header tipo={this.props.location.state.user.tipo} user={this.props.location.state.user}/>
                 <div>
-                    <h2>{this.props.location.state.user.tipo === 'A' ? 'Avaliações:' : 'Avaliações ' + this.props.location.state.aluno.nome + ':'}</h2>
+                    <h2 className="lista">{this.props.location.state.user.tipo === 'A' ? 'Avaliações' : 'Avaliações ' + this.props.location.state.aluno.nome }</h2>
                     
                     {
                         this.props.location.state.user.tipo !== 'A' ?
@@ -92,7 +92,7 @@ export class ListarAvaliacoes extends React.Component{
                     }
                     <br/>
 
-                    <ul className="striped-list">{lista}</ul>
+                    <ul className="striped-list gambiarra">{lista}</ul>
                     <BotaoVoltar/>
                 </div>
                 <Footer/>

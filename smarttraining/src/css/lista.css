@@ -8,7 +8,7 @@ ul.striped-list {
     margin: 0;
     padding: 0;
     width: 50%;
-    transform: translate(50%,0%);
+
 }
 ul.striped-list > li {
     border-bottom: 1px solid gold;
@@ -40,3 +40,8 @@ ul.striped-list > li:last-child {
 h2.lista{
     text-align: center;
 }
+
+.gambiarra{
+    transform: translateX(50%);
+}
+
