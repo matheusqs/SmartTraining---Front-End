@@ -35,7 +35,7 @@ export class ListarFichas extends React.Component{
         if(this.state.fichas){
             lista = this.state.fichas.map((ficha, i) =>
                 <li key={i}>
-                    Ficha: {ficha.data}
+                    <div className="div-lista">Ficha: {ficha.data}</div>
 
                     <Link to={{
                         pathname: '/verFicha',
@@ -43,7 +43,7 @@ export class ListarFichas extends React.Component{
                             user: this.props.location.state.user,
                             ficha: ficha
                         }
-                    }}><button type='button'>Ver</button></Link>
+                    }}><button type='button' className="btn lista-right">Ver</button></Link>
                 </li>    
             );
         }
@@ -55,7 +55,7 @@ export class ListarFichas extends React.Component{
                     <h2>{this.props.location.state.user.tipo === 'A' ? 'Fichas:' : 'Fichas ' + this.props.location.state.aluno.nome + ':'}</h2>
                     <br/>
 
-                    <ul>{lista}</ul>
+                    <ul className="striped-list">{lista}</ul>
                     <BotaoVoltar/>
                 </div>
                 <Footer/>
