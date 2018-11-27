@@ -29,6 +29,7 @@ export class VerFicha extends React.Component{
         if(this.state.ficha.treinos){
             treinos = this.state.ficha.treinos.map((treino, i) =>
                 <li key={i}>
+                <div className="center">
                     <h2>Treino {treino.numero}</h2>
                     <table>
                         <tr>
@@ -48,6 +49,7 @@ export class VerFicha extends React.Component{
                             </tr>
                         )}
                     </table>
+                    </div>
                 </li>
             );
         }
