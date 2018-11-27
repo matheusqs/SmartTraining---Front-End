@@ -146,7 +146,7 @@ export class ManterUsuario extends React.Component {
 
   render() {
     return (
-      <div>
+      <div className="divzona">
         {
           this.props.location.state.acao ===  'cadastrar' ? <Header/> : <Header tipo={this.props.location.state.user.tipo} user={this.props.location.state.user}/>
         }
@@ -204,6 +204,7 @@ export class ManterUsuario extends React.Component {
             </label>
 
             <br />
+            <br />
 
             {this.props.location.state.acao === 'cadastrar' ?
               <div>
@@ -214,15 +215,20 @@ export class ManterUsuario extends React.Component {
 
             {this.state.person.tipo === 'I' ?
               <div>
-                <label htmlFor='cref'>Número CREF</label>
-                <input type='number' id='cref' value={this.state.person.cref}
-                onChange={(e) => this.setState({ ...this.state.person.cref = e.target.value })} />
+                <label className="field a-field a-field_a1 page__field form_label">
+                <input type='number' className="field__input" placeholder="Ex. 111.111.111-11" id='cref' value={this.state.person.cref}
+                onChange={(e) => this.setState({ ...this.state.person.cref = e.target.value })} />                  <span className="field__label-wrap">
+                    <span className="field__label"htmlFor='cref'>Número CREF</span>
+                  </span>
+                </label>
+                
               </div> : null
             }
-            <BotaoVoltar />
+            
             <button type='submit' className="btn btn-right">Cadastrar</button>
           </form>
         </div>
+        <BotaoVoltar />
         <Footer />
       </div>
     );

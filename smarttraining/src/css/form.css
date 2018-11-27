@@ -9,8 +9,8 @@ LEVEL 1. RESET STYLES
 }
 
 .form-div{
-  padding-top: 5%;
-  padding-left: 30%;
+  padding-top: 10%;
+  transform: translateX(60%);
   width: 50%
 }
 
