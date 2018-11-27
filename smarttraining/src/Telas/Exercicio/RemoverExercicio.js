@@ -38,6 +38,13 @@ export class RemoverExercicio extends React.Component{
                 }
             });
         });
+
+        this.props.history.push({
+            pathname: '/listarExercicios',
+            state: {
+                user: this.props.location.state.user
+            }
+        });
     }
 
     render(){

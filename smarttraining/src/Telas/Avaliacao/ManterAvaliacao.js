@@ -86,7 +86,13 @@ export class ManterAvaliacao extends React.Component{
       headers: {
         'Accept': 'application/json'
       }
-    })
+    });
+
+    this.props.history.push({
+      pathname: '/listarAvaliacoes',
+      user: this.props.location.state.user,
+      aluno: this.props.location.state.aluno
+    });
 
   }
 

@@ -60,6 +60,13 @@ export class ManterAparelho extends React.Component{
         })
         .then(resposta => resposta.json())
         .catch(error => console.error('Error:', error));
+
+        this.props.history.push({
+            pathname: '/listarAparelhos',
+            state: {
+                user: this.props.location.state.user
+            }
+        });
     }
 
     render(){
@@ -76,7 +83,7 @@ export class ManterAparelho extends React.Component{
                         <SelectTable opcoes={this.state.listaExercicios} selecionados={this.state.aparelho.exercicios} id='ex'
                             selectionHandler={(e) => this.setState({...this.state.aparelho.exercicios = e.data})} header='Exercício' />
 
-                        <input type='submit' value='Cadastrar'/>
+                        <input type='submit' value={this.props.location.state.acao === 'cadastrar' ? Cadastrar : Alterar}/>
                     </form>
                     <BotaoVoltar/>
                 </div>

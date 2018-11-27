@@ -37,6 +37,13 @@ export class RemoverAparelho extends React.Component{
                 }
             })
         });
+
+        this.props.history.push({
+            pathname: '/listarAparelhos',
+            state: {
+                user: this.props.location.state.user
+            }
+        });
     }
 
     render(){

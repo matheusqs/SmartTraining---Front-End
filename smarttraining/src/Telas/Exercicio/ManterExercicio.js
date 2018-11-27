@@ -69,6 +69,13 @@ export class ManterExercicio extends React.Component {
         })
         .then(resposta => resposta.json())
         .catch(error => console.error('Error:', error));
+
+        this.props.history.push({
+            pathname: '/listarExercicios',
+            state: {
+                user: this.props.location.state.user
+            }
+        });
     }
 
     render(){
@@ -121,7 +128,7 @@ export class ManterExercicio extends React.Component {
                             
                         </div>
                         <BotaoVoltar/>
-                        <button className="btn">Cadastrar</button>
+                        <button className="btn">{this.props.location.state.acao === 'cadastrar' ? Cadastrar : Alterar}</button>
                     </form>
                 </div>
                 <Footer/>

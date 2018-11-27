@@ -40,6 +40,14 @@ export class RemoverAvaliacao extends React.Component{
                 }
             });
         });
+
+        this.props.history.push({
+            pathname: '/listarAvaliacoes',
+            state: {
+                user: this.props.location.state.user,
+                aluno: this.props.location.state.aluno
+            }
+        });
     }
     
     render(){

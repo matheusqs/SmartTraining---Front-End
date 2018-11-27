@@ -53,7 +53,8 @@ export class ListarAvaliacoes extends React.Component{
                             state: {
                                 user: this.props.location.state.user,
                                 acao: 'alterar',
-                                avaliacao: avaliacao
+                                avaliacao: avaliacao,
+                                aluno: this.props.location.state.aluno
                             }
                         }}><button type='button' className="btn">Alterar</button></Link> : null
                     }</span>

@@ -112,6 +112,17 @@ export class ManterUsuario extends React.Component {
     .then(response => response.json())
     .catch(error => console.error('Error:', error));
 
+    if(this.props.location.state.acao === 'cadastrar'){
+      this.props.history.push({pathname: '/'});
+    }else{
+      this.props.history.push({
+        pathname: '/verPerfil',
+        state: {
+          user: this.props.location.state.user
+        }
+      });
+    }
+
   }
 
   isInstrutor = (e) => {
