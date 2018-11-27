@@ -24,7 +24,7 @@ export class ManterUsuario extends React.Component {
           day: null
         }
       },
-      checked: null,
+      checked: false,
       data: null,
       confSenha: null
     });
@@ -60,16 +60,15 @@ export class ManterUsuario extends React.Component {
 
   submitHandler = (e) => {
     e.preventDefault();
-    console.log('a');
 
     let dia;
     let mes;
     let ano;
 
     if(this.props.location.state.acao === 'cadastrar' || this.state.dataChange){
-      dia = this.state.data.getDate();
-      mes = this.state.data.getMonth() + 1;
-      ano = this.state.data.getFullYear();
+      dia = 2;
+      mes = 6;
+      ano = 1998;
 
       dia < 10 ? dia = '0' + dia : null;
       mes < 10 ? mes = '0' + mes : null;
@@ -87,6 +86,8 @@ export class ManterUsuario extends React.Component {
       ...this.state.person.dataNascimento.month = mes,
       ...this.state.person.dataNascimento.year = ano
     });
+
+    console.log(this.state.person.dataNascimento);
 
     let url = 'http://localhost:8080/servletweb?acao=';
 
