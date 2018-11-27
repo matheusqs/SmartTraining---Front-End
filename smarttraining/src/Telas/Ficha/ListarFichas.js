@@ -15,7 +15,7 @@ export class ListarFichas extends React.Component{
 
     componentDidMount = () => {
         let url;
-        if(this.props.location.state.user.tipo !== 'a'){
+        if(this.props.location.state.user.tipo !== 'A'){
             url = `http://localhost:8080/servletweb?acao=ListarFichas&codCpf=${this.props.location.state.aluno.cpf}`;
         }else{
             url = `http://localhost:8080/servletweb?acao=ListarFichas&codCpf=${this.props.location.state.user.cpf}`;
