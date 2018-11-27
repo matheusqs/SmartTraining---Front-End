@@ -15,7 +15,13 @@ export class ListarAvaliacoes extends React.Component{
     }
 
     componentDidMount = () => {
-        let url = `http://localhost:8080/servletweb?acao=ListarAvaliacoes&codCpf=${this.props.location.state.aluno.cpf}`;
+        let url;
+        if(this.props.location.state.user.tipo !== 'A'){
+            url = `http://localhost:8080/servletweb?acao=ListarAvaliacoes&codCpf=${this.props.location.state.aluno.cpf}`;
+        }else{
+            url = `http://localhost:8080/servletweb?acao=ListarAvaliacoes&codCpf=${this.props.location.state.user.cpf}`;
+        }
+        
         fetch(url, {
             headers: {
                 'Accept': 'application/json'

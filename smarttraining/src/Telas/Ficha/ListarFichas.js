@@ -14,8 +14,13 @@ export class ListarFichas extends React.Component{
     }
 
     componentDidMount = () => {
-        let aluno = this.props.location.state.aluno;
-        let url = `http://localhost:8080/servletweb?acao=ListarFichas&codCpf=${aluno.cpf}`;
+        let url;
+        if(this.props.location.state.user.tipo !== 'a'){
+            url = `http://localhost:8080/servletweb?acao=ListarFichas&codCpf=${this.props.location.state.aluno.cpf}`;
+        }else{
+            url = `http://localhost:8080/servletweb?acao=ListarFichas&codCpf=${this.props.location.state.user.cpf}`;
+        }
+        
         fetch(url, {
             headers: {
                 'Accept': 'application/json'
@@ -39,18 +44,6 @@ export class ListarFichas extends React.Component{
                             ficha: ficha
                         }
                     }}><button type='button'>Ver</button></Link>
-
-                    {
-                        this.props.location.state.user.tipo !== 'A' ?
-                        <Link to={{
-                            pathname: '/manterFicha',
-                            state: {
-                                user: this.props.location.state.user,
-                                acao: 'alterar',
-                                ficha: ficha
-                            }
-                        }}><button type='button'>Alterar</button></Link> : null
-                    }
                 </li>    
             );
         }
@@ -60,28 +53,6 @@ export class ListarFichas extends React.Component{
                 <Header tipo={this.props.location.state.user.tipo} user={this.props.location.state.user}/>
                 <div>
                     <h2>{this.props.location.state.user.tipo === 'A' ? 'Fichas:' : 'Fichas ' + this.props.location.state.aluno.nome + ':'}</h2>
-
-                    {
-                        this.props.location.state.user.tipo !== 'A' ?
-                        <span>
-                            <Link to={{
-                                pathname: '/removerFichas',
-                                state: {
-                                    user: this.props.location.state.user,
-                                    aluno: this.props.location.state.aluno
-                                }
-                            }}></Link>
-
-                            <Link to={{
-                                pathname: '/manterFicha',
-                                state: {
-                                    user: this.props.location.state.user,
-                                    acao: 'cadastrar',
-                                    aluno:this.props.location.state.aluno
-                                }
-                            }}><button type='button'>Cadastrar</button></Link> 
-                        </span>: null
-                    }
                     <br/>
 
                     <ul>{lista}</ul>

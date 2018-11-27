@@ -41,14 +41,15 @@ export class ListarExercicios extends React.Component {
                         }
                     }}><button className="btn">Ver</button></Link>
 
-                    <Link to={{
+                    {<Link to={{
                         pathname: '/manterExercicio',
                         state: {
                             user: this.props.location.state.user,
                             acao: 'alterar',
                             exercicio: exercicio
                         }
-                    }}><button className="btn">Alterar</button></Link></span>
+                    }}><button className="btn">Alterar</button></Link>}
+                    </span>
                 </li>
             );
         }
