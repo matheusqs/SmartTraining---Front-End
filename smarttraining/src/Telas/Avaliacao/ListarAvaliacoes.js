@@ -65,7 +65,7 @@ export class ListarAvaliacoes extends React.Component{
         return(
             <div>
                 <Header tipo={this.props.location.state.user.tipo} user={this.props.location.state.user}/>
-                <div className='container'>
+                <div>
                     <h2>{this.props.location.state.user.tipo === 'A' ? 'Avaliações:' : 'Avaliações ' + this.props.location.state.aluno.nome + ':'}</h2>
                     
                     {
