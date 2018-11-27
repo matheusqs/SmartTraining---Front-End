@@ -147,7 +147,7 @@ export class ManterUsuario extends React.Component {
 
   render() {
     return (
-      <div className="divzona">
+      <div>
         {
           this.props.location.state.acao ===  'cadastrar' ? <Header/> : <Header tipo={this.props.location.state.user.tipo} user={this.props.location.state.user}/>
         }

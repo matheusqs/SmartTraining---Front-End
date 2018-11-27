@@ -74,16 +74,21 @@ export class ManterAparelho extends React.Component{
             <div>
                 <Header tipo={this.props.location.state.user.tipo} user={this.props.location.state.user}/>
                 <div>
-                    <form onSubmit={this.submitHandler}>
-                        <label htmlFor='nome'>Nome</label>
-                        <input type='text' id='nome' value={this.state.aparelho.nome} onChange={(e) => this.setState({...this.state.aparelho.nome = e.target.value})}/>
+                    <form onSubmit={this.submitHandler} >
+
+                    <label className="field a-field a-field_a1 page__field form_label">
+                    <input type='text' id='nome' value={this.state.aparelho.nome} className="field__input" placeholder="Ex. Aerobico" onChange={(e) => this.setState({...this.state.aparelho.nome = e.target.value})}/>
+                                            <span className="field__label-wrap">
+                                                <span className="field__label"htmlFor='nome'>Nome</span>
+                                            </span>
+                                        </label>
                         <br/>
 
-                        <label htmlFor='ex'>Exercícios</label>
+                        <br/>
                         <SelectTable opcoes={this.state.listaExercicios} selecionados={this.state.aparelho.exercicios} id='ex'
-                            selectionHandler={(e) => this.setState({...this.state.aparelho.exercicios = e.data})} header='Exercício' />
+                            selectionHandler={(e) => this.setState({...this.state.aparelho.exercicios = e.data})} header='Exercícios' />
 
-                        <input type='submit' value={this.props.location.state.acao === 'cadastrar' ? 'Cadastrar' : 'Alterar'}/>
+                        <button className='btn'>{this.props.location.state.acao === 'cadastrar' ? 'Cadastrar' : 'Alterar'}</button>
                     </form>
                     <BotaoVoltar/>
                 </div>

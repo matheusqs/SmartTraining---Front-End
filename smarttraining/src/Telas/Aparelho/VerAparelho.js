@@ -30,7 +30,7 @@ export class VerAparelho extends React.Component{
         if(this.state.aparelho.exercicios){
             lista = this.state.aparelho.exercicios.map((exercicio, i) => 
                 <li key={i}>
-                    {exercicio.nome}
+                    <div className='div-lista'>{exercicio.nome}</div>
 
                     <Link to={{
                         pathname: '/verExercicio',
@@ -44,14 +44,14 @@ export class VerAparelho extends React.Component{
         }
         
         return(
-            <div>
+            <div >
                 <Header tipo={this.props.location.state.user.tipo} user={this.props.location.state.user}/>
-                <div>
+                <div className='container'>
                     <h2>Nome</h2>
-                    <p>{this.state.aparelho.nome}</p>
+                    <p className='p'>{this.state.aparelho.nome}</p>
 
                     <h2>Exercícios</h2>
-                    <ul>{lista}</ul>
+                    <ul className='striped-list gambiarra'>{lista}</ul>
 
                     <BotaoVoltar/>
                 </div>

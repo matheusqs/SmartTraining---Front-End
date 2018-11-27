@@ -56,9 +56,10 @@ export class RemoverExercicio extends React.Component{
                     <SelectTable opcoes={this.state.exercicios} selecionados={this.state.selecionados}
                         selectionHandler={(e) => this.setState({selecionados: e.data})} header='Exercício'/>
 
-                    <input type='button' value='Remover' onClick={this.submitHandler}/>
-                    <BotaoVoltar/>
+                    <button type='button' onClick={this.submitHandler} className='btn '>Remover</button>
+                    
                 </div>
+                <BotaoVoltar/>
                 <Footer/>
             </div>
         );

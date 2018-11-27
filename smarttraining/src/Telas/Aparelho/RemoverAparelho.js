@@ -55,9 +55,9 @@ export class RemoverAparelho extends React.Component{
                     <SelectTable opcoes={this.state.aparelhos} selecionados={this.state.selecionados}
                         selectionHandler={(e) => this.setState({selecionados: e.data})} header='Aparelho'/>
 
-                    <input type='button' value='Remover' onClick={this.submitHandler}/>
-                    <BotaoVoltar/>
-                </div>
+                    <button type='button' className='btn' onClick={this.submitHandler}>Remover</button>
+                    
+                </div><BotaoVoltar/>
                 <Footer/>
             </div>
         )

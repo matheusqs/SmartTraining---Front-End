@@ -46,7 +46,7 @@ export class InstrutorIndex extends React.Component {
                 <Header tipo={this.props.location.state.user.tipo} user={this.props.location.state.user} />
                 <div>
                     <h2>Alunos:</h2>
-                    <ul className="striped-list">{lista}</ul>
+                    <ul className="striped-list gambiarra">{lista}</ul>
                 </div>
                 <Footer/>
             </div>
