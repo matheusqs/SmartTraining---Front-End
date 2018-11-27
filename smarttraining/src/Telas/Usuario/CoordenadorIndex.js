@@ -72,10 +72,10 @@ export class CoordenadorIndex extends React.Component{
                     <Header tipo={this.props.location.state.user.tipo} user={this.props.location.state.user} />
                     <div>
                         <h2 className="lista">Alunos</h2>
-                        <ul className="striped-list">{alunos}</ul>
+                        <ul className="striped-list gambiarra">{alunos}</ul>
 
                         <h2 className="lista">Instrutores</h2>
-                        <ul className="striped-list">{instrutores}</ul>
+                        <ul className="striped-list gambiarra">{instrutores}</ul>
                     </div>
                     <Footer/>
                 </div>

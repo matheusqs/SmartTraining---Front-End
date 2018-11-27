@@ -66,7 +66,7 @@ export class ListarAlunos extends React.Component{
                 <div>
                     <h2 className="lista">Alunos</h2>
 
-                    <ul className="striped-list">
+                    <ul className="striped-list gambiarra">
                         {lista}
                     </ul>
                     <BotaoVoltar/>

@@ -69,7 +69,7 @@ export class ListarAparelhos extends React.Component{
                     }
                     <br/>
 
-                    <ul className="striped-list">{lista}</ul>
+                    <ul className="striped-list gambiarra">{lista}</ul>
                     <BotaoVoltar/>
                 </div>
                 <Footer/>

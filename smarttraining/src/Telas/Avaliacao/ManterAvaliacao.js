@@ -102,94 +102,195 @@ export class ManterAvaliacao extends React.Component{
     return(
       <div>
         <Header tipo={this.props.location.state.user.tipo} user={this.props.location.state.user}/>
-        <div>
+        <div className="form-div">
           <form onSubmit={this.submitHandler}>
-            <label htmlFor='peso'>Peso</label>
-            <input type='number' id='peso' value={this.state.avaliacao.peso}
-              onChange={(e) => this.setState({...this.state.avaliacao.peso = e.target.value})}/>
+
+            <label className="field a-field a-field_a1 page__field form_label">
+<input type='number' className="field__input" placeholder=" " id='peso' value={this.state.avaliacao.peso}
+              onChange={(e) => this.setState({...this.state.avaliacao.peso = e.target.value})}/>              <span className="field__label-wrap">
+                <span className="field__label" htmlFor='peso'>Peso</span>
+              </span>
+            </label>
+
+            
             <br/>
 
-            <label htmlFor='pgord'>Percentual de Gordura</label>
-            <input type='number' id='pgord' value={this.state.avaliacao.percentualGordura}
-              onChange={(e) => this.setState({...this.state.avaliacao.percentualGordura = e.target.value})}/>
+
+            <label className="field a-field a-field_a1 page__field form_label">
+<input type='number' className="field__input" placeholder=" " id='pgord' value={this.state.avaliacao.percentualGordura}
+              onChange={(e) => this.setState({...this.state.avaliacao.percentualGordura = e.target.value})}/>              <span className="field__label-wrap">
+                <span className="field__label" htmlFor='pgord'>Percentual de Gordura</span>
+              </span>
+            </label>
+
+
+            
             <br/>
 
-            <label htmlFor='pesc'>Tamanho do Pescoço</label>
-            <input type='number' id='pesc' value={this.state.avaliacao.tamanhoPescoco}
-              onChange={(e) => this.setState({...this.state.avaliacao.tamanhoPescoco = e.target.value})}/>
+
+            <label className="field a-field a-field_a1 page__field form_label">
+<input type='number' id='pesc' className="field__input" placeholder=" " value={this.state.avaliacao.tamanhoPescoco}
+              onChange={(e) => this.setState({...this.state.avaliacao.tamanhoPescoco = e.target.value})}/>              <span className="field__label-wrap">
+                <span className="field__label" htmlFor='pesc'>Tamanho do Pescoço</span>
+              </span>
+            </label>
+
+
+            
             <br/>
 
-            <label htmlFor='omb'>Tamanho do Ombro</label>
-            <input type='number' id='omb' value={this.state.avaliacao.tamanhoOmbro}
-              onChange={(e) => this.setState({...this.state.avaliacao.tamanhoOmbro = e.target.value})}/>
+
+            <label className="field a-field a-field_a1 page__field form_label">
+<input type='number' id='omb' className="field__input" placeholder=" " value={this.state.avaliacao.tamanhoOmbro}
+              onChange={(e) => this.setState({...this.state.avaliacao.tamanhoOmbro = e.target.value})}/>              <span className="field__label-wrap">
+                <span className="field__label" htmlFor='omb'>Tamanho do Ombro</span>
+              </span>
+            </label>
+
+            
             <br/>
 
-            <label htmlFor='tor'>Tamanho do Tórax</label>
-            <input type='number' id='tor' value={this.state.avaliacao.tamanhoTorax}
-              onChange={(e) => this.setState({...this.state.avaliacao.tamanhoTorax = e.target.value})}/>
+
+            <label className="field a-field a-field_a1 page__field form_label">
+<input type='number' id='tor' className="field__input" placeholder=" " value={this.state.avaliacao.tamanhoTorax}
+              onChange={(e) => this.setState({...this.state.avaliacao.tamanhoTorax = e.target.value})}/>              <span className="field__label-wrap">
+                <span className="field__label" htmlFor='tor'>Tamanho do Tórax</span>
+              </span>
+            </label>
+
+
+            
             <br/>
 
-            <label htmlFor='abd'>Tamanho do Abdômen</label>
-            <input type='number' id='abd' value={this.state.avaliacao.tamanhoAbdomen}
-              onChange={(e) => this.setState({...this.state.avaliacao.tamanhoAbdomen = e.target.value})}/>
+
+            <label className="field a-field a-field_a1 page__field form_label">
+<input type='number' id='abd' className="field__input" placeholder=" " value={this.state.avaliacao.tamanhoAbdomen}
+              onChange={(e) => this.setState({...this.state.avaliacao.tamanhoAbdomen = e.target.value})}/>              <span className="field__label-wrap">
+                <span className="field__label" htmlFor='abd'>Tamanho do Abdômen</span>
+              </span>
+            </label>
+
+
+            
             <br/>
 
-            <label htmlFor='cint'>Tamanho da Cintura</label>
-            <input type='number' id='cint' value={this.state.avaliacao.tamanhoCintura}
-              onChange={(e) => this.setState({...this.state.avaliacao.tamanhoCintura = e.target.value})}/>
+
+            <label className="field a-field a-field_a1 page__field form_label">
+<input type='number' id='cint' className="field__input" placeholder=" " value={this.state.avaliacao.tamanhoCintura}
+              onChange={(e) => this.setState({...this.state.avaliacao.tamanhoCintura = e.target.value})}/>              <span className="field__label-wrap">
+                <span className="field__label" htmlFor='cint'>Tamanho da Cintura</span>
+              </span>
+            </label>
+            
             <br/>
 
-            <label htmlFor='quad'>Tamanho do Quadril</label>
-            <input type='number' id='quad' value={this.state.avaliacao.tamanhoQuadril}
-              onChange={(e) => this.setState({...this.state.avaliacao.tamanhoQuadril = e.target.value})}/>
+
+            <label className="field a-field a-field_a1 page__field form_label">
+<input type='number' id='quad' className="field__input" placeholder=" " value={this.state.avaliacao.tamanhoQuadril}
+              onChange={(e) => this.setState({...this.state.avaliacao.tamanhoQuadril = e.target.value})}/>              <span className="field__label-wrap">
+                <span className="field__label" htmlFor='quad'>Tamanho do Quadril</span>
+              </span>
+            </label>
+
+            
             <br/>
 
-            <label htmlFor='besq'>Tamanho do Braço Esquerdo</label>
-            <input type='number' id='besq' value={this.state.avaliacao.tamanhoBracoEsquerdo}
-              onChange={(e) => this.setState({...this.state.avaliacao.tamanhoBracoEsquerdo = e.target.value})}/>
+
+            <label className="field a-field a-field_a1 page__field form_label">
+<input type='number' id='besq' className="field__input" placeholder=" " value={this.state.avaliacao.tamanhoBracoEsquerdo}
+              onChange={(e) => this.setState({...this.state.avaliacao.tamanhoBracoEsquerdo = e.target.value})}/>              <span className="field__label-wrap">
+                <span className="field__label" htmlFor='besq'>Tamanho do Braço Esquerdo</span>
+              </span>
+            </label>
+
+
+            
             <br/>
 
-            <label htmlFor='bdir'>Tamanho do Braço Direito</label>
-            <input type='number' id='bdir' value={this.state.avaliacao.tamanhoBracoDireito}
-              onChange={(e) => this.setState({...this.state.avaliacao.tamanhoBracoDireito = e.target.value})}/>
+
+            <label className="field a-field a-field_a1 page__field form_label">
+<input type='number' id='bdir' className="field__input" placeholder=" " value={this.state.avaliacao.tamanhoBracoDireito}
+              onChange={(e) => this.setState({...this.state.avaliacao.tamanhoBracoDireito = e.target.value})}/>              <span className="field__label-wrap">
+                <span className="field__label" htmlFor='bdir'>Tamanho do Braço Direito</span>
+              </span>
+            </label>
+
+            
             <br/>
 
-            <label htmlFor='antbesq'>Tamanho do Antebraço Esquerdo</label>
-            <input type='number' id='antbesq' value={this.state.avaliacao.tamanhoAntebracoEsquerdo}
-              onChange={(e) => this.setState({...this.state.avaliacao.tamanhoAntebracoEsquerdo = e.target.value})}/>
+
+            <label className="field a-field a-field_a1 page__field form_label">
+<input type='number' id='antbesq' className="field__input" placeholder=" " value={this.state.avaliacao.tamanhoAntebracoEsquerdo}
+              onChange={(e) => this.setState({...this.state.avaliacao.tamanhoAntebracoEsquerdo = e.target.value})}/>              <span className="field__label-wrap">
+                <span className="field__label" htmlFor='antbesq'>Tamanho do Antebraço Esquerdo</span>
+              </span>
+            </label>
+
+
+            
             <br/>
 
-            <label htmlFor='antbdir'>Tamanho do Antebraço Direito</label>
-            <input type='number' id='antbdir' value={this.state.avaliacao.tamanhoAntebracoDireito}
-              onChange={(e) => this.setState({...this.state.avaliacao.tamanhoAntebracoDireito = e.target.value})}/>
+
+            <label className="field a-field a-field_a1 page__field form_label">
+<input type='number' id='antbdir' className="field__input" placeholder=" " value={this.state.avaliacao.tamanhoAntebracoDireito}
+              onChange={(e) => this.setState({...this.state.avaliacao.tamanhoAntebracoDireito = e.target.value})}/>              <span className="field__label-wrap">
+                <span className="field__label" htmlFor='antbdir'>Tamanho do Antebraço Direito</span>
+              </span>
+            </label>
+            
             <br/>
 
-            <label htmlFor='cesq'>Tamanho da Coxa Esquerda</label>
-            <input type='number' id='cesq' value={this.state.avaliacao.tamanhoCoxaEsquerda}
-              onChange={(e) => this.setState({...this.state.avaliacao.tamanhoCoxaEsquerda = e.target.value})}/>
+
+            <label className="field a-field a-field_a1 page__field form_label">
+<input type='number' id='cesq' className="field__input" placeholder=" " value={this.state.avaliacao.tamanhoCoxaEsquerda}
+              onChange={(e) => this.setState({...this.state.avaliacao.tamanhoCoxaEsquerda = e.target.value})}/>              <span className="field__label-wrap">
+                <span className="field__label" htmlFor='cesq'>Tamanho da Coxa Esquerda</span>
+              </span>
+            </label>
+
+            
             <br/>
 
-            <label htmlFor='cdir'>Tamanho da Coxa Direita</label>
-            <input type='number' id='cdir' value={this.state.avaliacao.tamanhoCoxaDireita}
-              onChange={(e) => this.setState({...this.state.avaliacao.tamanhoCoxaDireita = e.target.value})}/>
+
+            <label className="field a-field a-field_a1 page__field form_label">
+<input type='number' id='cdir' className="field__input" placeholder=" " value={this.state.avaliacao.tamanhoCoxaDireita}
+              onChange={(e) => this.setState({...this.state.avaliacao.tamanhoCoxaDireita = e.target.value})}/>              <span className="field__label-wrap">
+                <span className="field__label" htmlFor='cdir'>Tamanho da Coxa Direita</span>
+              </span>
+            </label>
+
+            
             <br/>
 
-            <label htmlFor='pesq'>Tamanho da Panturrilha Esquerda</label>
-            <input type='number' id='pesq' value={this.state.avaliacao.tamanhoPanturrilhaEsquerda}
-              onChange={(e) => this.setState({...this.state.avaliacao.tamanhoPanturrilhaEsquerda = e.target.value})}/>
+
+            <label className="field a-field a-field_a1 page__field form_label">
+<input type='number' id='pesq' className="field__input" placeholder=" " value={this.state.avaliacao.tamanhoPanturrilhaEsquerda}
+              onChange={(e) => this.setState({...this.state.avaliacao.tamanhoPanturrilhaEsquerda = e.target.value})}/>              <span className="field__label-wrap">
+                <span className="field__label" htmlFor='pesq'>Tamanho da Panturrilha Esquerda</span>
+              </span>
+            </label>
+
+
+            
             <br/>
 
-            <label htmlFor='pdir'>Tamanho da Panturrilha Direita</label>
-            <input type='number' id='pdir' value={this.state.avaliacao.tamanhoPanturrilhaDireita}
-              onChange={(e) => this.setState({...this.state.avaliacao.tamanhoPanturrilhaDireita = e.target.value})}/>
+
+            <label className="field a-field a-field_a1 page__field form_label">
+<input type='number' id='pdir' className="field__input" placeholder=" " value={this.state.avaliacao.tamanhoPanturrilhaDireita}
+              onChange={(e) => this.setState({...this.state.avaliacao.tamanhoPanturrilhaDireita = e.target.value})}/>              <span className="field__label-wrap">
+                <span className="field__label" htmlFor='pdir'>Tamanho da Panturrilha Direita</span>
+              </span>
+            </label>
+
+
+            
             <br/>
 
             <label>Objetivos:</label>
             <SelectTable opcoes={this.state.objetivos} selecionados={this.state.avaliacao.objetivos}
               selectionHandler={(e) => this.setState({...this.state.avaliacao.objetivos = e.data})} header='Objetivo'/>
 
-
-            <input type='submit' value={this.props.location.state.acao === 'cadastrar' ? 'Cadastrar' : 'Alterar'}/>
+              <button className="btn">{this.props.location.state.acao === 'cadastrar' ? 'Cadastrar' : 'Alterar'}</button>
           </form>
           <BotaoVoltar/>
         </div>
