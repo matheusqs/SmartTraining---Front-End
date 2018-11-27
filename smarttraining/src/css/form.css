@@ -4,6 +4,10 @@ LEVEL 1. RESET STYLES
 =====
 */
 
+.form{
+  transform: translate(38%, 50%);
+}
+
 .form-div{
   padding-top: 5%;
   padding-left: 30%;

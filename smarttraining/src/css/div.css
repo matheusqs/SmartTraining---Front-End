@@ -45,4 +45,16 @@ div.container > button{
 	transform: translateX(550%);
 }
 
+.divzona{
+	background-image: url(foto-login.jpg);
+	width: auto;
+	height: 600px;
+	overflow: hidden;
+	background-size: 100%;
+	background-repeat: no-repeat;
 
+}
+
+.direita-login{
+	transform: translateX(2%);
+}

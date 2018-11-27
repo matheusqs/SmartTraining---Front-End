@@ -75,16 +75,14 @@ export class Login extends React.Component{
 
   render(){
     return(
-      <div>
+      <div className="divzona">
         <Header/>
-        <div className='flex'>
-          <div className='metade metade-esquerda'>
-            <p></p>
-          </div>
-          <div className="metade metade-direita">
-            <h1>Login</h1>
-            <div className='form_div '>
+
+            
+            
               <form onSubmit={this.logar} className="form">
+              <div className="direita-login">
+              <h1>Login</h1>
                 <label className="field a-field a-field_a1 page__field form_label">
                   <input type='text' id='cpf' className="field__input" placeholder="Ex. 111.111.111-11" value={this.state.cpf} onChange={(e) => this.setState({cpf: e.target.value})}/>
                   <span className="field__label-wrap">
@@ -104,6 +102,7 @@ export class Login extends React.Component{
 
                 <br/>
                 <button type='submit' className='btn'>Logar</button>
+                </div>
                 <p>Ainda não possui uma conta?
                   <Link className="link" to={{
                       pathname: '/manterUsuario',
@@ -114,9 +113,7 @@ export class Login extends React.Component{
                 </Link>
                 </p>
               </form>
-            </div>
-          </div>
-        </div>
+
         <Footer/>
       </div>
     );
