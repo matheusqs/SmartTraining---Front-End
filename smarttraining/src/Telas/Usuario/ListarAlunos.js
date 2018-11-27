@@ -66,14 +66,6 @@ export class ListarAlunos extends React.Component{
                 <div>
                     <h2 className="lista">Alunos</h2>
 
-                    {
-                        this.props.location.state.user.tipo === 'C' ?
-                        <Link to={{
-                            pathname: '/removerAlunos',
-                            state:{user: this.props.location.state.user}
-                        }}><button type="button" className="btn">Remover</button></Link> : null
-                    }
-
                     <ul className="striped-list">
                         {lista}
                     </ul>

@@ -90,8 +90,10 @@ export class ManterAvaliacao extends React.Component{
 
     this.props.history.push({
       pathname: '/listarAvaliacoes',
-      user: this.props.location.state.user,
-      aluno: this.props.location.state.aluno
+      state: {
+        user: this.props.location.state.user,
+        aluno: this.props.location.state.aluno
+      }
     });
 
   }
