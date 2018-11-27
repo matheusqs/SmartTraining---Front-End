@@ -48,7 +48,7 @@ div.container > button{
 .divzona{
 	background-image: url(foto-login.jpg);
 	width: auto;
-	height: 100vh;
+	height: 94vh;
 	overflow: hidden;
 	background-size: 100%;
 	background-repeat: no-repeat;
@@ -59,3 +59,6 @@ div.container > button{
 	transform: translateX(2%);
 }
 
+.center{
+	transform: translateX(25%);
+}

@@ -3,6 +3,7 @@ import {Header} from '../../Components/Header';
 import {Footer} from '../../Components/Footer';
 import {BotaoVoltar} from '../../Components/BotaoVoltar';
 
+
 export class VerAvaliacao extends React.Component {
     constructor(props){
         super(props);
@@ -34,9 +35,9 @@ export class VerAvaliacao extends React.Component {
         }
 
         return(
-            <div>
+            <div >
                 <Header tipo={this.props.location.state.user.tipo} user={this.props.location.state.user}/>
-                    <div>
+                    <div className="center">
                         <h2>Avaliação - Data: {this.state.avaliacao.data}</h2>
                         <h2>Medidas:</h2>
                         <table>
@@ -115,7 +116,7 @@ export class VerAvaliacao extends React.Component {
                         </table>
 
                         <h2>Objetivos:</h2>
-                        <ul>
+                        <ul class="striped-list">
                             {lista}
                         </ul>
                         <BotaoVoltar/>
