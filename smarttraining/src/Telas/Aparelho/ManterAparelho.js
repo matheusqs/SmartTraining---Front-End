@@ -83,7 +83,7 @@ export class ManterAparelho extends React.Component{
                         <SelectTable opcoes={this.state.listaExercicios} selecionados={this.state.aparelho.exercicios} id='ex'
                             selectionHandler={(e) => this.setState({...this.state.aparelho.exercicios = e.data})} header='Exercício' />
 
-                        <input type='submit' value={this.props.location.state.acao === 'cadastrar' ? Cadastrar : Alterar}/>
+                        <input type='submit' value={this.props.location.state.acao === 'cadastrar' ? 'Cadastrar' : 'Alterar'}/>
                     </form>
                     <BotaoVoltar/>
                 </div>

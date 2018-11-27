@@ -128,7 +128,7 @@ export class ManterExercicio extends React.Component {
                             
                         </div>
                         <BotaoVoltar/>
-                        <button className="btn">{this.props.location.state.acao === 'cadastrar' ? Cadastrar : Alterar}</button>
+                        <button className="btn">{this.props.location.state.acao === 'cadastrar' ? 'Cadastrar' : 'Alterar'}</button>
                     </form>
                 </div>
                 <Footer/>
