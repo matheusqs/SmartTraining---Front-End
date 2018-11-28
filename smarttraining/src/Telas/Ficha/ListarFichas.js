@@ -27,7 +27,8 @@ export class ListarFichas extends React.Component{
             }
         })
         .then(res => res.json())
-        .then(resultado => this.setState({fichas: resultado}));
+        .then(resultado => this.setState({fichas: resultado}))
+        .catch(error => console.error(error));
     }
 
     render(){

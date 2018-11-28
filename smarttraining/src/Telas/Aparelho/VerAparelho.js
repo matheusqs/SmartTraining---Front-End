@@ -22,7 +22,8 @@ export class VerAparelho extends React.Component{
             }
         })
         .then(res => res.json())
-        .then(resultado => this.setState({aparelho: resultado}));
+        .then(resultado => this.setState({aparelho: resultado}))
+        .catch(error => console.error(error));
     }
 
     render(){

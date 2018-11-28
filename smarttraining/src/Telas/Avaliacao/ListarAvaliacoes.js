@@ -28,7 +28,8 @@ export class ListarAvaliacoes extends React.Component{
             }
         })
         .then(resposta => resposta.json())
-        .then(resultado => this.setState({avaliacoes: resultado}));
+        .then(resultado => this.setState({avaliacoes: resultado}))
+        .catch(error => console.error(error));
     }
     
     render(){

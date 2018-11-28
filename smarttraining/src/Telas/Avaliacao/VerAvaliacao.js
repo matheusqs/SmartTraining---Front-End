@@ -21,7 +21,8 @@ export class VerAvaliacao extends React.Component {
             }
         })
         .then(resposta => resposta.json())
-        .then(resultado => this.setState({avaliacao: resultado}));
+        .then(resultado => this.setState({avaliacao: resultado}))
+        .catch(error => console.error(error));
     }
 
     render(){

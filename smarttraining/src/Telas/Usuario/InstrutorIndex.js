@@ -20,7 +20,8 @@ export class InstrutorIndex extends React.Component {
             }
         })
         .then(resposta => resposta.json())
-        .then(resultado => this.setState({alunos: resultado}));
+        .then(resultado => this.setState({alunos: resultado}))
+        .catch(error => console.error(error));
     }
 
     render(){

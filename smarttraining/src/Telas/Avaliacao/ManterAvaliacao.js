@@ -25,7 +25,8 @@ export class ManterAvaliacao extends React.Component{
       }
     })
     .then(resposta => resposta.json())
-    .then(resultado => this.setState({objetivos: resultado.objetivos}));
+    .then(resultado => this.setState({objetivos: resultado.objetivos}))
+    .catch(error => console.error(error));
 
     if(this.props.location.state.acao === 'alterar'){
       let aval = this.props.location.state.avaliacao;
@@ -37,7 +38,8 @@ export class ManterAvaliacao extends React.Component{
         }
       })
       .then(resposta => resposta.json())
-      .then(resultado => this.setState({avaliacao: resultado}));
+      .then(resultado => this.setState({avaliacao: resultado}))
+      .catch(error => console.error(error));
     }
   }
 

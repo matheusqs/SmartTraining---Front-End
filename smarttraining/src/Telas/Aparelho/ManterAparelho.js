@@ -35,7 +35,8 @@ export class ManterAparelho extends React.Component{
                 }
             })
             .then(resposta => resposta.json())
-            .then(resultado => this.setState({aparelho: resultado}));
+            .then(resultado => this.setState({aparelho: resultado}))
+            .catch(error => console.error(error));
         }
     }
 

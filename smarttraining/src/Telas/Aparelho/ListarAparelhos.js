@@ -21,7 +21,8 @@ export class ListarAparelhos extends React.Component{
             }
         })
         .then(resposta => resposta.json())
-        .then(resultado => this.setState({aparelhos: resultado}));
+        .then(resultado => this.setState({aparelhos: resultado}))
+        .catch(error => console.error(error));
     }
 
     render(){

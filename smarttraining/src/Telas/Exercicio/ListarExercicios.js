@@ -42,7 +42,7 @@ export class ListarExercicios extends React.Component {
                     }}><button className="btn">Ver</button></Link>
 
                     {
-                        this.props.location.state.user.tipo !== 'a' ?
+                        this.props.location.state.user.tipo !== 'A' ?
                         <Link to={{
                             pathname: '/manterExercicio',
                             state: {

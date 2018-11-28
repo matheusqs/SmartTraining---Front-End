@@ -22,7 +22,8 @@ export class CoordenadorIndex extends React.Component{
             }
         })
         .then(res => res.json())
-        .then(resultado => this.setState({alunos: resultado}));
+        .then(resultado => this.setState({alunos: resultado}))
+        .catch(error => console.error(error));
 
         url = 'http://localhost:8080/servletweb?acao=ListarInstrutores';
         fetch(url, {
@@ -31,7 +32,8 @@ export class CoordenadorIndex extends React.Component{
             }
         })
         .then(res => res.json())
-        .then(resultado => this.setState({instrutores: resultado}));
+        .then(resultado => this.setState({instrutores: resultado}))
+        .catch(error => console.error(error));
     }
 
     render(){

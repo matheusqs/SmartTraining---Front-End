@@ -30,7 +30,8 @@ export class AlunoIndex extends React.Component {
       }
     })
     .then(res => res.json())
-    .then(resultado => this.setState({avaliacoes: resultado}));
+    .then(resultado => this.setState({avaliacoes: resultado}))
+    .catch(error => console.error(error));
   }
 
   render(){

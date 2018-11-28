@@ -21,7 +21,8 @@ export class VerFicha extends React.Component{
             }
         })
         .then(res => res.json())
-        .then(resultado => this.setState({ficha: resultado}));
+        .then(resultado => this.setState({ficha: resultado}))
+        .catch(error => console.error(error));
     }
 
     render(){
