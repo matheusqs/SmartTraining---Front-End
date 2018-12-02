@@ -46,13 +46,18 @@ div.container > button{
 }
 
 .divzona{
-	background-image: url(foto-login.jpg);
 	width: auto;
-	height: 94vh;
 	overflow: hidden;
 	background-size: 100%;
-	background-repeat: no-repeat;
+}
 
+.parallax{
+	background-image: url(foto-login.jpg);
+	height: 100vh;
+	background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 
 .direita-login{

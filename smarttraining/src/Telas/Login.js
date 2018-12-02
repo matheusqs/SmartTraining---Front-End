@@ -75,7 +75,7 @@ export class Login extends React.Component{
 
   render(){
     return(
-      <div className="divzona">
+      <div className="divzona parallax">
         <Header/>
 
             
